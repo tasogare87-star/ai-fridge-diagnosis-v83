@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI冷蔵庫診断 v8.3 - ブラウザ互換・100°開閉対応</title>
+<title>AI冷蔵庫診断 v8.4 - フレンチドア優先・機能充実提案</title>
 <style>
 :root{
   --bg:#fff8f3;
@@ -119,6 +119,12 @@ header .sub{color:rgba(255,255,255,.96)}
 .official-source a{color:#2f67d8;font-weight:800}
 
 .strategy-badge{display:inline-block;margin:6px 6px 0 0;padding:5px 9px;border-radius:999px;background:linear-gradient(135deg,#fff0d8,#fff9ed);border:1px solid #ffc977;color:#9a4e00;font-size:11px;font-weight:900}
+.feature-pick-card{border:2px solid #6c7cff;background:linear-gradient(180deg,#ffffff 0%,#f5f7ff 100%);box-shadow:0 14px 30px rgba(57,123,255,.14)}
+.feature-pick-card::before{height:9px;background:linear-gradient(90deg,#397bff,#7b61ff,#ff9200)}
+.feature-badge{display:inline-block;margin:6px 6px 0 0;padding:6px 10px;border-radius:999px;background:#edf1ff;border:1px solid #9bafff;color:#294bba;font-size:11px;font-weight:900}
+.feature-highlight{margin:12px 0;padding:12px;border-radius:14px;background:#fff8e8;border:1px solid #ffd98a}
+.feature-highlight-title{font-size:12px;font-weight:900;color:#8d5700;margin-bottom:7px}
+.feature-tags{display:flex;flex-wrap:wrap;gap:6px}.feature-tag{display:inline-block;padding:5px 8px;border-radius:999px;background:#fff;border:1px solid #ffd27a;color:#7e4d00;font-size:11px;font-weight:800}
 .strategy-note{margin:16px 0;padding:13px 14px;border-radius:14px;background:linear-gradient(135deg,#fff8eb,#fff);border:1px solid #ffd39a;font-size:12px;line-height:1.75;color:#74523d}
 .sharebox{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid #ffd9bf}
 .sharebox img{width:112px;height:112px;border-radius:10px;border:1px solid #eee}
@@ -156,9 +162,9 @@ table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px;borde
 <body>
 <div class="wrap">
   <header>
-    <span class="badge">AI冷蔵庫診断 v8.3 / ブラウザ互換・100°開閉対応</span>
+    <span class="badge">AI冷蔵庫診断 v8.4 / フレンチドア優先・100°開閉対応</span>
     <h1>開き方の失敗を避ける 冷蔵庫診断</h1>
-    <div class="sub">冷蔵庫のおすすめだけでなく、<strong>右開き・左開き・フレンチドア・左右付け替え</strong>を、<strong>設置環境 → 動線 → 容量・機能</strong>の順に整理して比較します。<br>ヨドバシ.com掲載の発売中商品を対象に、登録済みスペックと回答条件を照合。設置適合を最優先し、価格差が大きくない場合は戦略メーカーを優先して比較します。</div>
+    <div class="sub">冷蔵庫のおすすめだけでなく、<strong>右開き・左開き・フレンチドア・左右付け替え</strong>を、<strong>設置環境 → 動線 → 容量・機能</strong>の順に整理して比較します。<br>ヨドバシ.com掲載の発売中商品を対象に、登録済みスペックと回答条件を照合。設置適合を最優先し、<strong>設置可能ならフレンチドアを優先</strong>。通常候補3機種に加え、機能面を充実させたおすすめ1機種を別枠で提案します。</div>
     <div class="hero-points">
       <div class="hero-point"><strong>1.</strong> 左右の考え方を先にイラストで確認</div>
       <div class="hero-point"><strong>2.</strong> 壁・シンク・調理台との関係を診断</div>
@@ -320,6 +326,32 @@ const productKnowledge={
 
 function productStory(p){
   return productKnowledge[p.model]||null;
+}
+
+const featureHighlights={
+  "NR-E47BR3-C":["霜つき抑制冷凍","うるおい冷却","真ん中野菜室","100％全開構造"],
+  "NR-E47BR3L-C":["霜つき抑制冷凍","うるおい冷却","真ん中野菜室","左開き仕様"],
+  "NR-F55HY3-N":["サクッと切れる微凍結","AIエコナビ","クーリングアシスト","霜つき抑制冷凍"],
+  "MR-MZ49N-H":["切れちゃう瞬冷凍A.I.","ひろびろ氷点下ストッカーD A.I.","全室独立おまかせA.I.","スマホ連携"],
+  "R-HWS47X N":["まるごとチルド","特鮮氷温ルーム","ひろin冷凍プラス","冷蔵室独立冷却システム"],
+  "R-HWS47XL N":["まるごとチルド","特鮮氷温ルーム","ひろin冷凍プラス","冷蔵室独立冷却システム"],
+  "GR-Y510FK(EW)":["新鮮 摘みたて野菜室","速鮮チルド＆解凍モード","切り替え冷凍","選べる節電モード"]
+};
+function productFeatureHighlights(p){
+  return featureHighlights[p.model] || p.features || [];
+}
+function featureRichnessScore(p){
+  let score=0;
+  const story=productStory(p);
+  const highlights=productFeatureHighlights(p);
+  if(strategicMakers.includes(p.maker)) score+=18;
+  if(p.doorType==='フレンチドア') score+=16;
+  if(p.smartphone===true) score+=10;
+  if(p.autoIce===true) score+=5;
+  if(p.doors>=6) score+=7;
+  if(story) score+=Math.min(20,story.strong.length*5);
+  score+=Math.min(24,highlights.length*6);
+  return score;
 }
 
 const questions=[
@@ -513,7 +545,14 @@ function doorPref(){
   const why=[];
   const hardBlock=[];
 
-  // v8.2: 壁際でも約100°開けられる前提。壁側ヒンジの片開きも除外しない。
+  // v8.4: 幅65cm級以上が設置できる場合はフレンチドアを優先。
+  // 片側だけを大きく振らずに開閉でき、左右どちらからもアクセスしやすいため、売場提案の第一軸にする。
+  if(answers.maxWidth>=650 || answers.maxWidth===999){
+    s['フレンチドア']+=24;
+    why.push('幅65cm級の設置が可能なため、左右どちらからもアクセスしやすく扉の振り幅を抑えやすいフレンチドアを優先しています。');
+  }
+
+  // 壁際でも約100°開けられる前提。壁側ヒンジの片開きも除外しない。
   if(answers.wallSide==='left'){
     s['右開き']+=16;
     s['左右付け替え']+=12;
@@ -593,6 +632,7 @@ function productScore(p,d,pool){
   const eVals=pool.map(x=>x.energy).filter(Number.isFinite),eMin=Math.min(...eVals),eMax=Math.max(...eVals);
   score+=(1-normalize(p.energy,eMin,eMax))*(answers.energy*6);
   score+=(d.scores[p.doorType]||0);
+  if(p.doorType==='フレンチドア') score+=18; // 設置可能な候補の中ではフレンチドアを優先
 
   // 2. 予算は重要条件として残すが、順位を決め過ぎない。
   if(answers.budget!==999999){
@@ -638,11 +678,22 @@ function getCandidates(d){
   const nonAqua=scored.filter(p=>p.maker!=='AQUA');
   const aqua=scored.filter(p=>p.maker==='AQUA');
 
-  // AQUAは原則として上位3枠に入れない。非AQUAが4機以上あれば候補4枠も非AQUAを優先。
-  if(nonAqua.length>=4) return nonAqua.slice(0,4);
-  if(nonAqua.length>=3) return [...nonAqua.slice(0,3), ...aqua.slice(0,1)].slice(0,4);
-  if(nonAqua.length>=1) return [...nonAqua, ...aqua].slice(0,4);
-  return scored.slice(0,4);
+  // 通常候補は3機種。AQUAは他社適合機が十分ある場合は通常上位3枠から外す。
+  let regular=[];
+  if(nonAqua.length>=3) regular=nonAqua.slice(0,3);
+  else if(nonAqua.length>=1) regular=[...nonAqua,...aqua].slice(0,3);
+  else regular=scored.slice(0,3);
+
+  // 4つ目は診断順位とは別軸の「機能充実おすすめ」。
+  // 設置幅・必須条件は守り、通常3候補と重複させず、代表付加機能・スマホ・6ドア・フレンチ等で評価。
+  const used=new Set(regular.map(p=>p.model));
+  let premiumPool=scored.filter(p=>!used.has(p.model) && p.maker!=='AQUA');
+  if(premiumPool.length===0) premiumPool=scored.filter(p=>!used.has(p.model));
+  const featurePick=premiumPool
+    .map(p=>({...p,featureScore:featureRichnessScore(p),_featurePick:true}))
+    .sort((a,b)=>b.featureScore-a.featureScore || b.score-a.score)[0] || null;
+
+  return {regular,featurePick};
 }
 function matchRows(p,d){
   const arr=[],target=targetCapacity(answers.family);
@@ -713,7 +764,8 @@ function resultSvg(d){
 
 function showResult(){
   const d=doorPref();
-  const list=getCandidates(d);
+  const candidateSet=getCandidates(d);
+  const list=[...candidateSet.regular, ...(candidateSet.featurePick?[candidateSet.featurePick]:[])];
   const target=targetCapacity(answers.family);
   const mustText=[answers.autoIce==='must'?'自動製氷 必須':null,answers.smartphone==='must'?'スマホ連携 必須':null].filter(Boolean).join(' / ')||'必須機能なし';
   intro.classList.add('hidden');
@@ -721,8 +773,8 @@ function showResult(){
   result.classList.remove('hidden');
   result.innerHTML=`
     <span class="badge">診断結果</span>
-    <div class="type">比較候補 ${list.length}機種</div>
-    <div class="sub">右開き・左開きの失敗を避けるため、<strong>壁際でも約100°開けられる片開きは候補に残す</strong>ロジックへ変更しています。壁だけで決めず、動線まで含めた本PoC独自の比較優先度です。</div>
+    <div class="type">通常候補 ${candidateSet.regular.length}機種 + 機能充実おすすめ ${candidateSet.featurePick?1:0}機種</div>
+    <div class="sub"><strong>設置可能ならフレンチドアを優先</strong>しつつ、壁際でも約100°開けられる片開きは候補に残します。通常候補は3機種に絞り、4つ目は価格順位ではなく付加機能の充実度で選ぶおすすめ枠です。</div>
     <div class="summary-grid">
       <div class="summary"><div class="k">容量目安</div><div class="v">${target}L以上</div></div>
       <div class="summary"><div class="k">設置幅</div><div class="v">${answers.maxWidth===999?'未確定':answers.maxWidth+'mm以下'}</div></div>
@@ -752,10 +804,10 @@ function showResult(){
       </div>
     </div>
     <h2>候補商品</h2>
-    <div class="strategy-note"><strong>売場戦略ロジック：</strong>設置・ドア条件と容量不足回避を最優先。予算は比較条件として反映しますが、安価なだけでは上位にしません。価格差が大きくない場合は <strong>三菱電機・Panasonic・日立・東芝</strong> を戦略メーカーとして優先します。AQUAは適合候補として残しつつ、他社適合機が十分ある場合は上位3候補から外します。</div>
-    <div class="cards">${list.map((p,i)=>{const matches=matchRows(p,d);return `<article class="card"><div class="rank">候補 ${i+1} / 診断スコア ${p.score}</div><div class="maker">${p.maker}</div>${strategicMakers.includes(p.maker)?'<span class="strategy-badge">戦略メーカー</span>':''}<div class="model">${p.model}</div><span class="chip">${p.doorType}</span><div class="price">参考 ${yen(p.price)}</div><div class="status">${p.status} / データ確認 ${checkedAt}</div><div class="specgrid"><div class="spec"><div class="k">総容量</div><div class="v">${p.capacity}L</div></div><div class="spec"><div class="k">本体幅</div><div class="v">${p.width}mm</div></div><div class="spec"><div class="k">冷凍室合計</div><div class="v">${p.freezerTotal}L</div></div><div class="spec"><div class="k">野菜室</div><div class="v">${p.vegetable===null?'確認項目外':p.vegetable+'L / '+p.vegetablePos}</div></div><div class="spec"><div class="k">年間消費電力量</div><div class="v">${p.energy}kWh/年</div></div><div class="spec"><div class="k">自動製氷</div><div class="v">${p.autoIce?'有':'無'}</div></div><div class="spec"><div class="k">スマホ連携</div><div class="v">${p.smartphone===null?'判定保留':p.smartphone?'有':'無'}</div></div><div class="spec"><div class="k">ドア数</div><div class="v">${p.doors}ドア</div></div></div><ul class="matchlist">${matches.map(([ok,text])=>`<li class="${ok===true?'ok':ok===false?'ng':'neutral'}">${ok===true?'✓':ok===false?'△':'－'} ${text}</li>`).join('')}</ul><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul>${(()=>{const story=productStory(p);return story?`<div class="product-story"><div class="strong-box"><div class="story-title">この機種のストロングポイント</div><ul class="story-list">${story.strong.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="policy-box"><div class="story-title">メーカーコンセプト</div><p class="policy-text">${story.policy}</p><div class="official-source"><a href="${story.official}" target="_blank" rel="noopener">メーカー公式情報</a></div></div></div>`:''})()}<div class="source"><a href="${p.source}" target="_blank" rel="noopener">ヨドバシ.com商品ページ</a></div></article>`}).join('')}</div>
-    <div class="staff"><strong>スタッフへの引継ぎ</strong><br>「お客様条件では <strong>${d.ranked[0][0]}</strong> を第一候補に、容量${target}L以上を基準として比較しています。壁際でも約100°開けられる前提のため片開きは自動除外せず、壁・動線を総合評価しています。冷凍室・野菜室・自動製氷・スマホ連携の一致状況を見ながら実機をご案内してください。」<br><br>最終的な販売価格、在庫、納期、搬入経路、設置寸法、扉の必要開閉角度は店頭システム・メーカー据付条件で確認してください。</div>
-    <div class="audit"><strong>v8.3 ブラウザ互換版で再構成したポイント</strong><div class="tablewrap"><table><tr><th>項目</th><th>従来</th><th>v8.3 ブラウザ互換版</th></tr><tr><td>導入部</td><td>質問開始が先</td><td>先に左右の見方・壁・動線をイラストで説明</td></tr><tr><td>質問順</td><td>容量・機能中心</td><td>設置幅 → 壁 → 動線 → 商品条件 の順に整理</td></tr><tr><td>ドア判定</td><td>壁側片開きを除外</td><td>約100°開けられる前提なら壁側片開きも許容し、動線まで含めて順位付け</td></tr><tr><td>結果表示</td><td>正面寄りの概念図</td><td>上から見た平面図で、ドアを実際に開いた状態と約100°を可視化</td></tr><tr><td>順位ロジック</td><td>価格加点が強め</td><td>設置・容量・使い方を優先し、予算の順位影響を縮小</td></tr><tr><td>売場戦略</td><td>なし</td><td>価格差が大きくない場合は三菱・Panasonic・日立・東芝を優先。AQUAの上位表示を抑制</td></tr><tr><td>共有</td><td>端末内利用中心</td><td>共有QR・共有ボタン・URLコピーを追加</td></tr><tr><td>途中修正</td><td>選択すると即次へ進む</td><td>選択内容を保持し、前へ戻る・条件修正・スマホの戻る操作に対応</td></tr></table></div></div>
+    <div class="strategy-note"><strong>売場戦略ロジック：</strong>設置・容量条件を満たす場合は<strong>フレンチドアを優先</strong>。通常候補は3機種に絞り、価格差が大きくない場合は <strong>三菱電機・Panasonic・日立・東芝</strong> を戦略メーカーとして優先します。4つ目は通常順位から切り離し、独自保存機能・時短機能・鮮度機能・スマホ連携などの<strong>機能充実おすすめ</strong>として表示します。AQUAは適合候補として残しつつ、他社適合機が十分ある場合は通常上位3候補から外します。</div>
+    <div class="cards">${list.map((p,i)=>{const matches=matchRows(p,d);const isFeature=!!p._featurePick;const highlights=productFeatureHighlights(p);return `<article class="card ${isFeature?'feature-pick-card':''}"><div class="rank">${isFeature?`機能充実おすすめ / 機能充実度 ${p.featureScore}`:`候補 ${i+1} / 診断スコア ${p.score}`}</div><div class="maker">${p.maker}</div>${strategicMakers.includes(p.maker)?'<span class="strategy-badge">戦略メーカー</span>':''}${isFeature?'<span class="feature-badge">4つ目：機能充実おすすめ</span>':''}<div class="model">${p.model}</div><span class="chip">${p.doorType}</span><div class="price">参考 ${yen(p.price)}</div><div class="status">${p.status} / データ確認 ${checkedAt}</div><div class="specgrid"><div class="spec"><div class="k">総容量</div><div class="v">${p.capacity}L</div></div><div class="spec"><div class="k">本体幅</div><div class="v">${p.width}mm</div></div><div class="spec"><div class="k">冷凍室合計</div><div class="v">${p.freezerTotal}L</div></div><div class="spec"><div class="k">野菜室</div><div class="v">${p.vegetable===null?'確認項目外':p.vegetable+'L / '+p.vegetablePos}</div></div><div class="spec"><div class="k">年間消費電力量</div><div class="v">${p.energy}kWh/年</div></div><div class="spec"><div class="k">自動製氷</div><div class="v">${p.autoIce?'有':'無'}</div></div><div class="spec"><div class="k">スマホ連携</div><div class="v">${p.smartphone===null?'判定保留':p.smartphone?'有':'無'}</div></div><div class="spec"><div class="k">ドア数</div><div class="v">${p.doors}ドア</div></div></div><ul class="matchlist">${matches.map(([ok,text])=>`<li class="${ok===true?'ok':ok===false?'ng':'neutral'}">${ok===true?'✓':ok===false?'△':'－'} ${text}</li>`).join('')}</ul><div class="feature-highlight"><div class="feature-highlight-title">代表的な付加機能</div><div class="feature-tags">${highlights.map(x=>`<span class="feature-tag">${x}</span>`).join('')}</div></div><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul>${(()=>{const story=productStory(p);return story?`<div class="product-story"><div class="strong-box"><div class="story-title">メーカーのストロングポイント</div><ul class="story-list">${story.strong.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="policy-box"><div class="story-title">メーカーコンセプト</div><p class="policy-text">${story.policy}</p><div class="official-source"><a href="${story.official}" target="_blank" rel="noopener">メーカー公式情報</a></div></div></div>`:''})()}<div class="source"><a href="${p.source}" target="_blank" rel="noopener">ヨドバシ.com商品ページ</a></div></article>`}).join('')}</div>
+    <div class="staff"><strong>スタッフへの引継ぎ</strong><br>「お客様条件では、設置できる場合は<strong>フレンチドアを優先</strong>し、容量${target}L以上を基準に通常候補を3機種へ絞っています。4つ目は診断順位とは別に、独自保存・鮮度・時短・スマホ連携などの<strong>付加機能が充実したおすすめ機種</strong>です。壁際でも約100°開けられる片開きは候補に残し、実機で最終確認してください。」<br><br>最終的な販売価格、在庫、納期、搬入経路、設置寸法、扉の必要開閉角度は店頭システム・メーカー据付条件で確認してください。</div>
+    <div class="audit"><strong>v8.4 売場提案版で再構成したポイント</strong><div class="tablewrap"><table><tr><th>項目</th><th>従来</th><th>v8.4 売場提案版</th></tr><tr><td>導入部</td><td>質問開始が先</td><td>先に左右の見方・壁・動線をイラストで説明</td></tr><tr><td>質問順</td><td>容量・機能中心</td><td>設置幅 → 壁 → 動線 → 商品条件 の順に整理</td></tr><tr><td>ドア判定</td><td>壁側片開きを除外</td><td>約100°開けられる前提なら壁側片開きも許容し、動線まで含めて順位付け</td></tr><tr><td>結果表示</td><td>正面寄りの概念図</td><td>上から見た平面図で、ドアを実際に開いた状態と約100°を可視化</td></tr><tr><td>順位ロジック</td><td>価格加点が強め</td><td>設置・容量・使い方を優先し、設置可能ならフレンチドアを優先</td></tr><tr><td>売場戦略</td><td>なし</td><td>通常候補を3機種に絞り、4つ目は付加機能の充実度で別枠提案。三菱・Panasonic・日立・東芝を優先し、AQUAの上位表示を抑制</td></tr><tr><td>共有</td><td>端末内利用中心</td><td>共有QR・共有ボタン・URLコピーを追加</td></tr><tr><td>途中修正</td><td>選択すると即次へ進む</td><td>選択内容を保持し、前へ戻る・条件修正・スマホの戻る操作に対応</td></tr></table></div></div>
     <div class="warning"><strong>データ運用上の注意：</strong>本ファイルは ${checkedAt} 時点の確認スナップショットです。価格・在庫・販売状態は変動します。また、ヨドバシ.com掲載でスマホ対応を十分に確認できなかった項目は推測せず「判定保留」としています。</div>
     <div class="sharebox"><div class="qr-placeholder" aria-label="共有QRコードは公開URL確定後に生成"><strong>共有URL</strong><br><span>このページのURLを自動取得</span></div><div><div class="share-title">この診断を共有</div><div class="sub">別端末でも同じ診断アプリを利用できます。</div><div class="share-url js-share-url">公開中のURLを自動取得します</div><div class="share-actions"><button class="btn secondary" type="button" onclick="shareApp()">共有する</button><button class="btn secondary" type="button" onclick="copyShareUrl()">URLをコピー</button></div></div></div>
     <div class="actions"><button class="btn primary" onclick="editAnswers()">← 条件を修正</button><button class="btn secondary" onclick="restart()">最初からやり直す</button><button class="btn secondary" onclick="window.print()">結果を印刷</button></div>
