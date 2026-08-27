@@ -43,8 +43,8 @@ const depthQuestion=JSON.parse(vm.runInContext("JSON.stringify(questions.find(q=
 assert.equal(depthQuestion.options.at(-1)[1],999,'depth question must support unknown');
 
 const coverage=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCoverage)',context));
-assert.ok(coverage.verified>=25,`verified depth coverage should expand beyond the initial 12 models; got ${coverage.verified}`);
-assert.ok(coverage.installVerified>=10,'installation-depth verified models should be tracked separately');
+assert.ok(coverage.verified>=50,`verified depth coverage should include Panasonic + Mitsubishi expansion; got ${coverage.verified}`);
+assert.ok(coverage.installVerified>=35,'installation-depth verified coverage should expand materially');
 assert.ok(coverage.bodyOnlyVerified>=5,'body-depth-only verified models should be tracked separately');
 
 vm.runInContext('answers.maxDepth=650',context);
@@ -59,6 +59,7 @@ assert.equal(vm.runInContext("hardFilter(products.find(p=>p.model==='R-HWS47X N'
 const bodyOnlyState=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>p.model==='GR-Y510FK(EW)')))",context));
 assert.equal(bodyOnlyState.kind,'body-only','body-depth-only models must remain a caution state, not verified-fit');
 
+// Mitsubishi expansion.
 const wz61Model=vm.runInContext("products.find(p=>String(p.model).startsWith('MR-WZ61N'))?.model || null",context);
 assert.ok(wz61Model,'MR-WZ61N must exist in the production catalog');
 const wz61State=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('MR-WZ61N'))))",context));
@@ -72,6 +73,22 @@ assert.equal(cx37.kind,'verified-fit','MR-CX37M must fit a 700mm depth limit');
 const mz54=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('MR-MZ54N'))))",context));
 assert.equal(mz54.body,699,'MR-MZ54N official body depth must be 699mm');
 assert.equal(mz54.kind,'body-only','MR-MZ54N body-only evidence must not be promoted to verified installation fit');
+
+// Panasonic expansion: test several materially different installation depths.
+const pF65=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('NR-F65WX3'))))",context));
+assert.equal(pF65.install,745,'NR-F65WX3 installation depth must be 745mm');
+assert.equal(pF65.kind,'over','NR-F65WX3 must fail a 700mm depth limit');
+
+const pE45=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('NR-E45RY3'))))",context));
+assert.equal(pE45.install,648,'NR-E45RY3 installation depth must be 648mm');
+assert.equal(pE45.kind,'verified-fit','NR-E45RY3 must fit a 700mm depth limit');
+
+const pC33=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('NR-C33JS2'))))",context));
+assert.equal(pC33.install,600,'NR-C33JS2 installation depth must be 600mm');
+
+const pB18=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('NR-B18C3'))))",context));
+assert.equal(pB18.body,595,'NR-B18C3 body depth must be 595mm');
+assert.equal(pB18.install,645,'NR-B18C3 installation depth must include 50mm rear clearance and equal 645mm');
 
 vm.runInContext("products.push({maker:'TEST',model:'DEPTH-UNKNOWN',status:'発売中',width:600})",context);
 const unknownState=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>p.model==='DEPTH-UNKNOWN')))",context));
