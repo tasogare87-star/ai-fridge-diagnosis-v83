@@ -43,8 +43,8 @@ const depthQuestion=JSON.parse(vm.runInContext("JSON.stringify(questions.find(q=
 assert.equal(depthQuestion.options.at(-1)[1],999,'depth question must support unknown');
 
 const coverage=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCoverage)',context));
-assert.ok(coverage.verified>=50,`verified depth coverage should include Panasonic + Mitsubishi expansion; got ${coverage.verified}`);
-assert.ok(coverage.installVerified>=35,'installation-depth verified coverage should expand materially');
+assert.ok(coverage.verified>=69,`verified depth coverage should include Panasonic + SHARP + Mitsubishi expansion; got ${coverage.verified}`);
+assert.ok(coverage.installVerified>=57,'installation-depth verified coverage should include full SHARP current lineup');
 assert.ok(coverage.bodyOnlyVerified>=5,'body-depth-only verified models should be tracked separately');
 
 vm.runInContext('answers.maxDepth=650',context);
@@ -89,6 +89,23 @@ assert.equal(pC33.install,600,'NR-C33JS2 installation depth must be 600mm');
 const pB18=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('NR-B18C3'))))",context));
 assert.equal(pB18.body,595,'NR-B18C3 body depth must be 595mm');
 assert.equal(pB18.install,645,'NR-B18C3 installation depth must include 50mm rear clearance and equal 645mm');
+
+// SHARP current lineup: verify shallow and deeper cases plus compact products.
+const sMF55=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('SJ-MF55R'))))",context));
+assert.equal(sMF55.body,630,'SJ-MF55R body depth must be 630mm');
+assert.equal(sMF55.install,637,'SJ-MF55R minimum installation depth must be 637mm');
+
+const sX504=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('SJ-X504R'))))",context));
+assert.equal(sX504.install,704,'SJ-X504R minimum installation depth must be 704mm');
+assert.equal(sX504.kind,'over','SJ-X504R must fail a 700mm limit');
+
+const sPT32=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('SJ-PT32R'))))",context));
+assert.equal(sPT32.body,647,'SJ-PT32R body depth must be 647mm');
+assert.equal(sPT32.install,675,'SJ-PT32R minimum installation depth must be 675mm');
+assert.equal(sPT32.kind,'verified-fit','SJ-PT32R must fit a 700mm limit');
+
+const sGD15=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('SJ-GD15R'))))",context));
+assert.equal(sGD15.install,646,'SJ-GD15R minimum installation depth must be 646mm');
 
 vm.runInContext("products.push({maker:'TEST',model:'DEPTH-UNKNOWN',status:'発売中',width:600})",context);
 const unknownState=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>p.model==='DEPTH-UNKNOWN')))",context));
