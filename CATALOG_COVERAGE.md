@@ -5,11 +5,65 @@
 ## 目的
 ヨドバシ.comで現在販売中の Panasonic / 三菱電機 / 日立 / 東芝 / SHARP / AQUA の家庭用冷蔵庫を、メーカー公式仕様と照合しながら診断対象へ段階的に追加する。
 
-- `○` = その容量帯に本番登録済み機種あり
-- `—` = 現時点で本番登録なし、またはメーカー現行ラインアップ上の該当機種を未確認
-- **重要:** `○` は「全機種確認済み」を意味しない。容量帯を代表する確認済み機種が本番に存在することだけを示す。
+## 現在のデプロイ状態
+- Vercel本番は **batch 14まで** 配信確認済み。
+- SHARP `batch 15` と AQUA `batch 16` はGitHub側で仕様・価格確認済みコードを準備しているが、Vercelの **build rate limit** により未配信。
+- rate limit解消後、本番HTTP 200を確認して `staged-not-live` を `production-live` に切り替える。
 
-## 容量帯カバレッジ
+## 全機種化の定義
+1. ヨドバシ.comで現在販売中または現在注文可能であることを確認
+2. 予約受付中・発売前・販売終了・取扱終了は本番候補から除外
+3. 容量、幅、ドア方式、ドア数、主要冷凍容量、野菜室容量・位置、年間消費電力量、自動製氷、スマホ連携をメーカー公式情報で照合
+4. 色違いだけでは候補数を増やさない
+5. 右開き / 左開き、フレンチドア / どっちもドアなど診断上意味のある差は別型番として保持
+6. 価格はヨドバシ.comの現行表示を優先し、取得不能時は推測しない
+7. 各商品に `verifiedAt` を持たせる
+8. GitHubにコードがあっても、本番URLで配信確認できるまでは `production-live` と扱わない
+
+## メーカー別進捗
+
+### Panasonic
+- `catalog-inventory-panasonic.json`
+- 現行候補 28件
+- 本番 26件 / ヨドバシ確認待ち 2件
+
+### 三菱電機
+- `catalog-inventory-mitsubishi.json`
+- 発売済み現行候補 27件
+- **27 / 27 本番化完了**
+
+### 日立
+- `catalog-inventory-hitachi.json`
+- 標準冷凍冷蔵庫 21候補
+- **20件本番 / `R-H54Y` 1件ヨドバシ確認待ち**
+- `R-K11R`（冷凍庫）と `R-MR7S`（ミニバー）は対象外
+
+### 東芝
+- `catalog-inventory-toshiba.json`
+- 左開き差分込み30候補
+- **30 / 30 本番化完了**
+- batch 13 / 14まで本番配信確認済み
+
+### SHARP
+- `catalog-inventory-sharp.json`
+- 現行R世代 18候補
+- 仕様・ヨドバシ確認: **18 / 18完了**
+- 現在本番配信済み: **8件**
+- batch 15で追加準備済み: **10件（staged-not-live）**
+- batch 15対象: `SJ-MF55R`, `SJ-FF50R`, `SJ-X504R`, `SJ-MF46R`, `SJ-MW46R`, `SJ-X374R`, `SJ-PT32R`, `SJ-BD23R`, `SJ-GD15R`, `SJ-TD15R`
+- `SJ-MF55R` は公式値 **545L** で登録
+
+### AQUA
+- `catalog-inventory-aqua.json`
+- 2026年A/B世代の標準冷凍冷蔵庫を、左右開き差分込み **28候補**として整理
+- 現在本番配信済み: **13件**
+- batch 16で追加準備済み: **14件（staged-not-live）**
+- ヨドバシ確認待ち: **`AQR-FD7B` 1件**
+- batch 16対象: `AQR-TZA52A`, `AQR-TZ42A`, `AQR-TXA50A`, `AQR-TX51A`, `AQR-36AL`, `AQR-S26A`, `AQR-SBS48A`, `AQR-VZA45AL`, `AQR-V46A`, `AQR-V46AL`, `AQR-S31A`, `AQR-31A`, `AQR-S36A`, `AQR-S36AL`
+- `AQR-9A`（90L・1ドア）は標準冷凍冷蔵庫診断の対象外
+- 600L以上の現行標準冷凍冷蔵庫は確認できていないため、無理に登録しない
+
+## 容量帯カバレッジ（現在の本番配信）
 
 | メーカー | ～199L | 200～299L | 300～399L | 400～449L | 450～499L | 500～599L | 600L以上 |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -20,93 +74,18 @@
 | SHARP | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
 | AQUA | ○ | ○ | ○ | ○ | ○ | ○ | — |
 
-## 現時点の容量帯上の空白
-
-1. 日立: 標準的な冷凍冷蔵庫として～199L帯は現行ラインアップに未確認。113L冷凍庫と73Lミニバーは診断対象外
-2. AQUA: 600L以上は2026年現行公式ラインアップで確認できていないため、無理に登録しない
-
-容量帯上の空白が少なくなったため、以降は「帯を埋める」作業から「ヨドバシ.comの現行シリーズ・型番をメーカー別に列挙し、未登録シリーズを潰す」作業へ移行する。
-
-## 全機種化の定義
-
-容量帯に1機種あるだけでは完了としない。各メーカーについて以下を満たしたシリーズ・型番だけを本番登録する。
-
-1. ヨドバシ.comで現在販売中または現在注文可能であることを確認
-2. 予約受付中・発売前・販売終了・取扱終了は本番候補から除外
-3. 容量、幅、ドア方式、ドア数、主要冷凍容量、野菜室容量・位置、年間消費電力量、自動製氷、スマホ連携をメーカー公式情報で照合
-4. 色違いだけでは候補数を増やさない
-5. 右開き / 左開き、フレンチドア / どっちもドアなど診断上意味のある差は別型番として保持
-6. 価格はヨドバシ.comの現行表示を優先し、取得不能時は推測しない
-7. 各商品に `verifiedAt` を持たせ、価格・販売状態の鮮度を個別管理
-8. ヨドバシ掲載型番をメーカー別インベントリに記録し、`production / verified-not-promoted / pending-yodobashi-check` を明示する
-
-## メーカー別インベントリ進捗
-
-### Panasonic
-- `catalog-inventory-panasonic.json`
-- 現行候補 28件を整理済み
-- 本番 26件 / ヨドバシ確認待ち 2件
-
-### 三菱電機
-- `catalog-inventory-mitsubishi.json`
-- 2026年8月28日時点の発売済み現行候補 27件を整理済み
-- **本番 27件 / 未昇格 0件 / ヨドバシ確認待ち 0件**
-- batch 10で `MR-WXD47LN`, `MR-BD46N/BD46NL`, `MR-MD45N/MD45NL`, `MR-C33M` を本番昇格
-- batch 11で `MR-WZ55N`, `MR-JW55N`, `MR-JM54N`, `MR-GW52N`, `MR-JW50N`, `MR-JM49N` を本番昇格
-- **発売済み現行候補の初回全機種化は完了**
-
-### 日立
-- `catalog-inventory-hitachi.json`
-- 公式現行ラインアップから標準的な冷凍冷蔵庫 21候補を整理済み
-- **本番 20件 / 未昇格 0件 / ヨドバシ確認待ち 1件**
-- batch 12で `R-WXC74X`, `R-GXCC67X`, `R-GZC67X`, `R-HZC62Y`, `R-HXCC62X`, `R-HZC54Y`, `R-HXCC54X`, `R-H49Y` を本番昇格
-- **販売確認継続:** `R-H54Y`
-- `R-K11R`（冷凍庫）と `R-MR7S`（ミニバー）は標準冷凍冷蔵庫診断の対象外として別管理
-
-### 東芝
-- `catalog-inventory-toshiba.json`
-- 2026年8月28日時点の公式現行冷凍冷蔵庫を、左開き差分込み **30候補**として整理
-- **本番 30件 / 未昇格 0件 / ヨドバシ確認待ち 0件**
-- batch 13で `GR-A640XFS`, `GR-A540XFS`, `GR-A590WF`, `GR-A500GT/GR-A500GTL`, `GR-A470GSHL`, `GR-Y36SV/GR-Y36SVL` を本番昇格
-- batch 14で `GR-A600XFS`, `GR-A590WFS`, `GR-A540WFS`, `GR-A540WF`, `GR-A550FZ`, `GR-A550FH`, `GR-A510FZ`, `GR-A490XFS`, `GR-A470GSH`, `GR-A460FZ`, `GR-A450GTL` を本番昇格
-- `GR-Y510FK` は `data.js` に残るが現行公式ラインアップ外のため、現行全機種化のカウントから外して再確認対象
-- `GF-Y14HS` / `GF-A11HS` は冷凍庫専用のため診断対象外
-- **現行候補の初回全機種化は完了**
-
 ## 次の優先順位
+1. **Vercel build rate limit解消後、batch 15 / 16を本番配信確認**
+2. `AQR-FD7B` のヨドバシ現行販売・価格確認
+3. 日立 `R-H54Y` のヨドバシ確認
+4. Panasonic残り2件のヨドバシ確認
+5. 旧世代・現行外モデルの販売終了確認とカタログ整理
 
-### 優先A: メーカー別の全型番インベントリ化
-- Panasonic: 初回台帳化済み
-- 三菱電機: 発売済み現行候補の初回全機種化完了
-- 日立: 21候補中20件本番。`R-H54Y` のヨドバシ販売確認のみ継続
-- 東芝: **30候補中30件本番。初回全機種化完了**
-- **SHARP: 次に着手**
-- AQUA
-
-### 優先B: 未登録シリーズの本番昇格
-- 日立: `R-H54Y` はヨドバシ現行販売確認が取れた場合のみ昇格
-- SHARP: 現行シリーズの全型番インベントリ化後、未登録型番を優先
-- 300～399L: スリム / 冷凍重視 / 野菜重視シリーズ
-- 400～499L: 60cm幅片開き / 65cmフレンチ / どっちもドア
-- 500～599L: 上位 / 標準 / 薄型シリーズ
-- 600L以上: Panasonic 601/650L、三菱602/608/700L、日立617/670/735L、東芝601/643L、SHARP607Lを本番登録済み。AQUAは該当現行機を未確認
-
-## 本番ファイル
-
+## カタログファイル
 - `data.js`
 - `catalog-production-extension.js`
-- `catalog-production-batch2.js`
-- `catalog-production-batch3.js`
-- `catalog-production-batch4.js`
-- `catalog-production-batch5.js`
-- `catalog-production-batch6.js`
-- `catalog-production-batch7.js`
-- `catalog-production-batch8.js`
-- `catalog-production-batch9.js`
-- `catalog-production-batch10.js`
-- `catalog-production-batch11.js`
-- `catalog-production-batch12.js`
-- `catalog-production-batch13.js`
-- `catalog-production-batch14.js`
+- `catalog-production-batch2.js` ～ `catalog-production-batch14.js`：本番配信確認済み
+- `catalog-production-batch15.js`：SHARP、GitHub準備済み / Vercel未配信
+- `catalog-production-batch16.js`：AQUA、GitHub準備済み / Vercel未配信
 
 毎日の「冷蔵庫価格チェック」は `data.js` とすべての `catalog-production-*.js` を対象とする。
