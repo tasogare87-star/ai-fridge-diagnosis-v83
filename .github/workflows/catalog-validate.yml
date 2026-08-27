@@ -28,3 +28,5 @@ jobs:
         run: node test-diagnosis.mjs
       - name: Regression-test installation depth
         run: node test-depth.mjs
+      - name: Regression-test AQUA priority
+        run: node test-aqua-priority.mjs
