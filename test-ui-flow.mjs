@@ -6,11 +6,12 @@ const html=fs.readFileSync('index.html','utf8');
 for(const id of ['intro','quiz','result','startBtn','qnum','question','hint','options','bar','prevBtn','prevTopBtn','nextBtn','toIntroBtn','selectionNote','editBanner']){
   assert.match(html,new RegExp(`id=["']${id}["']`),`index.html must contain #${id}`);
 }
+assert.match(html,/v8\.12/,'production HTML must identify v8.12');
 
 const orderedScripts=[
   'data.js','catalog-production-batch20.js','catalog-depth-verified.js','catalog-depth-toshiba.js',
   'catalog-depth-hitachi.js','catalog-depth-aqua.js','catalog-depth-mitsubishi-completion.js',
-  'ui.js','logic.js','v88-core.js','v89-fairness.js','v89-ui-guidance.js','v810-depth.js','v811-aqua-priority.js'
+  'ui.js','logic.js','v88-core.js','v89-fairness.js','v89-ui-guidance.js','v810-depth.js','v811-aqua-priority.js','v812-selection-reasons.js'
 ];
 let last=-1;
 for(const script of orderedScripts){
@@ -108,7 +109,9 @@ load('v89-fairness.js');
 load('v89-ui-guidance.js');
 load('v810-depth.js');
 load('v811-aqua-priority.js');
+load('v812-selection-reasons.js');
 
+assert.equal(document.title,'AI冷蔵庫診断 v8.12 - 選定理由表示対応');
 assert.equal(vm.runInContext("questions[0].key",context),'maxWidth','width must remain the first question');
 assert.equal(vm.runInContext("questions[1].key",context),'maxDepth','depth must be the second question');
 assert.equal(vm.runInContext("questions.filter(q=>q.key==='maxDepth').length",context),1,'depth question must not be duplicated');
@@ -136,7 +139,7 @@ assert.equal(vm.runInContext('answers.maxDepth',context),700,'depth answer must 
 
 vm.runInContext(`Object.assign(answers,{
   family:4,maxWidth:700,maxDepth:700,wallSide:'none',kitchenSide:'center',approachSide:'center',
-  freezerUse:3,vegetablePriority:3,vegetablePos:'any',energy:3,budget:999999,autoIce:'no',smartphone:'no'
+  freezerUse:4,vegetablePriority:3,vegetablePos:'any',energy:3,budget:300000,autoIce:'prefer',smartphone:'no'
 })`,context);
 vm.runInContext('showResult()',context);
 
@@ -145,6 +148,20 @@ assert.equal(elements.result.classList.contains('hidden'),false,'result must be 
 assert.match(elements.result.innerHTML,/診断結果/,'result heading must render');
 assert.match(elements.result.innerHTML,/奥行き/,'result cards must surface depth information');
 assert.match(elements.result.innerHTML,/mm/,'result must display depth dimensions in millimeters');
+
+const reasonAudit=vm.runInContext(`(()=>{
+  const d=doorPref();
+  const c=getCandidates(d);
+  const picks=[...(c.regular||[]),...(c.featurePick?[c.featurePick]:[])];
+  return picks.map(p=>({model:p.model,reasons:window.fridgeSelectionReasons(p,d,!!p._featurePick)}));
+})()`,context);
+assert.ok(reasonAudit.length>0,'selection reason audit needs candidates');
+for(const item of reasonAudit){
+  assert.ok(item.reasons.length>=2&&item.reasons.length<=3,`${item.model}: show 2-3 selection reasons`);
+  assert.ok(item.reasons.every(x=>typeof x==='string'&&x.trim().length>0),`${item.model}: reasons must be readable text`);
+  assert.doesNotMatch(item.reasons.join(' '),/AQUA.*優先|減点|メーカー都合/,`${item.model}: customer reasons must not expose internal maker-priority mechanics`);
+}
+assert.match(fs.readFileSync('v812-selection-reasons.js','utf8'),/この機種が選ばれた理由/,'reason heading must be customer-facing');
 
 const excluded=['NR-FVF45S3','GR-Y550FK','GR-Y460FK','GR-Y550FZ','GR-Y510FZ','GR-Y460FZ'];
 for(const model of excluded){
@@ -158,4 +175,4 @@ assert.equal(aquaPolicy.regularPenalty,10,'AQUA regular priority adjustment must
 assert.equal(aquaPolicy.featurePenalty,8,'AQUA feature priority adjustment must remain 8 points');
 assert.equal(aquaPolicy.excluded,false,'AQUA must remain eligible, not excluded');
 
-console.log('UI flow regression: PASS (width -> depth -> result; exclusions locked)');
+console.log('UI flow regression: PASS (width -> depth -> reasons -> result; exclusions locked)');
