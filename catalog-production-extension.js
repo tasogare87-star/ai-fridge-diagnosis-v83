@@ -71,6 +71,11 @@
       maker:"MITSUBISHI ELECTRIC", model:"MR-CX37ML-W", status:"発売中", price:148000, capacity:365, width:600, doorType:"左開き", doors:3,
       freezerTotal:80, vegetable:70, vegetablePos:"真ん中", energy:335, autoIce:true, smartphone:false,
       features:["左開き仕様","氷点下ストッカーD A.I.","80L冷凍室","真ん中野菜室"], source:"https://www.yodobashi.com/product/100000001009082781/", verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"SHARP", model:"SJ-X373P-N", status:"発売中", price:140770, capacity:374, width:600, doorType:"左右開き", doors:3,
+      freezerTotal:97, vegetable:70, vegetablePos:"真ん中", energy:354, autoIce:false, smartphone:false,
+      features:["どっちもドア","97L大容量冷凍室","真ん中シャキット野菜室","3段＆段違いケース"], source:"https://www.yodobashi.com/product/100000001009361770/", verifiedAt:"2026-08-28"
     }
   ];
 
