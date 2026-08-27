@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI冷蔵庫診断 v8.7 - 予算上限・共有改善対応</title>
+<title>AI冷蔵庫診断 v8.7 - 復旧版</title>
 <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
 <div class="wrap">
   <header>
-    <span class="badge">AI冷蔵庫診断 v8.7 / 予算上限・共有改善対応</span>
+    <span class="badge">AI冷蔵庫診断 v8.7 / 復旧確認中</span>
     <h1>あなたのキッチンに合う冷蔵庫を診断</h1>
     <div class="sub">約2〜3分の質問で、<strong>置けるサイズ・使いやすいドア・容量・よく使う機能</strong>を整理します。<br>設置できる場合は<strong>フレンチドアを優先</strong>し、条件に合う3機種と、機能を重視したおすすめ1機種をご提案します。</div>
     <div class="hero-points">
@@ -49,10 +48,7 @@
           <p>壁条件だけで決めず、食材を取り出した後に<strong>シンク・調理台へ移動しやすい方向</strong>を加味して第一候補を決めます。</p>
         </div>
       </div>
-
-      <div class="flow-actions">
-        <button class="btn primary" id="startBtn">かんたん診断を始める</button>
-      </div>
+      <div class="flow-actions"><button class="btn primary" id="startBtn">かんたん診断を始める</button></div>
       <div class="start-note">所要時間の目安：約2〜3分 ／ 回答は途中で戻って修正できます。</div>
     </section>
 
@@ -77,11 +73,9 @@
     <section id="result" class="hidden"></section>
   </main>
 </div>
-
 <script src="data.js"></script>
 <script src="ui.js"></script>
 <script src="logic.js"></script>
-<script src="budget-rules.js"></script>
 <script src="price-link.js"></script>
 <script src="share-ui.js"></script>
 <script src="share-noqr.js"></script>
