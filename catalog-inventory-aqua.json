@@ -2,14 +2,13 @@
   "schemaVersion": 1,
   "updatedAt": "2026-08-28",
   "maker": "AQUA",
-  "scope": "Current AQUA standard household refrigerator-freezers in the 2026 A/B generation as of 2026-08-28. Color-only variants are collapsed; meaningful left/right variants remain separate. AQR-9A is excluded as a one-door specialty refrigerator without a standard freezer compartment.",
+  "scope": "Current AQUA standard household refrigerator-freezers in the 2026 A/B generation as of 2026-08-28. Color-only variants are collapsed; meaningful left/right variants remain separate. Specialty products below the standard diagnosis capacity floor or without a standard refrigerator-freezer layout are tracked separately as excluded products.",
   "statusLegend": {
     "production-live": "Already present in the currently deployed diagnosis production catalog",
     "staged-not-live": "Official specs and current Yodobashi evidence verified and code staged in the repository, but not yet confirmed live because Vercel deployment is rate-limited",
-    "pending-yodobashi-check": "Official current model identified; current Yodobashi orderability/price still needs confirmation"
+    "pending-yodobashi-check": "Official current standard model identified; current Yodobashi orderability/price still needs confirmation"
   },
   "models": [
-    {"model":"AQR-FD7B","capacity":72,"series":"FD","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
     {"model":"AQR-TZA52A","capacity":515,"series":"TZA","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":235540},
     {"model":"AQR-TZ52A","capacity":518,"series":"TZ","doorVariant":"french","inventoryStatus":"production-live"},
     {"model":"AQR-TZ42A","capacity":420,"series":"TZ","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":174830},
@@ -39,13 +38,15 @@
     {"model":"AQR-16A","capacity":160,"series":"16","doorVariant":"right","inventoryStatus":"production-live"}
   ],
   "excludedCurrentProducts": [
+    {"model":"AQR-FD7B","capacity":72,"reason":"72L furniture-style two-door refrigerator-freezer; below the diagnosis hard minimum of 100L and intended as a specialty interior appliance rather than a standard household refrigerator recommendation"},
     {"model":"AQR-9A","capacity":90,"reason":"one-door specialty refrigerator without a standard freezer compartment; outside standard refrigerator-freezer diagnosis scope"}
   ],
   "summary": {
-    "identifiedCurrentModels": 28,
+    "identifiedCurrentModels": 27,
     "productionLive": 13,
     "stagedNotLive": 14,
-    "pendingYodobashiCheck": 1,
-    "excludedCurrentProducts": 1
+    "pendingYodobashiCheck": 0,
+    "excludedCurrentProducts": 2,
+    "initialCurrentLineupPassComplete": true
   }
 }
