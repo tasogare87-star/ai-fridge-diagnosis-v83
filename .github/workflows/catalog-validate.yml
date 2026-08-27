@@ -32,5 +32,7 @@ jobs:
         run: node test-hitachi-depth.mjs
       - name: Regression-test AQUA depth
         run: node test-aqua-depth.mjs
+      - name: Regression-test complete depth catalog
+        run: node test-depth-complete.mjs
       - name: Regression-test AQUA priority
         run: node test-aqua-priority.mjs
