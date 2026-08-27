@@ -59,19 +59,22 @@ function testAquaObserver(){
   windowObj.window=windowObj;
   vm.runInContext(fs.readFileSync('v811-aqua-priority.js','utf8'),context,{filename:'v811-aqua-priority.js'});
   assert.equal(typeof observerCallback,'function','v811 observer callback must be registered');
-  assert.equal(strategy.writes,0,'v811 should not write before result guidance exists');
-  assert.equal(customer.writes,0,'v811 should not write before result guidance exists');
-
-  strategy._innerHTML='<strong>古い表示</strong>';
-  customer._innerHTML='<strong>古い表示</strong>';
-  observerCallback();
-  assert.equal(strategy.writes,1,'v811 should repair strategy copy once');
-  assert.equal(customer.writes,1,'v811 should repair customer copy once');
+  assert.equal(strategy.writes,1,'v811 initial strategy sync should write once');
+  assert.equal(customer.writes,1,'v811 initial customer sync should write once');
   assert.match(strategy.innerHTML,/AQUAも条件適合時は候補から除外しません/);
 
   for(let i=0;i<20;i++) observerCallback();
   assert.equal(strategy.writes,1,'v811 strategy observer must not loop on identical HTML');
   assert.equal(customer.writes,1,'v811 customer observer must not loop on identical HTML');
+
+  strategy._innerHTML='<strong>古い表示</strong>';
+  customer._innerHTML='<strong>古い表示</strong>';
+  observerCallback();
+  assert.equal(strategy.writes,2,'v811 should repair stale strategy copy once');
+  assert.equal(customer.writes,2,'v811 should repair stale customer copy once');
+  observerCallback();
+  assert.equal(strategy.writes,2,'v811 repaired strategy must remain stable');
+  assert.equal(customer.writes,2,'v811 repaired customer copy must remain stable');
 }
 
 testUiGuidanceObserver();
