@@ -1,0 +1,18 @@
+// v8.9 production catalog batch 15
+// SHARP current R-generation models promoted after current Yodobashi sales evidence
+// and SHARP official specification verification on 2026-08-28.
+(function(){
+  const additions=[
+    {maker:"SHARP",model:"SJ-MF55R-H",status:"発売中",price:328000,capacity:545,width:730,doorType:"フレンチドア",doors:6,freezerTotal:142,vegetable:97,vegetablePos:"真ん中",energy:283,autoIce:true,smartphone:true,features:["545L・奥行63cm薄型","雪下シャキット野菜室 鶴","トリプルメガアイス","COCORO HOME AI"],source:"https://www.yodobashi.com/?word=SJ-MF55R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-FF50R-W",status:"発売中",price:215390,capacity:502,width:685,doorType:"フレンチドア",doors:6,freezerTotal:149,vegetable:73,vegetablePos:"真ん中",energy:278,autoIce:true,smartphone:false,features:["502L・幅68.5cm","149Lメガフリーザー","雪下シャキット野菜室","大小切替氷"],source:"https://www.yodobashi.com/?word=SJ-FF50R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-X504R-N",status:"発売中",price:189800,capacity:502,width:685,doorType:"フレンチドア",doors:6,freezerTotal:149,vegetable:73,vegetablePos:"真ん中",energy:291,autoIce:true,smartphone:false,features:["502L・幅68.5cm","149Lメガフリーザー","真ん中野菜室","オートクローズ"],source:"https://www.yodobashi.com/?word=SJ-X504R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-MF46R-H",status:"発売中",price:278000,capacity:457,width:650,doorType:"フレンチドア",doors:6,freezerTotal:115,vegetable:82,vegetablePos:"真ん中",energy:255,autoIce:true,smartphone:true,features:["457L・奥行63cm薄型","雪下シャキット野菜室 鶴","トリプルメガアイス","COCORO HOME AI"],source:"https://www.yodobashi.com/?word=SJ-MF46R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-MW46R-W",status:"発売中",price:258000,capacity:457,width:650,doorType:"左右開き",doors:5,freezerTotal:115,vegetable:82,vegetablePos:"真ん中",energy:255,autoIce:true,smartphone:true,features:["457L・奥行63cm薄型","オートクローズどっちもドア","雪下シャキット野菜室 鶴","COCORO HOME AI"],source:"https://www.yodobashi.com/?word=SJ-MW46R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-X374R-N",status:"発売中",price:117430,capacity:374,width:600,doorType:"左右開き",doors:3,freezerTotal:97,vegetable:70,vegetablePos:"真ん中",energy:354,autoIce:false,smartphone:false,features:["374L・幅60cm","オートクローズどっちもドア","97L冷凍室","真ん中シャキット野菜室"],source:"https://www.yodobashi.com/?word=SJ-X374R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-PT32R-W",status:"発売中",price:99080,capacity:317,width:544,doorType:"右開き",doors:3,freezerTotal:73,vegetable:61,vegetablePos:"真ん中",energy:313,autoIce:false,smartphone:false,features:["317L・幅54.4cmスリム","プラズマクラスター","真ん中シャキット野菜室","73L冷凍室"],source:"https://www.yodobashi.com/?word=SJ-PT32R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-BD23R-W",status:"発売中",price:70840,capacity:230,width:544,doorType:"右開き",doors:2,freezerTotal:87,vegetable:null,vegetablePos:null,energy:281,autoIce:false,smartphone:false,features:["230L・幅54.4cm","87Lメガフリーザー","プラズマクラスター","フレッシュ野菜ケース"],source:"https://www.yodobashi.com/?word=SJ-BD23R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-GD15R-W",status:"発売中",price:55340,capacity:152,width:495,doorType:"左右付け替え",doors:2,freezerTotal:58,vegetable:null,vegetablePos:null,energy:260,autoIce:false,smartphone:false,features:["152L・幅49.5cm","つけかえどっちもドア","プラズマクラスター","58Lメガフリーザー"],source:"https://www.yodobashi.com/?word=SJ-GD15R",verifiedAt:"2026-08-28"},
+    {maker:"SHARP",model:"SJ-TD15R-W",status:"発売中",price:54800,capacity:152,width:495,doorType:"左右付け替え",doors:2,freezerTotal:58,vegetable:null,vegetablePos:null,energy:260,autoIce:false,smartphone:false,features:["152L・幅49.5cm","つけかえどっちもドア","58Lメガフリーザー","耐熱100℃トップテーブル"],source:"https://www.yodobashi.com/?word=SJ-TD15R",verifiedAt:"2026-08-28"}
+  ];
+  additions.forEach(item=>{if(!products.some(p=>p.model===item.model)) products.push(item);});
+})();
