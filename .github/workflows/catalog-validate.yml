@@ -42,5 +42,7 @@ jobs:
         run: node test-ui-flow.mjs
       - name: Regression-test result observer
         run: node test-result-observer.mjs
+      - name: Regression-test manufacturer catalog links
+        run: node test-manufacturer-catalog.mjs
       - name: Audit ranking scenarios
         run: node audit-ranking-scenarios.mjs
