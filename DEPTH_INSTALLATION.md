@@ -1,44 +1,54 @@
-# AI冷蔵庫診断 — 奥行き設置判定
+# Refrigerator installation-depth verification
 
-更新日: 2026-08-28
+Updated: 2026-08-28
 
-## 目的
-横幅だけでなく、壁から通路側まで使える奥行きを診断条件に加える。
+## Completion status
 
-## データ定義
-- `depth`: メーカー公式の本体外形奥行き（mm）
-- `installDepth`: メーカー公式の最小必要設置奥行き / 据付必要奥行寸法（mm）
-- `depthVerifiedAt`: 奥行き仕様の確認日
-- `depthSource`: メーカー公式仕様ページ
+The production diagnosis catalog now contains manufacturer-verified depth evidence for all **152 / 152** loaded refrigerator models.
 
-`installDepth` が確認できる場合は、設置判定では `installDepth` を優先する。
+- Manufacturer-verified installation depth: **123 / 152**
+- Manufacturer-verified body depth only: **29 / 152**
+- Depth unknown: **0 / 152**
 
-## 判定ルール
-1. ユーザーには「壁から通路側まで冷蔵庫に使える奥行き」を質問する。
-2. `installDepth` が上限を超える機種は候補から除外する。
-3. `installDepth` が未確認でも `depth` が上限を超える場合は候補から除外する。
-4. `depth` だけが上限以内でも、放熱・配線余裕を含む設置可とは断定しない。
-5. 奥行き未確認機種は候補に残せるが、結果画面で「奥行き要確認」と明示し、順位を軽く下げる。
-6. 扉・冷凍室・野菜室を開いたときの最大奥行きは「設置奥行き」と別項目として扱い、最終確認を促す。
-7. メーカーごとに必要な左右・上部・背面余裕が異なるため、共通の固定クリアランス値を推測で加算しない。
+Body-depth-only models are intentionally treated as a caution state. They are not declared installation-safe solely from cabinet depth; final clearance remains a store/manufacturer-spec check.
 
-## 初回投入
-2026-08-28時点でメーカー公式値を確認した12機種に奥行きメタデータを付与。
+## Manufacturer coverage
 
-- Panasonic: `NR-E47BR3-C`, `NR-E47BR3L-C`, `NR-F55HY3-N`
-- MITSUBISHI ELECTRIC: `MR-MZ49N-H`
-- HITACHI: `R-HWS47X N`, `R-HWS47XL N`, `R-H54Y-S`
-- TOSHIBA: `GR-Y510FK(EW)`
-- SHARP: `SJ-MF43R-H`, `SJ-TD18R-W`
-- AQUA: `AQR-V43A(S)`, `AQR-V43AL(S)`
+- AQUA: 27 / 27 depth verified; 27 / 27 installation depth verified.
+- HITACHI: 21 / 21 body depth verified; 3 / 21 installation depth verified.
+- MITSUBISHI ELECTRIC: 27 / 27 depth verified; 16 / 27 installation depth verified.
+- Panasonic: current loaded models covered through official specification pages in `catalog-depth-verified.js`.
+- SHARP: current loaded models covered through official specification pages in `catalog-depth-verified.js`.
+- TOSHIBA: 32 / 32 installation depth verified, including the two retained retail sell-through models.
 
-残りのカタログはメーカー公式仕様を確認できた機種から順次 `catalog-depth-verified.js` へ追加する。
+## Implementation
 
-## テスト
-`test-depth.mjs` で以下を自動検証する。
+Depth metadata is layered after the production catalog files and before diagnosis logic:
 
-- 奥行き質問が横幅質問の直後に入ること
-- 最小必要設置奥行きが上限を超える機種を除外すること
-- 本体奥行きしかない機種を「設置確認済み」と誤判定しないこと
-- 奥行き未確認機種を誤って除外しないこと
-- 結果行に奥行き判定が表示されること
+- `catalog-depth-verified.js`
+- `catalog-depth-toshiba.js`
+- `catalog-depth-hitachi.js`
+- `catalog-depth-aqua.js`
+- `catalog-depth-mitsubishi-completion.js`
+- `v810-depth.js`
+
+Every verified item retains `depthVerifiedAt` and `depthSource` manufacturer evidence.
+
+## CI contract
+
+`test-depth-complete.mjs` loads the full 152-model production catalog plus all depth modules and fails if:
+
+- any production model has neither `depth` nor `installDepth`;
+- verified depth lacks a manufacturer source;
+- verified depth lacks a verification date;
+- the catalog count changes unexpectedly;
+- Mitsubishi completion coverage drops below 27 / 27;
+- key Mitsubishi installation-depth values regress.
+
+Current completion regression result:
+
+`Depth catalog completion: PASS (verified 152/152, install 123, body-only 29; Mitsubishi 27/27)`
+
+## Safety behavior
+
+When `installDepth` is available, the diagnosis may use it as an installation hard condition against the user's maximum depth. When only body depth is available, the product stays eligible but the UI must show that installation clearance still requires confirmation. Unknown depth must never be guessed.
