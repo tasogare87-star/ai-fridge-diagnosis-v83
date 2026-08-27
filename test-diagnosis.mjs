@@ -5,7 +5,7 @@ import vm from 'node:vm';
 const catalogFiles=[
   'data.js',
   'catalog-production-extension.js',
-  ...Array.from({length:18},(_,i)=>`catalog-production-batch${i+2}.js`),
+  ...Array.from({length:19},(_,i)=>`catalog-production-batch${i+2}.js`),
 ];
 
 const answers={};
@@ -142,6 +142,15 @@ function assertCommon(result,{maxWidth,budget=999999,autoIce='no',smartphone='no
 {
   const exists=vm.runInContext("products.some(p=>p.model==='SJ-X373P-N')",context);
   assert.equal(exists,false,'SJ-X373P-N must remain removed');
+}
+
+// Hitachi completion model must be loaded and eligible for a matching large-family scenario.
+{
+  const exists=vm.runInContext("products.some(p=>p.model==='R-H54Y-S')",context);
+  assert.equal(exists,true,'R-H54Y-S must be loaded after batch 20');
+  Object.assign(answers,defaults,{family:4,maxWidth:650,budget:260000,autoIce:'must'});
+  const eligible=vm.runInContext("hardFilter(products.find(p=>p.model==='R-H54Y-S'),doorPref())",context);
+  assert.equal(eligible,true,'R-H54Y-S must pass hardFilter for compatible conditions');
 }
 
 console.log('Diagnosis regression: PASS');
