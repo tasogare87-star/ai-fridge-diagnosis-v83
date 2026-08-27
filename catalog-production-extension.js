@@ -39,6 +39,25 @@
       features:["幅48cmのコンパクト設計","耐熱フルフラットトップテーブル","全段ガラスシェルフ"],
       source:"https://www.yodobashi.com/?word=MR-P17M-W",
       verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"MITSUBISHI ELECTRIC",
+      model:"MR-CX30M-W",
+      status:"発売中",
+      price:124800,
+      capacity:300,
+      width:540,
+      doorType:"右開き",
+      doors:3,
+      freezerTotal:70,
+      vegetable:60,
+      vegetablePos:"真ん中",
+      energy:319,
+      autoIce:true,
+      smartphone:false,
+      features:["氷点下ストッカー","70L冷凍室","真ん中野菜室","幅54cmスリム設計"],
+      source:"https://www.yodobashi.com/?word=MR-CX30M-W",
+      verifiedAt:"2026-08-28"
     }
   ];
 
