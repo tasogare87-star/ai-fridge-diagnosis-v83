@@ -9,18 +9,18 @@
     "pending-yodobashi-check": "Official current model identified; Yodobashi current orderability/price still needs confirmation"
   },
   "models": [
-    {"model":"R-WXC74X","capacity":735,"series":"WXC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":420570,"yodobashiEvidence":"current Yodobashi listing evidence"},
-    {"model":"R-GXCC67X","capacity":670,"series":"GXCC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":418000,"yodobashiEvidence":"current Yodobashi listing evidence"},
-    {"model":"R-GZC67X","capacity":670,"series":"GZC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":503800,"yodobashiEvidence":"current Yodobashi listing evidence"},
-    {"model":"R-HZC62Y","capacity":617,"series":"HZC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":378000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
+    {"model":"R-WXC74X","capacity":735,"series":"WXC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":420570,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-GXCC67X","capacity":670,"series":"GXCC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":418000,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-GZC67X","capacity":670,"series":"GZC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":503800,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-HZC62Y","capacity":617,"series":"HZC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":378000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
     {"model":"R-HWC62Y","capacity":617,"series":"HWC","doorVariant":"french","inventoryStatus":"production"},
-    {"model":"R-HXCC62X","capacity":617,"series":"HXCC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":371800,"yodobashiEvidence":"current Yodobashi listing evidence"},
-    {"model":"R-HZC54Y","capacity":540,"series":"HZC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":348000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
+    {"model":"R-HXCC62X","capacity":617,"series":"HXCC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":371800,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-HZC54Y","capacity":540,"series":"HZC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":348000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
     {"model":"R-HWC54Y","capacity":540,"series":"HWC","doorVariant":"french","inventoryStatus":"production"},
-    {"model":"R-HXCC54X","capacity":540,"series":"HXCC","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":338800,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-HXCC54X","capacity":540,"series":"HXCC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":338800,"yodobashiEvidence":"current Yodobashi listing evidence"},
     {"model":"R-H54Y","capacity":540,"series":"H","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
     {"model":"R-HWC49Y","capacity":485,"series":"HWC","doorVariant":"french","inventoryStatus":"production"},
-    {"model":"R-H49Y","capacity":485,"series":"H","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":227530,"yodobashiEvidence":"current Yodobashi listing evidence"},
+    {"model":"R-H49Y","capacity":485,"series":"H","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":227530,"yodobashiEvidence":"current Yodobashi listing evidence"},
     {"model":"R-HWS47X","capacity":470,"series":"HWS","doorVariant":"right","inventoryStatus":"production"},
     {"model":"R-HWS47XL","capacity":470,"series":"HWS","doorVariant":"left","inventoryStatus":"production"},
     {"model":"R-K40T","capacity":401,"series":"K","doorVariant":"right","inventoryStatus":"production"},
@@ -37,8 +37,8 @@
   ],
   "summary": {
     "identifiedCurrentModels": 21,
-    "production": 12,
-    "verifiedNotPromoted": 8,
+    "production": 20,
+    "verifiedNotPromoted": 0,
     "pendingYodobashiCheck": 1,
     "excludedCurrentProducts": 2
   }
