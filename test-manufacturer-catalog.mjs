@@ -71,7 +71,7 @@ for(const card of cards){
   assert.match(card.inserted.innerHTML,/rel="noopener noreferrer"/);
 }
 
-vm.runInContext('decorateManufacturerCatalogLinks()',context);
+vm.runInContext('window.decorateManufacturerCatalogLinks()',context);
 for(const card of cards){
   assert.ok(card.inserted,'second decoration must keep existing block without duplication');
 }
