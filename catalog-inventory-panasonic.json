@@ -1,12 +1,11 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "updatedAt": "2026-08-28",
   "maker": "Panasonic",
   "scope": "Current Panasonic refrigerator models identified from the 2026 official lineup and checked against Yodobashi-related current sales evidence. Color-only variants are collapsed; meaningful left/right door variants remain separate.",
   "statusLegend": {
-    "production": "Already loaded into the currently deployed diagnosis production catalog",
-    "staged-not-live": "Current Yodobashi sales evidence and official specs verified; code staged but not yet confirmed live because Vercel deployment is rate-limited",
-    "pending-yodobashi-check": "Official current model identified; Yodobashi current orderability/price still needs verification"
+    "production": "Loaded into the currently deployed diagnosis production catalog",
+    "pending-yodobashi-check": "Official current model identified; current Yodobashi orderability/price is not sufficiently verified for production promotion"
   },
   "models": [
     {"model":"NR-F65WX3","capacity":650,"series":"WX","doorVariant":"french","inventoryStatus":"production"},
@@ -24,11 +23,11 @@
     {"model":"NR-F52BR3","capacity":515,"series":"BR","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":217800},
     {"model":"NR-E47BR3","capacity":468,"series":"BR","doorVariant":"right","inventoryStatus":"production"},
     {"model":"NR-E47BR3L","capacity":468,"series":"BR","doorVariant":"left","inventoryStatus":"production"},
-    {"model":"NR-FVF45S3","capacity":451,"series":"FVF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"NR-FVF45S3","capacity":451,"series":"FVF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check","saleAuditAt":"2026-08-28","saleAuditEvidence":"Current Price.com product page crawled 2026-08-28 reports no registered selling-price information; no current Yodobashi active price/orderability evidence found.","reason":"Keep out of production until fresh Yodobashi orderability and price are directly verified."},
     {"model":"NR-C37WS2","capacity":365,"series":"WS","doorVariant":"right","inventoryStatus":"production","yodobashiPrice":188100},
     {"model":"NR-C37WS2L","capacity":365,"series":"WS","doorVariant":"left","inventoryStatus":"production","yodobashiPrice":188100},
     {"model":"NR-C33JS2","capacity":326,"series":"JS","doorVariant":"right","inventoryStatus":"production","yodobashiPrice":168300},
-    {"model":"NR-C33JS2L","capacity":326,"series":"JS","doorVariant":"left","inventoryStatus":"staged-not-live","yodobashiPrice":168300,"yodobashiEvidence":"Yodobashi item list updated 2026-08-25"},
+    {"model":"NR-C33JS2L","capacity":326,"series":"JS","doorVariant":"left","inventoryStatus":"production","yodobashiPrice":168300,"yodobashiEvidence":"Yodobashi item list updated 2026-08-25; production deployment confirmed 2026-08-28"},
     {"model":"NR-C37ES2","capacity":365,"series":"ES","doorVariant":"right","inventoryStatus":"production"},
     {"model":"NR-C37ES2L","capacity":365,"series":"ES","doorVariant":"left","inventoryStatus":"production"},
     {"model":"NR-C33ES2","capacity":326,"series":"ES","doorVariant":"right","inventoryStatus":"production"},
@@ -40,8 +39,7 @@
   ],
   "summary": {
     "identifiedCurrentModels": 28,
-    "productionLive": 26,
-    "stagedNotLive": 1,
+    "productionLive": 27,
     "pendingYodobashiCheck": 1
   }
 }
