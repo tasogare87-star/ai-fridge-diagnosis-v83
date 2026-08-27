@@ -24,6 +24,8 @@ jobs:
           package-manager-cache: false
       - name: Validate catalog
         run: node validate-catalog.mjs
+      - name: Validate inventory state
+        run: node validate-inventory.mjs
       - name: Regression-test diagnosis
         run: node test-diagnosis.mjs
       - name: Regression-test installation depth
