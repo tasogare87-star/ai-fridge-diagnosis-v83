@@ -10,23 +10,23 @@
   },
   "models": [
     {"model":"SJ-MF61R","capacity":607,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
-    {"model":"SJ-MF55R","capacity":551,"series":"MF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-MF55R","capacity":545,"series":"MF","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":328000},
     {"model":"SJ-MF51R","capacity":505,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
-    {"model":"SJ-FF50R","capacity":502,"series":"FF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
-    {"model":"SJ-X504R","capacity":502,"series":"X","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
-    {"model":"SJ-MF46R","capacity":457,"series":"MF","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":349800,"yodobashiEvidence":"Yodobashi product listing found; final current sale-state refresh required before production"},
-    {"model":"SJ-MW46R","capacity":457,"series":"MW","doorVariant":"both","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-FF50R","capacity":502,"series":"FF","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":215390},
+    {"model":"SJ-X504R","capacity":502,"series":"X","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":189800},
+    {"model":"SJ-MF46R","capacity":457,"series":"MF","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":278000},
+    {"model":"SJ-MW46R","capacity":457,"series":"MW","doorVariant":"both","inventoryStatus":"production","yodobashiPrice":258000},
     {"model":"SJ-XW46R","capacity":455,"series":"XW","doorVariant":"both","inventoryStatus":"production"},
     {"model":"SJ-MF43R","capacity":429,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
     {"model":"SJ-XW41R","capacity":408,"series":"XW","doorVariant":"both","inventoryStatus":"production"},
     {"model":"SJ-PW37R","capacity":374,"series":"PW","doorVariant":"both","inventoryStatus":"production"},
-    {"model":"SJ-X374R","capacity":374,"series":"X","doorVariant":"both","inventoryStatus":"pending-yodobashi-check"},
-    {"model":"SJ-PT32R","capacity":317,"series":"PT","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-X374R","capacity":374,"series":"X","doorVariant":"both","inventoryStatus":"production","yodobashiPrice":117430},
+    {"model":"SJ-PT32R","capacity":317,"series":"PT","doorVariant":"right","inventoryStatus":"production","yodobashiPrice":99080},
     {"model":"SJ-PD28R","capacity":280,"series":"PD","doorVariant":"right","inventoryStatus":"production"},
-    {"model":"SJ-BD23R","capacity":230,"series":"BD","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-BD23R","capacity":230,"series":"BD","doorVariant":"right","inventoryStatus":"production","yodobashiPrice":70840},
     {"model":"SJ-TD18R","capacity":179,"series":"TD","doorVariant":"reversible","inventoryStatus":"production"},
-    {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"verified-not-promoted","yodobashiPrice":82280,"yodobashiEvidence":"Yodobashi successor/current listing evidence found; final current sale-state refresh required before production"},
-    {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"verified-not-promoted","yodobashiPrice":56790,"yodobashiEvidence":"Yodobashi product/community listing evidence found; final current sale-state refresh required before production"}
+    {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"production","yodobashiPrice":55340},
+    {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"production","yodobashiPrice":54800}
   ],
   "legacyYodobashiCheck": [
     {"model":"SJ-X373P","reason":"Previous generation remains in production catalog; recheck current Yodobashi orderability separately from R-generation completion"},
@@ -35,8 +35,8 @@
   ],
   "summary": {
     "identifiedCurrentModels": 18,
-    "production": 8,
-    "verifiedNotPromoted": 3,
-    "pendingYodobashiCheck": 7
+    "production": 18,
+    "verifiedNotPromoted": 0,
+    "pendingYodobashiCheck": 0
   }
 }
