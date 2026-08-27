@@ -19,8 +19,12 @@ function load(file){
   vm.runInContext(fs.readFileSync(file,'utf8'),context,{filename:file});
 }
 
-load('data.js');
-load('catalog-production-batch20.js');
+const catalogFiles=[
+  'data.js',
+  'catalog-production-extension.js',
+  ...Array.from({length:19},(_,i)=>`catalog-production-batch${i+2}.js`),
+];
+for(const file of catalogFiles) load(file);
 load('catalog-depth-verified.js');
 
 vm.runInContext(`
@@ -39,7 +43,9 @@ const depthQuestion=JSON.parse(vm.runInContext("JSON.stringify(questions.find(q=
 assert.equal(depthQuestion.options.at(-1)[1],999,'depth question must support unknown');
 
 const coverage=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCoverage)',context));
-assert.equal(coverage.verified,12,'initial verified depth metadata count');
+assert.ok(coverage.verified>=25,`verified depth coverage should expand beyond the initial 12 models; got ${coverage.verified}`);
+assert.ok(coverage.installVerified>=10,'installation-depth verified models should be tracked separately');
+assert.ok(coverage.bodyOnlyVerified>=5,'body-depth-only verified models should be tracked separately');
 
 vm.runInContext('answers.maxDepth=650',context);
 assert.equal(vm.runInContext("hardFilter(products.find(p=>p.model==='MR-MZ49N-H'),{})",context),false,'MR-MZ49N install depth 660 must fail a 650mm limit');
@@ -53,6 +59,20 @@ assert.equal(vm.runInContext("hardFilter(products.find(p=>p.model==='R-HWS47X N'
 const bodyOnlyState=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>p.model==='GR-Y510FK(EW)')))",context));
 assert.equal(bodyOnlyState.kind,'body-only','body-depth-only models must remain a caution state, not verified-fit');
 
+const wz61Model=vm.runInContext("products.find(p=>String(p.model).startsWith('MR-WZ61N'))?.model || null",context);
+assert.ok(wz61Model,'MR-WZ61N must exist in the production catalog');
+const wz61State=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('MR-WZ61N'))))",context));
+assert.equal(wz61State.install,748,'MR-WZ61N official installation depth must be 748mm');
+assert.equal(wz61State.kind,'over','MR-WZ61N must fail a 700mm depth limit');
+
+const cx37=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('MR-CX37M'))))",context));
+assert.equal(cx37.install,660,'MR-CX37M official installation depth must be 660mm');
+assert.equal(cx37.kind,'verified-fit','MR-CX37M must fit a 700mm depth limit');
+
+const mz54=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>String(p.model).startsWith('MR-MZ54N'))))",context));
+assert.equal(mz54.body,699,'MR-MZ54N official body depth must be 699mm');
+assert.equal(mz54.kind,'body-only','MR-MZ54N body-only evidence must not be promoted to verified installation fit');
+
 vm.runInContext("products.push({maker:'TEST',model:'DEPTH-UNKNOWN',status:'発売中',width:600})",context);
 const unknownState=JSON.parse(vm.runInContext("JSON.stringify(window.fridgeDepthState(products.find(p=>p.model==='DEPTH-UNKNOWN')))",context));
 assert.equal(unknownState.kind,'unknown','unverified depth must remain unknown');
@@ -61,4 +81,4 @@ assert.equal(vm.runInContext("hardFilter(products.find(p=>p.model==='DEPTH-UNKNO
 const rowText=vm.runInContext("matchRows(products.find(p=>p.model==='R-HWS47X N'),{})[1][1]",context);
 assert.match(rowText,/701mm/,'result row must surface the verified installation depth');
 
-console.log('Depth installation regression: PASS');
+console.log(`Depth installation regression: PASS (verified ${coverage.verified}/${coverage.total}, install ${coverage.installVerified}, body-only ${coverage.bodyOnlyVerified})`);
