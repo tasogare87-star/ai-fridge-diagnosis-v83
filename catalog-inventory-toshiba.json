@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-28",
+  "maker": "TOSHIBA",
+  "scope": "Current Toshiba household refrigerator-freezer models shown in the official lineup as of 2026-08-28. Color-only variants are collapsed; meaningful left/right door variants remain separate. Freezer-only GF-Y14HS and GF-A11HS are excluded from standard refrigerator diagnosis.",
+  "statusLegend": {
+    "production": "Already loaded into the diagnosis production catalog",
+    "verified-not-promoted": "Current Yodobashi sales evidence and official current-lineup presence verified; production specification verification remains before promotion",
+    "pending-yodobashi-check": "Official current model identified; Yodobashi current orderability/price still needs confirmation"
+  },
+  "models": [
+    {"model":"GR-A640XFS","capacity":643,"series":"XFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A600FH","capacity":601,"series":"FH","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"GR-A600XFS","capacity":595,"series":"XFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A590WFS","capacity":586,"series":"WFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A590WF","capacity":586,"series":"WF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A550FZ","capacity":551,"series":"FZ","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A550FH","capacity":551,"series":"FH","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A540XFS","capacity":543,"series":"XFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A540WFS","capacity":535,"series":"WFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A540WF","capacity":535,"series":"WF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A510FH","capacity":509,"series":"FH","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"GR-A510FZ","capacity":508,"series":"FZ","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A500GT","capacity":501,"series":"GT","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A500GTL","capacity":501,"series":"GT","doorVariant":"left","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A490XFS","capacity":487,"series":"XFS","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A470GSH","capacity":465,"series":"GSH","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A470GSHL","capacity":465,"series":"GSH","doorVariant":"left","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A460FH","capacity":462,"series":"FH","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"GR-A460FZ","capacity":461,"series":"FZ","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A450GT","capacity":452,"series":"GT","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-A450GTL","capacity":452,"series":"GT","doorVariant":"left","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-A41GXH","capacity":411,"series":"GXH","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-A41GXHL","capacity":411,"series":"GXH","doorVariant":"left","inventoryStatus":"production"},
+    {"model":"GR-Y36SV","capacity":356,"series":"SV","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-Y36SVL","capacity":356,"series":"SV","doorVariant":"left","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"GR-Y36SC","capacity":356,"series":"SC","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-Y33SC","capacity":326,"series":"SC","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-Y29SC","capacity":294,"series":"SC","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-Y18BP","capacity":180,"series":"BP","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"GR-Y16BP","capacity":160,"series":"BP","doorVariant":"right","inventoryStatus":"production"}
+  ],
+  "legacyProductionOutsideCurrentLineup": [
+    {"model":"GR-Y510FK","capacity":509,"reason":"Still present in data.js but not shown in the current 2026-08-28 official Toshiba lineup; excluded from current-model completion count and requires sale-status recheck before long-term retention"}
+  ],
+  "excludedCurrentProducts": [
+    {"model":"GF-Y14HS","capacity":135,"reason":"freezer-only; outside refrigerator diagnosis scope"},
+    {"model":"GF-A11HS","capacity":108,"reason":"freezer-only; outside refrigerator diagnosis scope"}
+  ],
+  "summary": {
+    "identifiedCurrentModels": 30,
+    "production": 11,
+    "verifiedNotPromoted": 0,
+    "pendingYodobashiCheck": 19,
+    "legacyProductionOutsideCurrentLineup": 1,
+    "excludedCurrentProducts": 2
+  }
+}
