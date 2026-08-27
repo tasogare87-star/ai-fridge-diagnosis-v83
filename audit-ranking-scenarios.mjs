@@ -120,10 +120,10 @@ function runScenario(scenario){
       .filter(p=>answers.budget===999999||p.price<=Number(answers.budget)+40000);
     return {nonAqua:all.filter(p=>p.maker!=='AQUA').length,aqua:all.filter(p=>p.maker==='AQUA').length,total:all.length};
   })()`,context);
-  if(eligibleInfo.nonAqua>=3){
-    assert.equal(candidates.regular.filter(p=>p.maker==='AQUA').length,0,
-      `${scenario.name}: AQUA should not displace 3 available non-AQUA regular candidates`);
-  }
+
+  // AQUA is intentionally lowered, not excluded. Brand composition is therefore audited
+  // as output rather than hard-coded; the dedicated AQUA regression locks the -10/-8 policy.
+  const aquaRegular=candidates.regular.filter(p=>p.maker==='AQUA').length;
 
   return {
     name:scenario.name,
@@ -131,13 +131,14 @@ function runScenario(scenario){
     regular:candidates.regular.map(p=>`${p.maker} ${p.model} (${p.score})`),
     feature:candidates.featurePick?`${candidates.featurePick.maker} ${candidates.featurePick.model}`:'-',
     eligible:eligibleInfo,
+    aquaRegular,
   };
 }
 
 const reports=scenarios.map(runScenario);
 console.log('Ranking scenario audit: PASS');
 for(const r of reports){
-  console.log(`\n[${r.name}] capacity=${r.profile} eligible=${r.eligible.total} nonAQUA=${r.eligible.nonAqua} AQUA=${r.eligible.aqua}`);
+  console.log(`\n[${r.name}] capacity=${r.profile} eligible=${r.eligible.total} nonAQUA=${r.eligible.nonAqua} AQUA=${r.eligible.aqua} AQUA-in-regular=${r.aquaRegular}`);
   r.regular.forEach((x,i)=>console.log(`  ${i+1}. ${x}`));
   console.log(`  feature: ${r.feature}`);
 }
