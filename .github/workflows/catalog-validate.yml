@@ -38,3 +38,5 @@ jobs:
         run: node test-depth-complete.mjs
       - name: Regression-test AQUA priority
         run: node test-aqua-priority.mjs
+      - name: Regression-test UI flow
+        run: node test-ui-flow.mjs
