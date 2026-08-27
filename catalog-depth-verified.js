@@ -21,6 +21,27 @@
   // Prefix rules are used only when all diagnostic variants under that base model share the same cabinet depth.
   // Left/right and collapsed color variants therefore inherit the same verified dimension without duplicating entries.
   const depthByPrefix=[
+    // Panasonic — official specification pages explicitly publish both body and required installation depth.
+    ['NR-F65WX3',{depth:745,installDepth:745,source:'https://panasonic.jp/reizo/products/NR-F65WX3/spec.html'}],
+    ['NR-F60WX3',{depth:745,installDepth:745,source:'https://panasonic.jp/reizo/products/NR-F60WX3/spec.html'}],
+    ['NR-F55WX3',{depth:699,installDepth:699,source:'https://panasonic.jp/reizo/products/NR-F55WX3/spec.html'}],
+    ['NR-F50HY3',{depth:650,installDepth:650,source:'https://panasonic.jp/reizo/products/NR-F50HY3/spec.html'}],
+    ['NR-F45HY3',{depth:650,installDepth:650,source:'https://panasonic.jp/reizo/products/NR-F45HY3/spec.html'}],
+    ['NR-F54EY3',{depth:699,installDepth:699,source:'https://panasonic.jp/reizo/products/NR-F54EY3/spec.html'}],
+    ['NR-F49EY3',{depth:650,installDepth:650,source:'https://panasonic.jp/reizo/products/NR-F49EY3/spec.html'}],
+    ['NR-E45RY3',{depth:648,installDepth:648,source:'https://panasonic.jp/reizo/products/NR-E45RY3/spec.html'}],
+    ['NR-E41RY3',{depth:648,installDepth:648,source:'https://panasonic.jp/reizo/products/NR-E41RY3/spec.html'}],
+    ['NR-F52BR3',{depth:699,installDepth:699,source:'https://panasonic.jp/reizo/products/NR-F52BR3/spec.html'}],
+    ['NR-C37WS2',{depth:600,installDepth:600,source:'https://panasonic.jp/reizo/products/NR-C37WS2/spec.html'}],
+    ['NR-C33JS2',{depth:600,installDepth:600,source:'https://panasonic.jp/reizo/products/NR-C33JS2/spec.html'}],
+    ['NR-C37ES2',{depth:600,installDepth:600,source:'https://panasonic.jp/reizo/products/NR-C37ES2/spec.html'}],
+    ['NR-C33ES2',{depth:600,installDepth:600,source:'https://panasonic.jp/reizo/products/NR-C33ES2/spec.html'}],
+    ['NR-C28BC3',{depth:625,installDepth:625,source:'https://panasonic.jp/reizo/products/NR-C28BC3/spec.html'}],
+    ['NR-B253T',{depth:632,installDepth:632,source:'https://panasonic.jp/reizo/products/NR-B253T/spec.html'}],
+    ['NR-B18C3',{depth:595,installDepth:645,source:'https://panasonic.jp/reizo/products/NR-B18C3/spec.html'}],
+    ['NR-B16C3',{depth:595,installDepth:645,source:'https://panasonic.jp/reizo/products/NR-B16C3/spec.html'}],
+
+    // Mitsubishi Electric — official specification pages / current product pages.
     ['MR-WZ61N',{depth:738,installDepth:748,source:'https://www.mitsubishielectric.co.jp/ldg/wink/ssl/sp/displayProductSpec.do?ccd=10201010&pid=357252'}],
     ['MR-WZ55N',{depth:699,installDepth:709,source:'https://www.mitsubishielectric.co.jp/ldg/wink/ssl/sp/displayProductSpec.do?ccd=10201010&pid=357247'}],
     ['MR-GW52N',{depth:699,installDepth:709,source:'https://www.mitsubishielectric.co.jp/ldg/wink/ssl/sp/displayProductSpec.do?ccd=10201010&pid=367332'}],
