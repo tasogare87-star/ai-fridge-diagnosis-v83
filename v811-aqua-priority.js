@@ -92,16 +92,19 @@
     excluded:false
   };
 
+  const strategyHtml='<strong>内部ロジック：</strong>設置・人数に合う容量・使い方・必須機能を優先し、通常候補は設定予算＋4万円以内から選定します。AQUAのみ売場運用上の優先度を一段下げ、通常順位と機能重視枠に軽い減点を適用します。AQUAも条件適合時は候補から除外しません。その他メーカーへの一律加点・減点は行いません。';
+  const customerHtml='<strong>選定方針：</strong>設置条件・人数に合う容量・使い方・必須機能・予算を優先し、店舗の提案方針も加味して候補を比較しています。条件に合わない機種を無理に候補数合わせで表示しません。';
+
   function syncCopy(){
     const result=document.getElementById('result');
     if(!result) return;
     const strategy=result.querySelector('.strategy-note');
-    if(strategy){
-      strategy.innerHTML='<strong>内部ロジック：</strong>設置・人数に合う容量・使い方・必須機能を優先し、通常候補は設定予算＋4万円以内から選定します。AQUAのみ売場運用上の優先度を一段下げ、通常順位と機能重視枠に軽い減点を適用します。AQUAも条件適合時は候補から除外しません。その他メーカーへの一律加点・減点は行いません。';
+    if(strategy && strategy.innerHTML!==strategyHtml){
+      strategy.innerHTML=strategyHtml;
     }
     const customer=result.querySelector('.v89-fair-note');
-    if(customer){
-      customer.innerHTML='<strong>選定方針：</strong>設置条件・人数に合う容量・使い方・必須機能・予算を優先し、店舗の提案方針も加味して候補を比較しています。条件に合わない機種を無理に候補数合わせで表示しません。';
+    if(customer && customer.innerHTML!==customerHtml){
+      customer.innerHTML=customerHtml;
     }
   }
 
