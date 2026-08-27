@@ -23,12 +23,15 @@ function countStatus(inv,status){
 const pan=inventories.get('catalog-inventory-panasonic.json');
 assert.ok(pan,'Panasonic inventory missing');
 assert.equal(countStatus(pan,'production'),27,'Panasonic production inventory must be 27');
-assert.equal(countStatus(pan,'pending-yodobashi-check'),1,'Panasonic Yodobashi pending inventory must be 1');
+assert.equal(countStatus(pan,'pending-yodobashi-check'),0,'Panasonic pending inventory must remain zero after explicit exclusion');
 assert.equal(pan.summary?.productionLive,27,'Panasonic summary productionLive must be 27');
-const fvf=(pan.models||[]).find(x=>x.model==='NR-FVF45S3');
-assert.equal(fvf?.inventoryStatus,'pending-yodobashi-check','NR-FVF45S3 must remain pending until fresh Yodobashi evidence exists');
-assert.equal(fvf?.saleAuditAt,'2026-08-28','NR-FVF45S3 sale audit date must be current audit date');
-assert.ok(fvf?.reason,'NR-FVF45S3 pending status must retain a reason');
+assert.equal(pan.summary?.pendingYodobashiCheck,0,'Panasonic pending summary must be zero');
+assert.equal(pan.summary?.excludedCurrentProducts,1,'Panasonic excluded current products must be 1');
+assert.ok(!(pan.models||[]).some(x=>x.model==='NR-FVF45S3'),'NR-FVF45S3 must not remain in diagnosis/pending models');
+const fvf=(pan.excludedCurrentProducts||[]).find(x=>x.model==='NR-FVF45S3');
+assert.equal(fvf?.inventoryStatus,'excluded','NR-FVF45S3 must remain explicitly excluded');
+assert.equal(fvf?.excludedAt,'2026-08-28','NR-FVF45S3 exclusion date must be recorded');
+assert.ok(fvf?.reason,'NR-FVF45S3 exclusion must retain a reason');
 
 const sharp=inventories.get('catalog-inventory-sharp.json');
 assert.ok(sharp,'SHARP inventory missing');
@@ -46,14 +49,18 @@ assert.equal(aqua.summary?.pendingYodobashiCheck,0,'AQUA pending count must rema
 const toshiba=inventories.get('catalog-inventory-toshiba.json');
 assert.ok(toshiba,'Toshiba inventory missing');
 assert.equal((toshiba.retailSellThrough||[]).length,2,'Toshiba live sell-through inventory must remain 2');
-assert.equal((toshiba.retailSellThroughAudit||[]).length,5,'Toshiba sell-through audit inventory must remain 5');
+assert.equal((toshiba.retailSellThroughAudit||[]).length,0,'Toshiba sell-through audit inventory must remain zero after explicit exclusion');
+assert.equal((toshiba.excludedRetailSellThrough||[]).length,5,'Toshiba excluded sell-through inventory must remain 5');
 assert.equal(toshiba.summary?.retailSellThroughLive,2,'Toshiba sell-through live summary must be 2');
-assert.equal(toshiba.summary?.retailSellThroughAudit,5,'Toshiba sell-through audit summary must be 5');
-assert.equal(toshiba.summary?.auditPromotions,0,'2026-08-28 Toshiba audit must have zero promotions');
-for(const item of toshiba.retailSellThroughAudit||[]){
-  assert.equal(item.inventoryStatus,'retail-sell-through-audit',`${item.model}: audit model must remain audit-only`);
-  assert.equal(item.saleAuditAt,'2026-08-28',`${item.model}: saleAuditAt must record the latest audit`);
-  assert.ok(item.reason,`${item.model}: audit-only model must retain a reason`);
+assert.equal(toshiba.summary?.retailSellThroughAudit,0,'Toshiba sell-through audit summary must be zero');
+assert.equal(toshiba.summary?.excludedRetailSellThrough,5,'Toshiba excluded sell-through summary must be 5');
+const expectedExcluded=['GR-Y550FK','GR-Y460FK','GR-Y550FZ','GR-Y510FZ','GR-Y460FZ'];
+const excludedModels=(toshiba.excludedRetailSellThrough||[]).map(x=>x.model).sort();
+assert.deepEqual(excludedModels,[...expectedExcluded].sort(),'Toshiba explicit exclusion set must remain unchanged');
+for(const item of toshiba.excludedRetailSellThrough||[]){
+  assert.equal(item.inventoryStatus,'excluded-retail-sell-through',`${item.model}: must remain explicitly excluded`);
+  assert.equal(item.excludedAt,'2026-08-28',`${item.model}: exclusion date must be recorded`);
+  assert.ok(item.reason,`${item.model}: exclusion must retain a reason`);
 }
 
-console.log(`Inventory validation: PASS (${inventoryFiles.length} files; Panasonic 27 live + 1 pending; SHARP 18 live; AQUA 27 live; Toshiba sell-through 2 live + 5 audit)`);
+console.log(`Inventory validation: PASS (${inventoryFiles.length} files; Panasonic 27 live + 1 excluded; SHARP 18 live; AQUA 27 live; Toshiba sell-through 2 live + 5 excluded)`);
