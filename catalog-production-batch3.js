@@ -1,0 +1,118 @@
+// v8.9 production catalog batch 3
+// Compact models and verified price refreshes. Loaded after previous production batches.
+(function(){
+  const additions=[
+    {
+      maker:"MITSUBISHI ELECTRIC",
+      model:"MR-P15M-W",
+      status:"発売中",
+      price:49800,
+      capacity:146,
+      width:480,
+      doorType:"右開き",
+      doors:2,
+      freezerTotal:46,
+      vegetable:null,
+      vegetablePos:null,
+      energy:300,
+      autoIce:false,
+      smartphone:false,
+      features:["幅48cmコンパクト","耐熱フルフラットトップテーブル","3段ガラスシェルフ","低温ケース"],
+      source:"https://www.yodobashi.com/?word=MR-P15M-W",
+      verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"Panasonic",
+      model:"NR-B18C3-W",
+      status:"発売中",
+      price:54430,
+      capacity:180,
+      width:497,
+      doorType:"右開き",
+      doors:2,
+      freezerTotal:60,
+      vegetable:null,
+      vegetablePos:null,
+      energy:272,
+      autoIce:false,
+      smartphone:false,
+      features:["60L冷凍室","幅49.7cm","インバーター制御","約19dB静音設計"],
+      source:"https://www.yodobashi.com/?word=NR-B18C3-W",
+      verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"AQUA",
+      model:"AQR-14A-W",
+      status:"発売中",
+      price:39800,
+      capacity:139,
+      width:500,
+      doorType:"右開き",
+      doors:2,
+      freezerTotal:53,
+      vegetable:null,
+      vegetablePos:null,
+      energy:288,
+      autoIce:false,
+      smartphone:false,
+      features:["53L引き出し式冷凍室","壁ピタ設置","耐熱100℃テーブル","フリーケース"],
+      source:"https://www.yodobashi.com/?word=AQR-14A-W",
+      verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"AQUA",
+      model:"AQR-16A-C",
+      status:"発売中",
+      price:57610,
+      capacity:160,
+      width:480,
+      doorType:"右開き",
+      doors:2,
+      freezerTotal:78,
+      vegetable:null,
+      vegetablePos:null,
+      energy:269,
+      autoIce:false,
+      smartphone:false,
+      features:["78L・3段大容量冷凍室","幅48cm","インバーター省エネ","壁ピタ設置"],
+      source:"https://www.yodobashi.com/?word=AQR-16A-C",
+      verifiedAt:"2026-08-28"
+    },
+    {
+      maker:"AQUA",
+      model:"AQR-17A-C",
+      status:"発売中",
+      price:54800,
+      capacity:170,
+      width:530,
+      doorType:"右開き",
+      doors:2,
+      freezerTotal:68,
+      vegetable:null,
+      vegetablePos:null,
+      energy:247,
+      autoIce:false,
+      smartphone:false,
+      features:["68L・3段冷凍室","ローボディ","耐熱100℃テーブル","壁ピタ設置"],
+      source:"https://www.yodobashi.com/?word=AQR-17A-C",
+      verifiedAt:"2026-08-28"
+    }
+  ];
+
+  additions.forEach(item=>{
+    if(!products.some(p=>p.model===item.model)) products.push(item);
+  });
+
+  const verifiedPrices={
+    "NR-B16C3-W":46840,
+    "MR-P17M-W":53370,
+    "AQR-36A(DS)":95560,
+    "SJ-TD18R-W":59800,
+    "MR-CX33M-W":114140,
+    "MR-CX37M-H":124080
+  };
+  Object.entries(verifiedPrices).forEach(([model,price])=>{
+    const p=products.find(x=>x.model===model);
+    if(p){p.price=price;p.verifiedAt="2026-08-28";}
+  });
+})();
