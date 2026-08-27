@@ -4,7 +4,7 @@ import vm from 'node:vm';
 const catalogFiles = [
   'data.js',
   'catalog-production-extension.js',
-  ...Array.from({ length: 18 }, (_, i) => `catalog-production-batch${i + 2}.js`),
+  ...Array.from({ length: 19 }, (_, i) => `catalog-production-batch${i + 2}.js`),
 ];
 
 const missingFiles = catalogFiles.filter((file) => !fs.existsSync(file));
@@ -125,6 +125,17 @@ for (const model of ['R-HWS47X N','R-HWS47XL N']) {
   const product=products.find((p)=>p.model===model);
   if (!product || product.smartphone !== false) {
     errors.push(`${model}: smartphone must be false after batch 19 verification`);
+  }
+}
+const hitachiH54=products.find((p)=>p.model==='R-H54Y-S');
+if (!hitachiH54) {
+  errors.push('R-H54Y-S must be present after batch 20');
+} else {
+  if (hitachiH54.capacity!==540 || hitachiH54.width!==650 || hitachiH54.freezerTotal!==159 || hitachiH54.vegetable!==103) {
+    errors.push('R-H54Y-S core capacities must match the verified specification');
+  }
+  if (hitachiH54.autoIce!==true || hitachiH54.smartphone!==false) {
+    errors.push('R-H54Y-S autoIce/smartphone flags must match the verified specification');
   }
 }
 
