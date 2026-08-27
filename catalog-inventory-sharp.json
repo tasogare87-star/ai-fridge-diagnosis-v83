@@ -1,42 +1,41 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "updatedAt": "2026-08-28",
   "maker": "SHARP",
   "scope": "Current-generation SHARP household refrigerator-freezer R models shown in the official lineup as of 2026-08-28. Color-only variants are collapsed. Door mechanisms that affect diagnosis are retained by model. Older P-generation and specialty models are tracked separately and are not counted toward this current-generation completion pass.",
   "statusLegend": {
-    "production-live": "Already present in the currently deployed diagnosis production catalog",
-    "staged-not-live": "Official specs and current Yodobashi evidence verified and code staged, but not yet confirmed live because Vercel deployment is rate-limited",
-    "staged-remove-no-yodobashi": "Older model still has official specs/general retail availability, but fresh retail evidence no longer shows Yodobashi as an active seller; removal is staged"
+    "production-live": "Present in the currently deployed diagnosis production catalog",
+    "removed-no-yodobashi": "Removed from diagnosis because fresh retail evidence no longer supports Yodobashi as an active seller",
+    "excluded-no-yodobashi": "Not added because fresh Yodobashi sales evidence is insufficient"
   },
   "models": [
     {"model":"SJ-MF61R","capacity":607,"series":"MF","doorVariant":"french","inventoryStatus":"production-live"},
-    {"model":"SJ-MF55R","capacity":545,"series":"MF","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":328000},
+    {"model":"SJ-MF55R","capacity":545,"series":"MF","doorVariant":"french","inventoryStatus":"production-live","yodobashiPrice":328000},
     {"model":"SJ-MF51R","capacity":505,"series":"MF","doorVariant":"french","inventoryStatus":"production-live"},
-    {"model":"SJ-FF50R","capacity":502,"series":"FF","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":215390},
-    {"model":"SJ-X504R","capacity":502,"series":"X","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":189800},
-    {"model":"SJ-MF46R","capacity":457,"series":"MF","doorVariant":"french","inventoryStatus":"staged-not-live","yodobashiPrice":278000},
-    {"model":"SJ-MW46R","capacity":457,"series":"MW","doorVariant":"both","inventoryStatus":"staged-not-live","yodobashiPrice":258000},
+    {"model":"SJ-FF50R","capacity":502,"series":"FF","doorVariant":"french","inventoryStatus":"production-live","yodobashiPrice":215390},
+    {"model":"SJ-X504R","capacity":502,"series":"X","doorVariant":"french","inventoryStatus":"production-live","yodobashiPrice":189800},
+    {"model":"SJ-MF46R","capacity":457,"series":"MF","doorVariant":"french","inventoryStatus":"production-live","yodobashiPrice":278000},
+    {"model":"SJ-MW46R","capacity":457,"series":"MW","doorVariant":"both","inventoryStatus":"production-live","yodobashiPrice":258000},
     {"model":"SJ-XW46R","capacity":455,"series":"XW","doorVariant":"both","inventoryStatus":"production-live"},
     {"model":"SJ-MF43R","capacity":429,"series":"MF","doorVariant":"french","inventoryStatus":"production-live"},
     {"model":"SJ-XW41R","capacity":408,"series":"XW","doorVariant":"both","inventoryStatus":"production-live"},
     {"model":"SJ-PW37R","capacity":374,"series":"PW","doorVariant":"both","inventoryStatus":"production-live"},
-    {"model":"SJ-X374R","capacity":374,"series":"X","doorVariant":"both","inventoryStatus":"staged-not-live","yodobashiPrice":117430},
-    {"model":"SJ-PT32R","capacity":317,"series":"PT","doorVariant":"right","inventoryStatus":"staged-not-live","yodobashiPrice":99080},
+    {"model":"SJ-X374R","capacity":374,"series":"X","doorVariant":"both","inventoryStatus":"production-live","yodobashiPrice":117430},
+    {"model":"SJ-PT32R","capacity":317,"series":"PT","doorVariant":"right","inventoryStatus":"production-live","yodobashiPrice":99080},
     {"model":"SJ-PD28R","capacity":280,"series":"PD","doorVariant":"right","inventoryStatus":"production-live"},
-    {"model":"SJ-BD23R","capacity":230,"series":"BD","doorVariant":"right","inventoryStatus":"staged-not-live","yodobashiPrice":70840},
+    {"model":"SJ-BD23R","capacity":230,"series":"BD","doorVariant":"right","inventoryStatus":"production-live","yodobashiPrice":70840},
     {"model":"SJ-TD18R","capacity":179,"series":"TD","doorVariant":"reversible","inventoryStatus":"production-live"},
-    {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"staged-not-live","yodobashiPrice":55340},
-    {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"staged-not-live","yodobashiPrice":54800}
+    {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"production-live","yodobashiPrice":55340},
+    {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"production-live","yodobashiPrice":54800}
   ],
   "legacyRetailDisposition": [
-    {"model":"SJ-X373P","capacity":374,"inventoryStatus":"staged-remove-no-yodobashi","reason":"Sharp official specifications remain available, but Price.com page crawled 2026-08-24 shows only one active seller (家電ナカデン) and no Yodobashi listing; removal staged in batch 18","verifiedAt":"2026-08-28"},
-    {"model":"SJ-H13E","inventoryStatus":"excluded-no-yodobashi","reason":"General retail remains but no fresh Yodobashi sales evidence; do not add"}
+    {"model":"SJ-X373P","capacity":374,"inventoryStatus":"removed-no-yodobashi","reason":"Sharp official specifications remain available, but fresh retail evidence showed no active Yodobashi seller; removal is live in batch18 production.","verifiedAt":"2026-08-28"},
+    {"model":"SJ-H13E","inventoryStatus":"excluded-no-yodobashi","reason":"General retail remains but no fresh Yodobashi sales evidence; do not add","verifiedAt":"2026-08-28"}
   ],
   "summary": {
     "identifiedCurrentModels": 18,
-    "productionLive": 8,
-    "stagedNotLive": 10,
+    "productionLive": 18,
     "pendingYodobashiCheck": 0,
-    "legacyStagedRemoval": 1
+    "legacyRemoved": 1
   }
 }
