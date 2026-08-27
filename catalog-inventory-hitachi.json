@@ -18,7 +18,7 @@
     {"model":"R-HZC54Y","capacity":540,"series":"HZC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":348000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
     {"model":"R-HWC54Y","capacity":540,"series":"HWC","doorVariant":"french","inventoryStatus":"production"},
     {"model":"R-HXCC54X","capacity":540,"series":"HXCC","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":338800,"yodobashiEvidence":"current Yodobashi listing evidence"},
-    {"model":"R-H54Y","capacity":540,"series":"H","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"R-H54Y","capacity":540,"series":"H","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":219250,"yodobashiEvidence":"fresh mass-retailer comparison shows Yodobashi.com as an active seller; official Hitachi specs reverified 2026-08-28"},
     {"model":"R-HWC49Y","capacity":485,"series":"HWC","doorVariant":"french","inventoryStatus":"production"},
     {"model":"R-H49Y","capacity":485,"series":"H","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":227530,"yodobashiEvidence":"current Yodobashi listing evidence"},
     {"model":"R-HWS47X","capacity":470,"series":"HWS","doorVariant":"right","inventoryStatus":"production"},
@@ -37,9 +37,10 @@
   ],
   "summary": {
     "identifiedCurrentModels": 21,
-    "production": 20,
+    "production": 21,
     "verifiedNotPromoted": 0,
-    "pendingYodobashiCheck": 1,
-    "excludedCurrentProducts": 2
+    "pendingYodobashiCheck": 0,
+    "excludedCurrentProducts": 2,
+    "initialCurrentLineupPassComplete": true
   }
 }
