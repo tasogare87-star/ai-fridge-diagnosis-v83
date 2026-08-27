@@ -2,7 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const context=vm.createContext({console,window:{}});
+const context=vm.createContext({
+  console,
+  window:{},
+  location:{protocol:'https:',href:'https://depth-complete.invalid/'}
+});
 function load(file){vm.runInContext(fs.readFileSync(file,'utf8'),context,{filename:file});}
 
 const catalogFiles=[
