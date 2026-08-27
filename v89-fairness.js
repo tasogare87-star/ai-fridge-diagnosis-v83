@@ -6,34 +6,34 @@
 (function(){
   const BUDGET_OVERAGE=40000;
 
+  // ヨドバシ.comの容量ガイドを基準に、通常提案の中心帯と許容上限を設定。
+  // 1人: 100〜299L、2人: 約200〜499L、3人: 約400〜599L、4人以上: 約500L〜。
+  // 中心帯は必要以上に大型へ寄らないよう狭め、冷凍・まとめ買いが多い場合だけ上側へ広げる。
   function baseCapacityProfile(family){
     const n=Math.max(1,Number(family)||1);
-    if(n===1) return {min:150,max:250,hardMin:100,hardMax:300};
-    if(n===2) return {min:250,max:400,hardMin:200,hardMax:450};
-    if(n===3) return {min:350,max:480,hardMin:300,hardMax:520};
-    if(n===4) return {min:450,max:550,hardMin:400,hardMax:600};
-    return {min:500,max:620,hardMin:450,hardMax:680};
+    if(n===1) return {min:150,max:249,hardMin:100,hardMax:299};
+    if(n===2) return {min:250,max:399,hardMin:200,hardMax:499};
+    if(n===3) return {min:400,max:499,hardMin:350,hardMax:599};
+    if(n===4) return {min:500,max:599,hardMin:450,hardMax:699};
+    return {min:550,max:699,hardMin:500,hardMax:799};
   }
 
   function capacityProfile(family){
     const p={...baseCapacityProfile(family)};
     const freezer=Number(answers.freezerUse)||3;
     if(freezer>=4){
-      const extra=Number(family)<=2?50:30;
+      const extra=50;
       p.max=Math.min(p.hardMax,p.max+extra);
-      if(Number(family)===1) p.hardMax=330;
     }
     return p;
   }
   window.capacityProfile=capacityProfile;
 
-  // 既存UIの「○L以上」と整合させるため下限値を返す。
-  // 結果画面では後段で「○〜○L目安」に置換する。
   targetCapacity=function(f){return capacityProfile(f).min;};
 
   const familyQuestion=Array.isArray(questions)?questions.find(q=>q.key==='family'):null;
   if(familyQuestion){
-    familyQuestion.hint='人数だけで大型機へ寄せず、一般的な販売店の容量帯を基準に、冷凍・まとめ買い量で少し広げて選びます。1人暮らしでは原則300L前後までを通常範囲とします。';
+    familyQuestion.hint='人数だけで大型機へ寄せず、ヨドバシ.comの容量目安を基準に、冷凍・まとめ買い量で少し広げて選びます。1人暮らしでは100〜299Lを許容範囲とし、通常は150〜249Lを中心に提案します。';
   }
 
   function safeNormalize(v,values,invert=false){
@@ -61,7 +61,6 @@
     const profile=capacityProfile(answers.family);
     let score=capacityFitScore(p.capacity,profile);
 
-    // 冷凍・野菜・省エネ・ドアなど、回答差が順位へ反映される配点。
     const freezerVals=pool.map(x=>x.freezerTotal);
     score+=safeNormalize(p.freezerTotal,freezerVals)*(Number(answers.freezerUse)||3)*5;
 
@@ -76,14 +75,12 @@
     const energyVals=pool.map(x=>x.energy);
     score+=safeNormalize(p.energy,energyVals,true)*(Number(answers.energy)||3)*4;
 
-    // ドア適合は重要だが、容量・生活条件を覆さない上限を設ける。
     score+=Math.min(18,Math.max(0,(d.scores[p.doorType]||0)*0.55));
 
     if(answers.autoIce==='prefer'&&p.autoIce) score+=6;
     if(answers.smartphone==='prefer'&&p.smartphone===true) score+=6;
     if(answers.smartphone==='no'&&p.smartphone===false) score+=2;
 
-    // 予算は通常候補では別途ハード上限を掛ける。ここでは予算内を軽く評価。
     if(answers.budget!==999999){
       const budget=Number(answers.budget)||0;
       if(p.price<=budget) score+=6;
@@ -103,6 +100,7 @@
     return list.slice().sort((a,b)=>{
       const ds=b.score-a.score;
       if(ds!==0) return ds;
+      // 完全同点時だけ戦略メーカーをタイブレークとして扱う。
       const st=Number(isStrategic(b))-Number(isStrategic(a));
       if(st!==0) return st;
       return a.price-b.price;
@@ -133,8 +131,13 @@
     const profile=capacityProfile(answers.family);
     let pool=products.filter(p=>hardFilter(p,d));
 
-    // 人数に対して明らかに過大/過小な商品は、通常候補だけでなく機能重視枠からも除外。
+    // 人数に対して明らかに過大/過小な商品は、通常候補・機能重視とも除外。
     pool=pool.filter(p=>p.capacity>=profile.hardMin && p.capacity<=profile.hardMax);
+
+    if(!pool.length){
+      window.__fridgeFairnessMeta={profile,budgetSet:false,budget:null,cap:null,regularCount:0,featurePick:null};
+      return {regular:[],featurePick:null};
+    }
 
     const scored=sortFair(pool.map(p=>({...p,score:productScore(p,d,pool)})));
     const budgetSet=answers.budget!==999999 && Number.isFinite(Number(answers.budget));
@@ -146,7 +149,6 @@
     const selectedModels=new Set(regular.map(p=>p.model));
     const selectedSeries=new Set(regular.map(seriesKey));
 
-    // 4枠目も人数・設置条件には適合させる。予算超過はこの枠だけ許容。
     let featureSource=scored.filter(p=>!selectedModels.has(p.model)&&!selectedSeries.has(seriesKey(p)));
     if(budgetSet){
       const over=featureSource.filter(p=>p.price>cap);
