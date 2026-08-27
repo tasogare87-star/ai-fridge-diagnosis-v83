@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-28",
+  "maker": "MITSUBISHI ELECTRIC",
+  "scope": "Current Mitsubishi Electric refrigerator models identified from the 2026 official lineup and checked against Yodobashi-related current sales evidence. Color-only variants are collapsed; diagnostically meaningful left/right door variants remain separate.",
+  "statusLegend": {
+    "production": "Already loaded into the diagnosis production catalog",
+    "verified-not-promoted": "Current Yodobashi sales evidence and official lineup presence verified; required production-spec verification remains before promotion",
+    "pending-yodobashi-check": "Official current model identified; Yodobashi current orderability/price still needs verification"
+  },
+  "models": [
+    {"model":"MR-WXD70N","capacity":700,"series":"WXD","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-WZ61N","capacity":608,"series":"WZ","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-MZ60N","capacity":602,"series":"MZ","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-WZ55N","capacity":547,"series":"WZ","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"MR-JW55N","capacity":547,"series":"JW","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"MR-MZ54N","capacity":540,"series":"MZ","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-JM54N","capacity":540,"series":"JM","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"MR-WZ50N","capacity":495,"series":"WZ","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-JW50N","capacity":495,"series":"JW","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"MR-MZ49N","capacity":485,"series":"MZ","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"MR-JM49N","capacity":485,"series":"JM","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"MR-WXD47LN","capacity":470,"series":"WXD","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":297000,"yodobashiEvidence":"current Yodobashi sales evidence"},
+    {"model":"MR-BD46N","capacity":455,"series":"BD","doorVariant":"right","inventoryStatus":"verified-not-promoted","yodobashiPrice":253000,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
+    {"model":"MR-MD45N","capacity":451,"series":"MD","doorVariant":"right","inventoryStatus":"verified-not-promoted","yodobashiPrice":293700,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
+    {"model":"MR-N40M","capacity":403,"series":"N","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-CX37M","capacity":365,"series":"CX","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-CX37ML","capacity":365,"series":"CX","doorVariant":"left","inventoryStatus":"production"},
+    {"model":"MR-CX33M","capacity":330,"series":"CX","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-CX33ML","capacity":330,"series":"CX","doorVariant":"left","inventoryStatus":"production"},
+    {"model":"MR-C33M","capacity":330,"series":"C","doorVariant":"right","inventoryStatus":"verified-not-promoted","yodobashiPrice":89790,"yodobashiEvidence":"current Yodobashi in-stock evidence"},
+    {"model":"MR-CX30M","capacity":300,"series":"CX","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-CX27M","capacity":272,"series":"CX","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-P17M","capacity":168,"series":"P","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"MR-P15M","capacity":146,"series":"P","doorVariant":"right","inventoryStatus":"production"}
+  ],
+  "upcomingOfficialModels": [
+    {"model":"MR-CX37N","plannedRelease":"2026-09","productionEligibleNow":false},
+    {"model":"MR-C37N","plannedRelease":"2026-09","productionEligibleNow":false},
+    {"model":"MR-CX33N","plannedRelease":"2026-09","productionEligibleNow":false},
+    {"model":"MR-C33N","plannedRelease":"2026-09","productionEligibleNow":false},
+    {"model":"MR-CX27N","plannedRelease":"2026-09","productionEligibleNow":false},
+    {"model":"MR-PX20N","plannedRelease":"2026-10","productionEligibleNow":false},
+    {"model":"MR-PX17N","plannedRelease":"2026-10","productionEligibleNow":false}
+  ],
+  "summary": {
+    "identifiedCurrentModels": 24,
+    "production": 15,
+    "verifiedNotPromoted": 4,
+    "pendingYodobashiCheck": 5,
+    "upcomingNotEligible": 7
+  }
+}
