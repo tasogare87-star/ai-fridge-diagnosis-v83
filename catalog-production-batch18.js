@@ -10,7 +10,7 @@
 
   const additions=[
     {
-      maker:"TOSHIBA", model:"GR-Y600FK-EW", status:"発売中（売り切り在庫）", price:168000, capacity:601, width:685, doorType:"フレンチドア", doors:6,
+      maker:"TOSHIBA", model:"GR-Y600FK-EW", status:"発売中", lifecycle:"売り切り在庫", price:168000, capacity:601, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:142, vegetable:132, vegetablePos:"真ん中", energy:311, autoIce:true, smartphone:false,
       features:["601L・幅68.5cm", "新鮮 摘みたて野菜室", "速鮮チルド＆解凍モード", "生産終了後のヨドバシ販売継続を確認"],
       source:"https://www.yodobashi.com/?word=GR-Y600FK", verifiedAt:"2026-08-28"
