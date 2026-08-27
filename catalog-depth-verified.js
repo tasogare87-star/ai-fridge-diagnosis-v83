@@ -41,6 +41,24 @@
     ['NR-B18C3',{depth:595,installDepth:645,source:'https://panasonic.jp/reizo/products/NR-B18C3/spec.html'}],
     ['NR-B16C3',{depth:595,installDepth:645,source:'https://panasonic.jp/reizo/products/NR-B16C3/spec.html'}],
 
+    // SHARP — official specification pages explicitly publish minimum required installation depth.
+    ['SJ-MF61R',{depth:630,installDepth:630,source:'https://jp.sharp/reizo/products/sjmf61r/spec/'}],
+    ['SJ-MF55R',{depth:630,installDepth:637,source:'https://jp.sharp/reizo/products/sjmf55r/spec/'}],
+    ['SJ-MF51R',{depth:630,installDepth:637,source:'https://jp.sharp/reizo/products/sjmf51r/spec/'}],
+    ['SJ-FF50R',{depth:699,installDepth:704,source:'https://jp.sharp/reizo/products/sjff50r/spec/'}],
+    ['SJ-X504R',{depth:699,installDepth:704,source:'https://jp.sharp/reizo/products/sjx504r/spec/'}],
+    ['SJ-MF46R',{depth:630,installDepth:637,source:'https://jp.sharp/reizo/products/sjmf46r/spec/'}],
+    ['SJ-MW46R',{depth:630,installDepth:637,source:'https://jp.sharp/reizo/products/sjmw46r/spec/'}],
+    ['SJ-XW46R',{depth:699,installDepth:699,source:'https://jp.sharp/reizo/products/sjxw46r/spec/'}],
+    ['SJ-XW41R',{depth:650,installDepth:650,source:'https://jp.sharp/reizo/products/sjxw41r/spec/'}],
+    ['SJ-PW37R',{depth:650,installDepth:650,source:'https://jp.sharp/reizo/products/sjpw37r/spec/'}],
+    ['SJ-X374R',{depth:650,installDepth:650,source:'https://jp.sharp/reizo/products/sjx374r/spec/'}],
+    ['SJ-PT32R',{depth:647,installDepth:675,source:'https://jp.sharp/reizo/products/sjpt32r/spec/'}],
+    ['SJ-PD28R',{depth:665,installDepth:685,source:'https://jp.sharp/reizo/products/sjpd28r/spec/'}],
+    ['SJ-BD23R',{depth:627,installDepth:675,source:'https://jp.sharp/reizo/products/sjbd23r/spec/'}],
+    ['SJ-GD15R',{depth:600,installDepth:646,source:'https://jp.sharp/reizo/products/sjgd15r/spec/'}],
+    ['SJ-TD15R',{depth:600,installDepth:646,source:'https://jp.sharp/reizo/products/sjtd15r/spec/'}],
+
     // Mitsubishi Electric — official specification pages / current product pages.
     ['MR-WZ61N',{depth:738,installDepth:748,source:'https://www.mitsubishielectric.co.jp/ldg/wink/ssl/sp/displayProductSpec.do?ccd=10201010&pid=357252'}],
     ['MR-WZ55N',{depth:699,installDepth:709,source:'https://www.mitsubishielectric.co.jp/ldg/wink/ssl/sp/displayProductSpec.do?ccd=10201010&pid=357247'}],
