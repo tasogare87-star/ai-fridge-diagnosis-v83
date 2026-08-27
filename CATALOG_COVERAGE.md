@@ -68,12 +68,12 @@
 ### 東芝
 - `catalog-inventory-toshiba.json`
 - 2026年8月28日時点の公式現行冷凍冷蔵庫を、左開き差分込み **30候補**として初回台帳化
-- **本番 11件 / 未昇格 0件 / ヨドバシ確認待ち 19件**
+- **本番 19件 / 未昇格 0件 / ヨドバシ確認待ち 11件**
 - 現行シリーズ: XFS / WFS / WF / FZ / GT / GSH / FH / GXH / SV / SC / BP
-- 本番済み: `GR-A600FH`, `GR-A510FH`, `GR-A460FH`, `GR-A450GT`, `GR-A41GXH/GR-A41GXHL`, `GR-Y36SC`, `GR-Y33SC`, `GR-Y29SC`, `GR-Y18BP`, `GR-Y16BP`
+- batch 13で `GR-A640XFS`, `GR-A540XFS`, `GR-A590WF`, `GR-A500GT/GR-A500GTL`, `GR-A470GSHL`, `GR-Y36SV/GR-Y36SVL` を本番昇格
+- 残りのヨドバシ確認対象: `GR-A600XFS`, `GR-A590WFS`, `GR-A540WFS`, `GR-A540WF`, `GR-A550FZ`, `GR-A550FH`, `GR-A510FZ`, `GR-A490XFS`, `GR-A470GSH`, `GR-A460FZ`, `GR-A450GTL`
 - `GR-Y510FK` は `data.js` に残るが現行公式ラインアップ外のため、現行全機種化のカウントから外して再確認対象
 - `GF-Y14HS` / `GF-A11HS` は冷凍庫専用のため診断対象外
-- **次:** 未登録19件のヨドバシ現行販売・価格を確認し、公式仕様照合後に batch 13 以降で昇格
 
 ## 次の優先順位
 
@@ -81,17 +81,17 @@
 - Panasonic: 初回台帳化済み
 - 三菱電機: 発売済み現行候補の初回全機種化完了
 - 日立: 21候補中20件本番。`R-H54Y` のヨドバシ販売確認のみ継続
-- **東芝: 初回台帳化済み。30候補中11件本番、19件のヨドバシ確認を優先**
+- **東芝: 30候補中19件本番。残り11件のヨドバシ販売・価格確認を優先**
 - SHARP
 - AQUA
 
 ### 優先B: 未登録シリーズの本番昇格
 - 日立: `R-H54Y` はヨドバシ現行販売確認が取れた場合のみ昇格
-- 東芝: XFS / WFS / WF / FZ / GT / GSH / FH / SV の未登録現行19型番を優先
+- 東芝: XFS / WFS / WF / FZ / GT / GSH / FH の残り11型番を優先
 - 300～399L: スリム / 冷凍重視 / 野菜重視シリーズ
 - 400～499L: 60cm幅片開き / 65cmフレンチ / どっちもドア
 - 500～599L: 上位 / 標準 / 薄型シリーズ
-- 600L以上: Panasonic 601/650L、三菱602/608/700L、日立617/670/735L、東芝601L、SHARP607Lを本番登録済み。AQUAは該当現行機を未確認
+- 600L以上: Panasonic 601/650L、三菱602/608/700L、日立617/670/735L、東芝601/643L、SHARP607Lを本番登録済み。AQUAは該当現行機を未確認
 
 ## 本番ファイル
 
@@ -108,5 +108,6 @@
 - `catalog-production-batch10.js`
 - `catalog-production-batch11.js`
 - `catalog-production-batch12.js`
+- `catalog-production-batch13.js`
 
 毎日の「冷蔵庫価格チェック」は `data.js` とすべての `catalog-production-*.js` を対象とする。
