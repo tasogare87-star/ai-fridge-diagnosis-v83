@@ -12,11 +12,12 @@
 5. 標準冷凍冷蔵庫診断の用途・容量帯に適合するか
 6. GitHubに登録済みか
 7. Vercel本番で実際に配信済みか
+8. 設置奥行きはメーカー公式根拠があるか
 
 ## 自動品質検証
-`validate-catalog.mjs` と `test-diagnosis.mjs` をGitHub Actionsで実行する。
+`validate-catalog.mjs` と診断・奥行き・AQUA優先度の回帰テストをGitHub Actionsで実行する。
 
-batch20適用時の検証結果:
+本番main `d5868bc94ef8e1b007daacca82a5e9cb42f3d92d` の検証結果:
 - 総商品数: **152**
 - AQUA 27 / HITACHI 21 / MITSUBISHI ELECTRIC 27 / Panasonic 27 / SHARP 18 / TOSHIBA 32
 - 構文・必須項目エラー: 0
@@ -25,6 +26,11 @@ batch20適用時の検証結果:
 - `verifiedAt` / スマホ連携などの警告: **0**
 - `Catalog validation: PASS`
 - `Diagnosis regression: PASS`
+- `AQUA priority regression: PASS`
+- 奥行き公式確認: **152 / 152**
+- 据付必要奥行き確認: **123 / 152**
+- 本体奥行きのみ: **29 / 152**
+- `Depth catalog completion: PASS (verified 152/152, install 123, body-only 29; Mitsubishi 27/27)`
 
 ## 監査で確定した重要事項
 
@@ -41,7 +47,6 @@ batch20適用時の検証結果:
 - 冷蔵44L、冷凍28Lで、インテリア用途を明確にした特殊小容量機。
 - 本診断の1人用hard minimumは100Lであり、72Lは通常候補にならない。
 - Hitachi `R-MR7S`（73Lミニバー）やAQUA `AQR-9A`（90L・1ドア）と同様、標準家庭用冷凍冷蔵庫の選定集合から分離する。
-- `catalog-inventory-aqua.json` の `excludedCurrentProducts` へ移動。
 - AQUA標準ラインは **27 / 27完了、pending 0**。
 
 ### 3. 東芝 GR-Y510FK / GR-Y600FK は売り切り在庫として保持
@@ -65,10 +70,19 @@ batch20適用時の検証結果:
 
 ### 6. SHARP SJ-X373P は診断対象から外す
 - SHARP公式仕様は確認済みだが、新しい販売比較ではヨドバシ実売なし。
-- batch18でGitHubカタログから除外済み。
+- batch18で診断カタログから除外済み。
 
 ### 7. 初期登録商品の鮮度・スマホ未確定警告は解消済み
 batch19で初期10機種の `verifiedAt` を更新し、日立HWS47のスマホ連携をfalseへ確定。現在のvalidator警告は0件。
+
+### 8. 奥行きデータ監査を152 / 152まで完了
+- メーカー公式ページ / 仕様表のみを根拠に奥行き情報を登録。
+- `installDepth` が確認できた123機種は奥行き条件のhard filterに使用可能。
+- 本体奥行きのみの29機種は「要最終クリアランス確認」とし、設置可を断定しない。
+- AQUA 27 / 27、東芝32 / 32は据付必要奥行きまで確認済み。
+- 三菱は27 / 27で奥行き確認、16 / 27で据付必要奥行き確認。
+- 日立は21 / 21で本体奥行き確認、3 / 21で据付必要奥行き確認。
+- `test-depth-complete.mjs` により、奥行き未確認・公式ソース欠落・検証日欠落をCIで検出する。
 
 ## 鮮度ルール
 販売判定は次の優先順位とする。
@@ -83,16 +97,24 @@ batch19で初期10機種の `verifiedAt` を更新し、日立HWS47のスマホ�
 - 商品ごとの `verifiedAt` を正本とする。
 - `price-link.js` は個別 `verifiedAt` を優先し、ない既存商品だけ `checkedAt` にフォールバックする。
 - 48時間超で価格・販売状態の再確認警告を表示するフェイルセーフを維持する。
-- batch20適用時、ロード対象152商品のvalidator警告は0。
+- ロード対象152商品のvalidator警告は0。
+
+## 奥行きデータの扱い
+- `depth` / `installDepth` はメーカー公式確認値のみ登録する。
+- `installDepth` がある場合のみ、ユーザー回答の最大奥行きに対する厳密な設置判定へ使用する。
+- `depth` のみの場合は本体寸法として表示・参考にするが、設置可能とは断定しない。
+- 奥行き不明値を推測しない。
 
 ## デプロイ状態
-- Vercel本番は **batch14まで** 配信確認済み。
-- batch15～20はGitHub mainへ反映済み。
-- Vercel productionはbuild rate limitにより更新できていない。
-- READYのpreviewは存在するが、最新main全変更を含むproductionとしては扱わない。
-- 固定QR用public projectはv8.2のまま維持する。
+- Vercel本番は **batch20 / v8.11 / 奥行き拡張まで配信済み**。
+- production deployment `dpl_6hhbP4TjiiirEqBnd2yUpC1CnTzN` は **READY**。
+- 公開URL `https://ai-fridge-diagnosis-v83.vercel.app/` はHTTP 200確認済み。
+- 新規奥行きモジュールと `v811-aqua-priority.js` も本番URLでHTTP 200確認済み。
+- GitHub main CIも全項目PASS。
+- 固定QR用public projectはv8.2のまま維持し、変更していない。
 
 ## 次の監査順
-1. Vercel制限解除後、batch15～20を本番配信・HTTP・ブラウザ回帰確認
-2. Panasonic `NR-FVF45S3` の販売確認
-3. 東芝売り切り在庫5機種の最新販売状態を継続監査
+1. Panasonic `NR-FVF45S3` の最新ヨドバシ販売確認
+2. 東芝売り切り在庫5機種の最新販売状態を継続監査
+3. 本番v8.11を実機ブラウザで複数ケース確認
+4. 価格・販売状態の48時間鮮度監査を継続
