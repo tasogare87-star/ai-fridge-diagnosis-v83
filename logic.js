@@ -196,10 +196,17 @@ function resultSvg(d){
       <path d="M182 128 A32 32 0 0 0 121 158" fill="none" stroke="#2f9e55" stroke-width="4"/>
       <text x="76" y="151" font-size="13" font-weight="900" fill="#1c763d">約100°</text>`;
   }else if(french){
-    doorGraphic=`<line x1="210" y1="128" x2="164" y2="128" stroke="#cfcfcf" stroke-width="3" stroke-dasharray="5 5"/>
-      <line x1="210" y1="128" x2="178" y2="205" stroke="#397bff" stroke-width="9" stroke-linecap="round"/>
-      <line x1="210" y1="128" x2="242" y2="205" stroke="#ff9200" stroke-width="9" stroke-linecap="round"/>
-      <text x="210" y="226" text-anchor="middle" font-size="12" font-weight="900" fill="#1c763d">小さい振り幅で両側へ開閉</text>`;
+    doorGraphic=`<line x1="152" y1="128" x2="210" y2="128" stroke="#cfcfcf" stroke-width="3" stroke-dasharray="5 5"/>
+      <line x1="268" y1="128" x2="210" y2="128" stroke="#cfcfcf" stroke-width="3" stroke-dasharray="5 5"/>
+      <line x1="152" y1="128" x2="142" y2="185" stroke="#397bff" stroke-width="9" stroke-linecap="round"/>
+      <line x1="268" y1="128" x2="278" y2="185" stroke="#ff9200" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="152" cy="128" r="7" fill="#397bff"/>
+      <circle cx="268" cy="128" r="7" fill="#ff9200"/>
+      <path d="M181 128 A29 29 0 0 1 147 157" fill="none" stroke="#2f9e55" stroke-width="4"/>
+      <path d="M239 128 A29 29 0 0 0 273 157" fill="none" stroke="#2f9e55" stroke-width="4"/>
+      <text x="112" y="151" font-size="12" font-weight="900" fill="#1c763d">約100°</text>
+      <text x="274" y="151" font-size="12" font-weight="900" fill="#1c763d">約100°</text>
+      <text x="210" y="216" text-anchor="middle" font-size="12" font-weight="900" fill="#1c763d">左右外側のヒンジから開く</text>`;
   }else if(flex){
     doorGraphic=`<line x1="152" y1="128" x2="133" y2="226" stroke="#397bff" stroke-width="8" stroke-linecap="round"/>
       <line x1="268" y1="128" x2="287" y2="226" stroke="#ff9200" stroke-width="8" stroke-linecap="round" opacity=".75"/>
