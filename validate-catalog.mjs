@@ -40,7 +40,16 @@ const requiredStrings = ['maker', 'model', 'status', 'doorType', 'source'];
 const requiredNumbers = ['price', 'capacity', 'width', 'doors', 'freezerTotal', 'energy'];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
+function semanticModelKey(model){
+  return model
+    .trim()
+    .replace(/\([A-Z]{1,4}\)$/,'')
+    .replace(/\s+[A-Z]{1,3}$/,'')
+    .replace(/-(?:TW|UC|EW|TH|XH|XW|WU|DS|W|H|N|S|C|K|M|T|X)$/,'');
+}
+
 const exactModels = new Map();
+const semanticModels = new Map();
 for (const product of products) {
   for (const key of requiredStrings) {
     if (typeof product[key] !== 'string' || !product[key].trim()) {
@@ -78,12 +87,23 @@ for (const product of products) {
     errors.push(`${product.model}: verifiedAt must use YYYY-MM-DD`);
   }
 
-  const count = exactModels.get(product.model) || 0;
-  exactModels.set(product.model, count + 1);
+  exactModels.set(product.model, (exactModels.get(product.model) || 0) + 1);
+
+  const semanticKey=`${product.maker}::${semanticModelKey(product.model)}`;
+  const group=semanticModels.get(semanticKey) || [];
+  group.push(product);
+  semanticModels.set(semanticKey,group);
 }
 
 for (const [model, count] of exactModels) {
   if (count > 1) errors.push(`${model}: duplicate exact model appears ${count} times`);
+}
+
+const semanticDuplicates=[];
+for (const [key, group] of semanticModels) {
+  if (group.length > 1) {
+    semanticDuplicates.push({key,models:group.map((p)=>p.model)});
+  }
 }
 
 const byMaker = new Map();
@@ -108,6 +128,10 @@ console.log(`Catalog products: ${products.length}`);
 console.log('By maker:');
 for (const [maker, count] of [...byMaker.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
   console.log(`  ${maker}: ${count}`);
+}
+console.log(`Potential color/base duplicates: ${semanticDuplicates.length}`);
+for (const item of semanticDuplicates) {
+  console.log(`  SEMANTIC ${item.key}: ${item.models.join(' | ')}`);
 }
 console.log(`Legacy checkedAt fallback: ${checkedAt || 'none'}`);
 console.log(`Warnings: ${warnings.length}`);
