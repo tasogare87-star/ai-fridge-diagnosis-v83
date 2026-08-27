@@ -1,11 +1,12 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "updatedAt": "2026-08-28",
   "maker": "SHARP",
   "scope": "Current-generation SHARP household refrigerator-freezer R models shown in the official lineup as of 2026-08-28. Color-only variants are collapsed. Door mechanisms that affect diagnosis are retained by model. Older P-generation and specialty models are tracked separately and are not counted toward this current-generation completion pass.",
   "statusLegend": {
     "production-live": "Already present in the currently deployed diagnosis production catalog",
-    "staged-not-live": "Official specs and current Yodobashi evidence verified and code staged in batch 15, but not yet confirmed live because Vercel deployment is rate-limited"
+    "staged-not-live": "Official specs and current Yodobashi evidence verified and code staged, but not yet confirmed live because Vercel deployment is rate-limited",
+    "staged-remove-no-yodobashi": "Older model still has official specs/general retail availability, but fresh retail evidence no longer shows Yodobashi as an active seller; removal is staged"
   },
   "models": [
     {"model":"SJ-MF61R","capacity":607,"series":"MF","doorVariant":"french","inventoryStatus":"production-live"},
@@ -27,15 +28,15 @@
     {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"staged-not-live","yodobashiPrice":55340},
     {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"staged-not-live","yodobashiPrice":54800}
   ],
-  "legacyYodobashiCheck": [
-    {"model":"SJ-X373P","reason":"Previous generation remains in production catalog; recheck current Yodobashi orderability separately from R-generation completion"},
-    {"family":"P-generation","reason":"Older comparison-page models may still be orderable and will be retained only when current Yodobashi sale status is confirmed"},
-    {"model":"SJ-H13E","reason":"Special compact/legacy model; evaluate separately from current R-generation refrigerator pass"}
+  "legacyRetailDisposition": [
+    {"model":"SJ-X373P","capacity":374,"inventoryStatus":"staged-remove-no-yodobashi","reason":"Sharp official specifications remain available, but Price.com page crawled 2026-08-24 shows only one active seller (家電ナカデン) and no Yodobashi listing; removal staged in batch 18","verifiedAt":"2026-08-28"},
+    {"model":"SJ-H13E","inventoryStatus":"excluded-no-yodobashi","reason":"General retail remains but no fresh Yodobashi sales evidence; do not add"}
   ],
   "summary": {
     "identifiedCurrentModels": 18,
     "productionLive": 8,
     "stagedNotLive": 10,
-    "pendingYodobashiCheck": 0
+    "pendingYodobashiCheck": 0,
+    "legacyStagedRemoval": 1
   }
 }
