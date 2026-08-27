@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'catalog-*'
+      - 'diagnosis-*'
   pull_request:
     branches:
       - main
@@ -23,3 +24,5 @@ jobs:
           package-manager-cache: false
       - name: Validate catalog
         run: node validate-catalog.mjs
+      - name: Regression-test diagnosis
+        run: node test-diagnosis.mjs
