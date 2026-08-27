@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI冷蔵庫診断 v8.9 - 公正選定・容量適正化</title>
+<title>AI冷蔵庫診断 v8.10 - 幅＋奥行き設置対応</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="wrap">
   <header>
-    <span class="badge">AI冷蔵庫診断 v8.9 / 公正選定・容量適正化</span>
+    <span class="badge">AI冷蔵庫診断 v8.10 / 幅＋奥行き設置対応</span>
     <h1>あなたのキッチンに合う冷蔵庫を診断</h1>
     <div class="sub">約2〜3分の質問で、<strong>置けるサイズ・使いやすいドア・容量・よく使う機能</strong>を整理します。<br>人数と使い方に合う容量を優先し、条件に合う<strong>最大3機種</strong>と、機能を重視したおすすめ1機種をご提案します。</div>
     <div class="hero-points">
@@ -22,9 +22,9 @@
   <main class="panel">
     <section id="intro" class="flowbox">
       <span class="mini-badge">診断前に30秒だけ確認</span>
-      <h2>ドアの「右・左」だけ先に確認</h2>
+      <h2>設置寸法とドアの向きを先に確認</h2>
       <div class="sub">質問の「左・右」は、<strong>冷蔵庫を正面から見たときの左右</strong>で答えてください。図は上から見たイメージです。</div>
-      <div class="assumption-note"><strong>ポイント：</strong>横に壁があっても、ドアを<strong>約100°開けられる</strong>場合は候補に残します。最終的な開きやすさは店頭で実機をご確認ください。</div>
+      <div class="assumption-note"><strong>ポイント：</strong>横に壁があっても、ドアを<strong>約100°開けられる</strong>場合は候補に残します。設置では横幅に加えて奥行きも確認し、最終的な開きやすさは店頭で実機をご確認ください。</div>
       <div class="legend">
         <span>灰色 = 壁・家具</span>
         <span>橙/青 = 開いたドア</span>
@@ -94,11 +94,13 @@
 <script src="catalog-production-batch18.js"></script>
 <script src="catalog-production-batch19.js"></script>
 <script src="catalog-production-batch20.js"></script>
+<script src="catalog-depth-verified.js"></script>
 <script src="ui.js"></script>
 <script src="logic.js"></script>
 <script src="v88-core.js"></script>
 <script src="v89-fairness.js"></script>
 <script src="v89-ui-guidance.js"></script>
+<script src="v810-depth.js"></script>
 <script src="price-link.js"></script>
 <script src="share-ui.js"></script>
 <script src="share-noqr.js"></script>
