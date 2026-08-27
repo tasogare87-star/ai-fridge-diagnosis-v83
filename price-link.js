@@ -1,6 +1,5 @@
-// v8.6: ヨドバシ.com価格確認導線 + データ鮮度フェイルセーフ
-// ヨドバシ.comは外部からの自動取得を拒否する場合があるため、
-// アプリ内価格は「最終確認価格」とし、現在価格・販売状況は商品ページを正とする。
+// v8.9: ヨドバシ.com価格確認導線 + 商品ごとのデータ鮮度フェイルセーフ
+// catalog-production-*.js の商品は verifiedAt を優先し、旧 data.js 商品のみ checkedAt を使用する。
 (function(){
   const style=document.createElement('style');
   style.textContent=`
@@ -13,38 +12,61 @@
   `;
   document.head.appendChild(style);
 
-  function parseCheckedAtJst(value){
+  function parseVerificationDate(value){
     if(!value || typeof value!=='string') return null;
-    const m=value.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+JST$/);
+    let m=value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if(m){
+      const [,y,mo,d]=m.map((x,i)=>i===0?x:Number(x));
+      return new Date(Date.UTC(y,mo-1,d,3,0)); // JST正午
+    }
+    m=value.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})\s+JST$/);
     if(!m) return null;
     const [,y,mo,d,h,mi]=m.map((x,i)=>i===0?x:Number(x));
     return new Date(Date.UTC(y,mo-1,d,h-9,mi));
   }
 
-  function dataFreshness(){
-    const value=(typeof checkedAt!=='undefined' && checkedAt)?checkedAt:'';
-    const dt=parseCheckedAtJst(value);
-    if(!dt || Number.isNaN(dt.getTime())) return {stale:true,hours:null};
-    const hours=(Date.now()-dt.getTime())/3600000;
-    return {stale:hours>48,hours};
+  function productForCard(card){
+    const model=(card.querySelector('.model')?.textContent||'').trim();
+    if(!model || !Array.isArray(products)) return null;
+    return products.find(p=>p.model===model)||null;
+  }
+
+  function verificationForCard(card){
+    const product=productForCard(card);
+    const raw=(product&&product.verifiedAt)
+      ? product.verifiedAt
+      : ((typeof checkedAt!=='undefined'&&checkedAt)?checkedAt:'');
+    const dt=parseVerificationDate(raw);
+    const hours=dt&&!Number.isNaN(dt.getTime())?(Date.now()-dt.getTime())/3600000:null;
+    const stale=hours===null||hours>48;
+    const display=product&&product.verifiedAt
+      ? `${product.verifiedAt} 確認`
+      : (raw?`${raw} 確認`:'確認日時不明');
+    return {product,raw,dt,hours,stale,display};
   }
 
   function applyPriceLinks(){
-    const freshness=dataFreshness();
     document.querySelectorAll('#result .card').forEach(card=>{
       if(card.dataset.priceLinked==='1') return;
       const source=card.querySelector('.source a');
       const price=card.querySelector('.price');
       if(!source || !price) return;
+
+      const verification=verificationForCard(card);
       const href=source.href;
-      const raw=price.textContent.trim();
-      const m=raw.match(/([0-9,]+円)/);
+      const rawPrice=price.textContent.trim();
+      const m=rawPrice.match(/([0-9,]+円)/);
       const amount=m?m[1]:'価格はリンク先で確認';
-      const dateText=(typeof checkedAt!=='undefined' && checkedAt)?checkedAt:'最終確認時';
-      const staleHtml=freshness.stale
+      const staleHtml=verification.stale
         ? '<div class="price-stale-warning">価格・販売状態の最終確認から48時間以上経過しています。現在の価格・在庫・販売状況をヨドバシ.comで必ず再確認してください。</div>'
         : '';
-      price.innerHTML=`<a class="yodobashi-price-link" href="${href}" target="_blank" rel="noopener">最終確認価格 ${amount}</a><div class="price-check-note">${dateText}時点の確認値です。現在価格・在庫・販売状況はヨドバシ.comを正としてご確認ください。</div>${staleHtml}<a class="price-check-link" href="${href}" target="_blank" rel="noopener">ヨドバシ.comで現在価格・販売状況を確認 →</a>`;
+
+      price.innerHTML=`<a class="yodobashi-price-link" href="${href}" target="_blank" rel="noopener">最終確認価格 ${amount}</a><div class="price-check-note">${verification.display}。現在価格・在庫・販売状況はヨドバシ.comを正としてご確認ください。</div>${staleHtml}<a class="price-check-link" href="${href}" target="_blank" rel="noopener">ヨドバシ.comで現在価格・販売状況を確認 →</a>`;
+
+      const status=card.querySelector('.status');
+      if(status&&verification.product){
+        status.textContent=`${verification.product.status} / 商品情報 ${verification.display}`;
+      }
       source.textContent='ヨドバシ.comの商品ページを開く';
       card.dataset.priceLinked='1';
     });
