@@ -17,11 +17,20 @@
   function removeQr(){
     const box=document.querySelector('#result .sharebox');
     if(!box) return;
+
+    // share-ui.js が共有カードを組み立てた後に1回だけ処理する。
+    // MutationObserver が自分のDOM変更を再検知して無限ループしないようガードする。
+    if(!box.classList.contains('share-compact')) return;
+    if(box.dataset.noQrApplied==='1') return;
+    box.dataset.noQrApplied='1';
+
     box.classList.add('share-noqr');
     const qr=box.querySelector('.share-qr-wrap');
     if(qr) qr.remove();
     const copy=box.querySelector('.share-copy');
-    if(copy) copy.textContent='この診断ページを家族やご一緒に選ぶ方へ送れます。';
+    if(copy && copy.textContent!=='この診断ページを家族やご一緒に選ぶ方へ送れます。'){
+      copy.textContent='この診断ページを家族やご一緒に選ぶ方へ送れます。';
+    }
   }
 
   const result=document.getElementById('result');
