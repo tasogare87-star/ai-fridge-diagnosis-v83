@@ -4,7 +4,7 @@ import vm from 'node:vm';
 const catalogFiles = [
   'data.js',
   'catalog-production-extension.js',
-  ...Array.from({ length: 17 }, (_, i) => `catalog-production-batch${i + 2}.js`),
+  ...Array.from({ length: 18 }, (_, i) => `catalog-production-batch${i + 2}.js`),
 ];
 
 const missingFiles = catalogFiles.filter((file) => !fs.existsSync(file));
@@ -91,12 +91,17 @@ for (const product of products) {
   byMaker.set(product.maker, (byMaker.get(product.maker) || 0) + 1);
 }
 
-// Batch 18 audit invariants.
 if (!products.some((p) => p.model === 'GR-Y600FK-EW')) {
   errors.push('GR-Y600FK-EW must be present after batch 18');
 }
 if (products.some((p) => p.model === 'SJ-X373P-N')) {
   errors.push('SJ-X373P-N must be removed after batch 18');
+}
+for (const model of ['R-HWS47X N','R-HWS47XL N']) {
+  const product=products.find((p)=>p.model===model);
+  if (!product || product.smartphone !== false) {
+    errors.push(`${model}: smartphone must be false after batch 19 verification`);
+  }
 }
 
 console.log(`Catalog products: ${products.length}`);
