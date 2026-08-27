@@ -12,9 +12,9 @@
   function baseCapacityProfile(family){
     const n=Math.max(1,Number(family)||1);
     if(n===1) return {min:150,max:249,hardMin:100,hardMax:299};
-    if(n===2) return {min:250,max:399,hardMin:200,hardMax:499};
-    if(n===3) return {min:400,max:499,hardMin:350,hardMax:599};
-    if(n===4) return {min:500,max:599,hardMin:450,hardMax:699};
+    if(n===2) return {min:300,max:399,hardMin:200,hardMax:499};
+    if(n===3) return {min:400,max:499,hardMin:400,hardMax:599};
+    if(n===4) return {min:500,max:599,hardMin:500,hardMax:699};
     return {min:550,max:699,hardMin:500,hardMax:799};
   }
 
@@ -22,8 +22,10 @@
     const p={...baseCapacityProfile(family)};
     const freezer=Number(answers.freezerUse)||3;
     if(freezer>=4){
-      const extra=50;
-      p.max=Math.min(p.hardMax,p.max+extra);
+      p.max=Math.min(p.hardMax,p.max+50);
+    }
+    if(freezer<=2 && Number(family)===2){
+      p.min=250;
     }
     return p;
   }
@@ -127,6 +129,29 @@
     return selected;
   }
 
+  // 4機種目もブランド名ではなく、実際の搭載機能・ユーザー嗜好との一致だけで評価する。
+  function fairFeatureScore(p,pool){
+    let score=0;
+    if(p.smartphone===true) score+=10;
+    if(p.autoIce===true) score+=7;
+    if(p.doorType==='フレンチドア') score+=5;
+    if(p.doorType==='左右付け替え') score+=3;
+    if(p.doors>=6) score+=6;
+    else if(p.doors>=5) score+=4;
+    else if(p.doors>=3) score+=2;
+
+    const freezerVals=pool.map(x=>x.freezerTotal);
+    score+=safeNormalize(p.freezerTotal,freezerVals)*8;
+    const energyVals=pool.map(x=>x.energy);
+    score+=safeNormalize(p.energy,energyVals,true)*5;
+
+    if(answers.autoIce==='prefer'&&p.autoIce===true) score+=5;
+    if(answers.smartphone==='prefer'&&p.smartphone===true) score+=5;
+    if(answers.vegetablePos==='middle'&&p.vegetablePos==='真ん中') score+=4;
+    if(Array.isArray(p.features)) score+=Math.min(6,p.features.length*2);
+    return Math.round(score);
+  }
+
   getCandidates=function(d){
     const profile=capacityProfile(answers.family);
     let pool=products.filter(p=>hardFilter(p,d));
@@ -155,7 +180,7 @@
       if(over.length) featureSource=over;
     }
     const featurePick=featureSource
-      .map(p=>({...p,featureScore:featureRichnessScore(p),_featurePick:true,_overBudgetCap:budgetSet&&p.price>cap}))
+      .map(p=>({...p,featureScore:fairFeatureScore(p,scored),_featurePick:true,_overBudgetCap:budgetSet&&p.price>cap}))
       .sort((a,b)=>b.featureScore-a.featureScore || b.score-a.score || (Number(isStrategic(b))-Number(isStrategic(a))) || a.price-b.price)[0] || null;
 
     window.__fridgeFairnessMeta={profile,budgetSet,budget,cap,regularCount:regular.length,featurePick};
