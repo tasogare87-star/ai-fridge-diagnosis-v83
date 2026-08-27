@@ -2,41 +2,78 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-let writes=0;
-const note={
-  _innerHTML:'',
-  get innerHTML(){return this._innerHTML;},
-  set innerHTML(value){writes+=1;this._innerHTML=String(value);}
-};
-const result={
-  querySelector(selector){return selector==='.strategy-note'?note:null;}
-};
-let observerCallback=null;
-class FakeMutationObserver{
-  constructor(cb){observerCallback=cb;}
-  observe(){}
-  disconnect(){}
+function trackedNode(initial=''){
+  return {
+    _innerHTML:initial,
+    writes:0,
+    get innerHTML(){return this._innerHTML;},
+    set innerHTML(value){this.writes+=1;this._innerHTML=String(value);}
+  };
 }
-const context=vm.createContext({
-  document:{getElementById(id){return id==='result'?result:null;}},
-  MutationObserver:FakeMutationObserver,
-  console
-});
 
-const source=fs.readFileSync('v89-ui-guidance.js','utf8');
-vm.runInContext(source,context,{filename:'v89-ui-guidance.js'});
+function testUiGuidanceObserver(){
+  const strategy=trackedNode('');
+  const result={querySelector(selector){return selector==='.strategy-note'?strategy:null;}};
+  let observerCallback=null;
+  class FakeMutationObserver{constructor(cb){observerCallback=cb;} observe(){} disconnect(){}}
+  const context=vm.createContext({
+    document:{getElementById(id){return id==='result'?result:null;}},
+    MutationObserver:FakeMutationObserver,
+    console
+  });
+  vm.runInContext(fs.readFileSync('v89-ui-guidance.js','utf8'),context,{filename:'v89-ui-guidance.js'});
+  assert.equal(strategy.writes,1,'v89 initial sync should write once');
+  for(let i=0;i<10;i++) observerCallback();
+  assert.equal(strategy.writes,1,'v89 observer must be idempotent');
+}
 
-assert.equal(typeof observerCallback,'function','MutationObserver callback must be registered');
-assert.equal(writes,1,'initial sync should write staff guidance exactly once');
-assert.match(note.innerHTML,/AQUAは候補から除外せず/,'staff guidance must match active AQUA policy');
+function testAquaObserver(){
+  const strategy=trackedNode('');
+  const customer=trackedNode('');
+  const result={
+    querySelector(selector){
+      if(selector==='.strategy-note') return strategy;
+      if(selector==='.v89-fair-note') return customer;
+      return null;
+    }
+  };
+  let observerCallback=null;
+  class FakeMutationObserver{constructor(cb){observerCallback=cb;} observe(){} disconnect(){}}
+  const windowObj={capacityProfile:null,__fridgeFairnessMeta:null};
+  const context=vm.createContext({
+    document:{
+      title:'',
+      getElementById(id){return id==='result'?result:null;},
+      querySelector(){return null;}
+    },
+    MutationObserver:FakeMutationObserver,
+    productScore:()=>100,
+    getCandidates:()=>({regular:[],featurePick:null}),
+    hardFilter:()=>true,
+    products:[],
+    answers:{family:1,budget:999999},
+    strategicMakers:[],
+    window:windowObj,
+    console
+  });
+  windowObj.window=windowObj;
+  vm.runInContext(fs.readFileSync('v811-aqua-priority.js','utf8'),context,{filename:'v811-aqua-priority.js'});
+  assert.equal(typeof observerCallback,'function','v811 observer callback must be registered');
+  assert.equal(strategy.writes,0,'v811 should not write before result guidance exists');
+  assert.equal(customer.writes,0,'v811 should not write before result guidance exists');
 
-for(let i=0;i<10;i++) observerCallback();
-assert.equal(writes,1,'repeated observer callbacks must not rewrite identical HTML');
+  strategy._innerHTML='<strong>古い表示</strong>';
+  customer._innerHTML='<strong>古い表示</strong>';
+  observerCallback();
+  assert.equal(strategy.writes,1,'v811 should repair strategy copy once');
+  assert.equal(customer.writes,1,'v811 should repair customer copy once');
+  assert.match(strategy.innerHTML,/AQUAも条件適合時は候補から除外しません/);
 
-note._innerHTML='<strong>古い表示</strong>';
-observerCallback();
-assert.equal(writes,2,'stale guidance should be repaired once');
-observerCallback();
-assert.equal(writes,2,'repair must not trigger a rewrite loop');
+  for(let i=0;i<20;i++) observerCallback();
+  assert.equal(strategy.writes,1,'v811 strategy observer must not loop on identical HTML');
+  assert.equal(customer.writes,1,'v811 customer observer must not loop on identical HTML');
+}
 
-console.log('Result MutationObserver regression: PASS (idempotent DOM sync)');
+testUiGuidanceObserver();
+testAquaObserver();
+console.log('Result MutationObserver regression: PASS (all result observers idempotent)');
