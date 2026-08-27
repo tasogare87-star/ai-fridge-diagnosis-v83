@@ -6,12 +6,12 @@ const html=fs.readFileSync('index.html','utf8');
 for(const id of ['intro','quiz','result','startBtn','qnum','question','hint','options','bar','prevBtn','prevTopBtn','nextBtn','toIntroBtn','selectionNote','editBanner']){
   assert.match(html,new RegExp(`id=["']${id}["']`),`index.html must contain #${id}`);
 }
-assert.match(html,/v8\.12/,'production HTML must identify v8.12');
+assert.match(html,/v8\.13/,'production HTML must identify v8.13');
 
 const orderedScripts=[
   'data.js','catalog-production-batch20.js','catalog-depth-verified.js','catalog-depth-toshiba.js',
   'catalog-depth-hitachi.js','catalog-depth-aqua.js','catalog-depth-mitsubishi-completion.js',
-  'ui.js','logic.js','v88-core.js','v89-fairness.js','v89-ui-guidance.js','v810-depth.js','v811-aqua-priority.js','v812-selection-reasons.js'
+  'ui.js','logic.js','v88-core.js','v89-fairness.js','v89-ui-guidance.js','v810-depth.js','v811-aqua-priority.js','v812-selection-reasons.js','v813-manufacturer-catalog.js'
 ];
 let last=-1;
 for(const script of orderedScripts){
@@ -110,8 +110,9 @@ load('v89-ui-guidance.js');
 load('v810-depth.js');
 load('v811-aqua-priority.js');
 load('v812-selection-reasons.js');
+load('v813-manufacturer-catalog.js');
 
-assert.equal(document.title,'AI冷蔵庫診断 v8.12 - 選定理由表示対応');
+assert.equal(document.title,'AI冷蔵庫診断 v8.13 - メーカー公式カタログ対応');
 assert.equal(vm.runInContext("questions[0].key",context),'maxWidth','width must remain the first question');
 assert.equal(vm.runInContext("questions[1].key",context),'maxDepth','depth must be the second question');
 assert.equal(vm.runInContext("questions.filter(q=>q.key==='maxDepth').length",context),1,'depth question must not be duplicated');
@@ -162,6 +163,7 @@ for(const item of reasonAudit){
   assert.doesNotMatch(item.reasons.join(' '),/AQUA.*優先|減点|メーカー都合/,`${item.model}: customer reasons must not expose internal maker-priority mechanics`);
 }
 assert.match(fs.readFileSync('v812-selection-reasons.js','utf8'),/この機種が選ばれた理由/,'reason heading must be customer-facing');
+assert.equal(Object.keys(vm.runInContext('window.fridgeManufacturerCatalogs',context)).length,6,'v8.13 must expose six manufacturer catalog mappings');
 
 const excluded=['NR-FVF45S3','GR-Y550FK','GR-Y460FK','GR-Y550FZ','GR-Y510FZ','GR-Y460FZ'];
 for(const model of excluded){
@@ -175,4 +177,4 @@ assert.equal(aquaPolicy.regularPenalty,10,'AQUA regular priority adjustment must
 assert.equal(aquaPolicy.featurePenalty,8,'AQUA feature priority adjustment must remain 8 points');
 assert.equal(aquaPolicy.excluded,false,'AQUA must remain eligible, not excluded');
 
-console.log('UI flow regression: PASS (width -> depth -> reasons -> result; exclusions locked)');
+console.log('UI flow regression: PASS (width -> depth -> reasons -> catalog layer -> result; exclusions locked)');
