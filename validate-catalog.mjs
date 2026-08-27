@@ -57,6 +57,10 @@ for (const product of products) {
     }
   }
 
+  if (product.status !== '発売中') {
+    errors.push(`${product.model || '<unknown>'}: loaded diagnosis products must use status=発売中; use a separate lifecycle field for sell-through or other metadata`);
+  }
+
   for (const key of requiredNumbers) {
     if (typeof product[key] !== 'number' || !Number.isFinite(product[key]) || product[key] < 0) {
       errors.push(`${product.model || '<unknown>'}: ${key} must be a finite non-negative number`);
