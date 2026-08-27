@@ -1,12 +1,12 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "updatedAt": "2026-08-28",
   "maker": "TOSHIBA",
-  "scope": "Toshiba manufacturer-current refrigerator-freezer lineup plus separately tracked retail sell-through models. Color-only variants are collapsed; meaningful left/right door variants remain separate. Freezer-only GF-Y14HS and GF-A11HS are excluded from standard refrigerator diagnosis.",
+  "scope": "Toshiba manufacturer-current refrigerator-freezer lineup plus separately tracked retail sell-through models. Color-only variants are collapsed; meaningful left/right door variants remain separate. Explicit sell-through exclusions are retained only as audit history and are not future promotion candidates. Freezer-only GF-Y14HS and GF-A11HS are excluded from standard refrigerator diagnosis.",
   "statusLegend": {
     "production": "Manufacturer-current model already loaded into the diagnosis production catalog",
     "retail-sell-through-live": "Older generation not counted in the manufacturer-current completion total, but official specs exist and fresh Yodobashi sales evidence confirms it should remain in the live diagnosis catalog",
-    "retail-sell-through-audit": "Older generation with official specs/general retail evidence; current Yodobashi sale-state does not meet the evidence threshold for production promotion"
+    "excluded-retail-sell-through": "Explicitly excluded from diagnosis and future sell-through promotion audit; retained only as history"
   },
   "models": [
     {"model":"GR-A640XFS","capacity":643,"series":"XFS","doorVariant":"french","inventoryStatus":"production","yodobashiPrice":367330},
@@ -44,12 +44,13 @@
     {"model":"GR-Y600FK","capacity":601,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-live","yodobashiPrice":168000,"yodobashiEvidence":"Price.com Toshiba refrigerator ranking page crawled within 30 days shows Yodobashi.com at 168,000 yen; Toshiba official page marks production ended but specifications remain verified","verifiedAt":"2026-08-28"},
     {"model":"GR-Y510FK","capacity":509,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-live","yodobashiPrice":172710,"yodobashiEvidence":"Price.com Yodobashi shop entry registered 2026-08-07; official Toshiba 2026 catalog/spec page verified","verifiedAt":"2026-08-28"}
   ],
-  "retailSellThroughAudit": [
-    {"model":"GR-Y550FK","capacity":551,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","saleAuditAt":"2026-08-28","reason":"Current Price.com page still has general-market stock, but its mass-retailer section only names Yodobashi.com among possible retailers and does not show an active Yodobashi price row. Under the audit rule, retailer-name presence alone is insufficient; do not promote."},
-    {"model":"GR-Y460FK","capacity":462,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","saleAuditAt":"2026-08-28","reason":"Current Price.com page shows active sellers such as Amazon, Nojima and Edion. Yodobashi.com appears only in the generic mass-retailer candidate header, with no active Yodobashi price row; do not promote."},
-    {"model":"GR-Y550FZ","capacity":551,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","saleAuditAt":"2026-08-28","reason":"Current Price.com price-comparison page has general-market stock but no Yodobashi.com match. Older January 2026 customer purchase reports are outside the freshness threshold; do not promote."},
-    {"model":"GR-Y510FZ","capacity":508,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","saleAuditAt":"2026-08-28","reason":"Current Price.com page shows only a small set of active sellers and no Yodobashi.com match. Older January 2026 purchase reports are outside the freshness threshold; do not promote."},
-    {"model":"GR-Y460FZ","capacity":461,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","saleAuditAt":"2026-08-28","reason":"Current Price.com page shows active general-market sellers but no fresh active Yodobashi price evidence. Older January 2026 purchase reports are outside the freshness threshold; do not promote."}
+  "retailSellThroughAudit": [],
+  "excludedRetailSellThrough": [
+    {"model":"GR-Y550FK","capacity":551,"series":"FK","doorVariant":"french","inventoryStatus":"excluded-retail-sell-through","excludedAt":"2026-08-28","reason":"Explicitly excluded from diagnosis and future sell-through promotion audit. At exclusion, no fresh active Yodobashi price row was verified."},
+    {"model":"GR-Y460FK","capacity":462,"series":"FK","doorVariant":"french","inventoryStatus":"excluded-retail-sell-through","excludedAt":"2026-08-28","reason":"Explicitly excluded from diagnosis and future sell-through promotion audit. At exclusion, no fresh active Yodobashi price row was verified."},
+    {"model":"GR-Y550FZ","capacity":551,"series":"FZ","doorVariant":"french","inventoryStatus":"excluded-retail-sell-through","excludedAt":"2026-08-28","reason":"Explicitly excluded from diagnosis and future sell-through promotion audit. At exclusion, only stale Yodobashi-related evidence existed."},
+    {"model":"GR-Y510FZ","capacity":508,"series":"FZ","doorVariant":"french","inventoryStatus":"excluded-retail-sell-through","excludedAt":"2026-08-28","reason":"Explicitly excluded from diagnosis and future sell-through promotion audit. At exclusion, no fresh active Yodobashi evidence was verified."},
+    {"model":"GR-Y460FZ","capacity":461,"series":"FZ","doorVariant":"french","inventoryStatus":"excluded-retail-sell-through","excludedAt":"2026-08-28","reason":"Explicitly excluded from diagnosis and future sell-through promotion audit. At exclusion, no fresh active Yodobashi evidence was verified."}
   ],
   "excludedCurrentProducts": [
     {"model":"GF-Y14HS","capacity":135,"reason":"freezer-only; outside refrigerator diagnosis scope"},
@@ -59,7 +60,8 @@
     "manufacturerCurrentModels": 30,
     "manufacturerCurrentProduction": 30,
     "retailSellThroughLive": 2,
-    "retailSellThroughAudit": 5,
+    "retailSellThroughAudit": 0,
+    "excludedRetailSellThrough": 5,
     "excludedCurrentProducts": 2,
     "lastSellThroughAudit":"2026-08-28",
     "auditPromotions":0
