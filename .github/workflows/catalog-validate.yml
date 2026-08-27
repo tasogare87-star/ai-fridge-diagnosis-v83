@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'catalog-validation-*'
+      - 'catalog-*'
   pull_request:
     branches:
       - main
