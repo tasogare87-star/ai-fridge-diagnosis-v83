@@ -7,7 +7,8 @@
 
 ## 現在のデプロイ状態
 - Vercel本番は **batch 14まで** 配信確認済み。
-- SHARP `batch 15` と AQUA `batch 16` はGitHub側で仕様・価格確認済みコードを準備しているが、Vercelの **build rate limit** により未配信。
+- `batch 15`（SHARP）、`batch 16`（AQUA）、`batch 17`（Panasonic）はGitHub側で仕様・価格確認済みコードを準備済み。
+- Vercelの **build rate limit** により、batch 15以降はまだ本番配信されていない。
 - rate limit解消後、本番HTTP 200を確認して `staged-not-live` を `production-live` に切り替える。
 
 ## 全機種化の定義
@@ -25,7 +26,9 @@
 ### Panasonic
 - `catalog-inventory-panasonic.json`
 - 現行候補 28件
-- 本番 26件 / ヨドバシ確認待ち 2件
+- 現在本番配信済み: **26件**
+- batch 17追加準備済み: `NR-C33JS2L` **1件（staged-not-live）**
+- ヨドバシ確認待ち: `NR-FVF45S3` **1件**
 
 ### 三菱電機
 - `catalog-inventory-mitsubishi.json`
@@ -49,37 +52,29 @@
 - 現行R世代 18候補
 - 仕様・ヨドバシ確認: **18 / 18完了**
 - 現在本番配信済み: **8件**
-- batch 15で追加準備済み: **10件（staged-not-live）**
-- batch 15対象: `SJ-MF55R`, `SJ-FF50R`, `SJ-X504R`, `SJ-MF46R`, `SJ-MW46R`, `SJ-X374R`, `SJ-PT32R`, `SJ-BD23R`, `SJ-GD15R`, `SJ-TD15R`
-- `SJ-MF55R` は公式値 **545L** で登録
+- batch 15追加準備済み: **10件（staged-not-live）**
+- `SJ-MF55R` は公式値545Lで登録
 
 ### AQUA
 - `catalog-inventory-aqua.json`
-- 2026年A/B世代の標準冷凍冷蔵庫を、左右開き差分込み **28候補**として整理
+- 2026年A/B世代の標準冷凍冷蔵庫を左右開き差分込み **28候補**として整理
 - 現在本番配信済み: **13件**
-- batch 16で追加準備済み: **14件（staged-not-live）**
+- batch 16追加準備済み: **14件（staged-not-live）**
 - ヨドバシ確認待ち: **`AQR-FD7B` 1件**
-- batch 16対象: `AQR-TZA52A`, `AQR-TZ42A`, `AQR-TXA50A`, `AQR-TX51A`, `AQR-36AL`, `AQR-S26A`, `AQR-SBS48A`, `AQR-VZA45AL`, `AQR-V46A`, `AQR-V46AL`, `AQR-S31A`, `AQR-31A`, `AQR-S36A`, `AQR-S36AL`
 - `AQR-9A`（90L・1ドア）は標準冷凍冷蔵庫診断の対象外
 - 600L以上の現行標準冷凍冷蔵庫は確認できていないため、無理に登録しない
 
-## 容量帯カバレッジ（現在の本番配信）
-
-| メーカー | ～199L | 200～299L | 300～399L | 400～449L | 450～499L | 500～599L | 600L以上 |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Panasonic | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
-| 三菱電機 | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
-| 日立 | — | ○ | ○ | ○ | ○ | ○ | ○ |
-| 東芝 | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
-| SHARP | ○ | ○ | ○ | ○ | ○ | ○ | ○ |
-| AQUA | ○ | ○ | ○ | ○ | ○ | ○ | — |
+## 残る販売確認
+ヨドバシ現行取扱の直接・最新根拠がまだ取れていないため、以下は推測せず保留する。
+1. Panasonic `NR-FVF45S3`
+2. 日立 `R-H54Y`
+3. AQUA `AQR-FD7B`
 
 ## 次の優先順位
-1. **Vercel build rate limit解消後、batch 15 / 16を本番配信確認**
-2. `AQR-FD7B` のヨドバシ現行販売・価格確認
-3. 日立 `R-H54Y` のヨドバシ確認
-4. Panasonic残り2件のヨドバシ確認
-5. 旧世代・現行外モデルの販売終了確認とカタログ整理
+1. **Vercel build rate limit解消後、batch 15 / 16 / 17を本番配信確認**
+2. 上記3機種のヨドバシ現行販売・価格確認
+3. 旧世代・現行外モデルの販売終了確認とカタログ整理
+4. 全メーカー横断で価格鮮度・重複・診断ロジックの回帰確認
 
 ## カタログファイル
 - `data.js`
@@ -87,5 +82,6 @@
 - `catalog-production-batch2.js` ～ `catalog-production-batch14.js`：本番配信確認済み
 - `catalog-production-batch15.js`：SHARP、GitHub準備済み / Vercel未配信
 - `catalog-production-batch16.js`：AQUA、GitHub準備済み / Vercel未配信
+- `catalog-production-batch17.js`：Panasonic、GitHub準備済み / Vercel未配信
 
 毎日の「冷蔵庫価格チェック」は `data.js` とすべての `catalog-production-*.js` を対象とする。
