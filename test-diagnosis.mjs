@@ -24,7 +24,13 @@ function load(file){
 }
 
 for(const file of catalogFiles) load(file);
-load('logic.js');
+
+// logic.js also contains browser event wiring at the bottom. Regression tests only need
+// the pure diagnosis functions, so stop before the share/UI initialization block.
+const logicSource=fs.readFileSync('logic.js','utf8');
+const uiBoundary=logicSource.indexOf('\nfunction refreshShareUrlDisplay');
+assert.ok(uiBoundary>0,'logic.js pure-logic boundary must exist');
+vm.runInContext(logicSource.slice(0,uiBoundary),context,{filename:'logic.js'});
 load('v89-fairness.js');
 
 const defaults={
