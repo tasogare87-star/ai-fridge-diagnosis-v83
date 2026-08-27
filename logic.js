@@ -65,7 +65,7 @@ function doorPref(){
 }
 
 function hardFilter(p,d){
-  if(p.status!=="発売中"&&p.status!=="予約受付中")return false;
+  if(p.status!=="発売中")return false;
   if(p.width>answers.maxWidth)return false;
   if(answers.autoIce==='must'&&p.autoIce!==true)return false;
   if(answers.smartphone==='must'&&p.smartphone!==true)return false;
