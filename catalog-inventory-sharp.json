@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-28",
+  "maker": "SHARP",
+  "scope": "Current-generation SHARP household refrigerator-freezer R models shown in the official lineup as of 2026-08-28. Color-only variants are collapsed. Door mechanisms that affect diagnosis are retained by model. Older P-generation and specialty models are tracked separately and are not counted toward this current-generation completion pass.",
+  "statusLegend": {
+    "production": "Already loaded into the diagnosis production catalog",
+    "verified-not-promoted": "Official specifications verified and Yodobashi listing evidence found; sale-state freshness still needs final confirmation before promotion",
+    "pending-yodobashi-check": "Official current model identified; current Yodobashi orderability/price still needs confirmation"
+  },
+  "models": [
+    {"model":"SJ-MF61R","capacity":607,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"SJ-MF55R","capacity":551,"series":"MF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-MF51R","capacity":505,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"SJ-FF50R","capacity":502,"series":"FF","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-X504R","capacity":502,"series":"X","doorVariant":"french","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-MF46R","capacity":457,"series":"MF","doorVariant":"french","inventoryStatus":"verified-not-promoted","yodobashiPrice":349800,"yodobashiEvidence":"Yodobashi product listing found; final current sale-state refresh required before production"},
+    {"model":"SJ-MW46R","capacity":457,"series":"MW","doorVariant":"both","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-XW46R","capacity":455,"series":"XW","doorVariant":"both","inventoryStatus":"production"},
+    {"model":"SJ-MF43R","capacity":429,"series":"MF","doorVariant":"french","inventoryStatus":"production"},
+    {"model":"SJ-XW41R","capacity":408,"series":"XW","doorVariant":"both","inventoryStatus":"production"},
+    {"model":"SJ-PW37R","capacity":374,"series":"PW","doorVariant":"both","inventoryStatus":"production"},
+    {"model":"SJ-X374R","capacity":374,"series":"X","doorVariant":"both","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-PT32R","capacity":317,"series":"PT","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-PD28R","capacity":280,"series":"PD","doorVariant":"right","inventoryStatus":"production"},
+    {"model":"SJ-BD23R","capacity":230,"series":"BD","doorVariant":"right","inventoryStatus":"pending-yodobashi-check"},
+    {"model":"SJ-TD18R","capacity":179,"series":"TD","doorVariant":"reversible","inventoryStatus":"production"},
+    {"model":"SJ-GD15R","capacity":152,"series":"GD","doorVariant":"reversible","inventoryStatus":"verified-not-promoted","yodobashiPrice":82280,"yodobashiEvidence":"Yodobashi successor/current listing evidence found; final current sale-state refresh required before production"},
+    {"model":"SJ-TD15R","capacity":152,"series":"TD","doorVariant":"reversible","inventoryStatus":"verified-not-promoted","yodobashiPrice":56790,"yodobashiEvidence":"Yodobashi product/community listing evidence found; final current sale-state refresh required before production"}
+  ],
+  "legacyYodobashiCheck": [
+    {"model":"SJ-X373P","reason":"Previous generation remains in production catalog; recheck current Yodobashi orderability separately from R-generation completion"},
+    {"family":"P-generation","reason":"Older comparison-page models may still be orderable and will be retained only when current Yodobashi sale status is confirmed"},
+    {"model":"SJ-H13E","reason":"Special compact/legacy model; evaluate separately from current R-generation refrigerator pass"}
+  ],
+  "summary": {
+    "identifiedCurrentModels": 18,
+    "production": 8,
+    "verifiedNotPromoted": 3,
+    "pendingYodobashiCheck": 7
+  }
+}
