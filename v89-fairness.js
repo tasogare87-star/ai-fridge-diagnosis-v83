@@ -59,6 +59,17 @@
     return Math.max(0,38-(capacity-profile.max)*0.25);
   }
 
+  function doorFitValue(p,d){
+    if(p.doorType==='左右開き'){
+      return Math.max(
+        d.scores['右開き']||0,
+        d.scores['左開き']||0,
+        d.scores['左右付け替え']||0
+      );
+    }
+    return d.scores[p.doorType]||0;
+  }
+
   productScore=function(p,d,pool){
     const profile=capacityProfile(answers.family);
     let score=capacityFitScore(p.capacity,profile);
@@ -77,7 +88,7 @@
     const energyVals=pool.map(x=>x.energy);
     score+=safeNormalize(p.energy,energyVals,true)*(Number(answers.energy)||3)*4;
 
-    score+=Math.min(18,Math.max(0,(d.scores[p.doorType]||0)*0.55));
+    score+=Math.min(18,Math.max(0,doorFitValue(p,d)*0.55));
 
     if(answers.autoIce==='prefer'&&p.autoIce) score+=6;
     if(answers.smartphone==='prefer'&&p.smartphone===true) score+=6;
@@ -134,8 +145,9 @@
     let score=0;
     if(p.smartphone===true) score+=10;
     if(p.autoIce===true) score+=7;
-    if(p.doorType==='フレンチドア') score+=5;
-    if(p.doorType==='左右付け替え') score+=3;
+    if(p.doorType==='左右開き') score+=6;
+    else if(p.doorType==='フレンチドア') score+=5;
+    else if(p.doorType==='左右付け替え') score+=3;
     if(p.doors>=6) score+=6;
     else if(p.doors>=5) score+=4;
     else if(p.doors>=3) score+=2;
@@ -185,6 +197,17 @@
 
     window.__fridgeFairnessMeta={profile,budgetSet,budget,cap,regularCount:regular.length,featurePick};
     return {regular,featurePick};
+  };
+
+  // 「左右開き」は付け替え式ではなく、左右どちらからでも開けられる方式として適合表示する。
+  const originalMatchRows=matchRows;
+  matchRows=function(p,d){
+    const rows=originalMatchRows(p,d);
+    if(p.doorType==='左右開き'){
+      const idx=rows.findIndex(row=>String(row[1]||'').startsWith('ドア方式：'));
+      if(idx>=0) rows[idx]=[true,'ドア方式：左右開き'];
+    }
+    return rows;
   };
 
   function applyResultGuidance(){
