@@ -9,8 +9,11 @@ const catalogFiles=[
   'catalog-depth-verified.js',
 ];
 
+const answers={};
 const context=vm.createContext({
   console,
+  answers,
+  questions:[],
   location:{protocol:'https:',href:'https://aqua-priority.invalid/'},
   window:{},
   document:{
