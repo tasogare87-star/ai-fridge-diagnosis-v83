@@ -56,27 +56,68 @@ function testAquaObserver(){
     window:windowObj,
     console
   });
-  windowObj.window=windowObj;
   vm.runInContext(fs.readFileSync('v811-aqua-priority.js','utf8'),context,{filename:'v811-aqua-priority.js'});
   assert.equal(typeof observerCallback,'function','v811 observer callback must be registered');
   assert.equal(strategy.writes,1,'v811 initial strategy sync should write once');
   assert.equal(customer.writes,1,'v811 initial customer sync should write once');
   assert.match(strategy.innerHTML,/AQUAも条件適合時は候補から除外しません/);
-
   for(let i=0;i<20;i++) observerCallback();
   assert.equal(strategy.writes,1,'v811 strategy observer must not loop on identical HTML');
   assert.equal(customer.writes,1,'v811 customer observer must not loop on identical HTML');
+}
 
-  strategy._innerHTML='<strong>古い表示</strong>';
-  customer._innerHTML='<strong>古い表示</strong>';
-  observerCallback();
-  assert.equal(strategy.writes,2,'v811 should repair stale strategy copy once');
-  assert.equal(customer.writes,2,'v811 should repair stale customer copy once');
-  observerCallback();
-  assert.equal(strategy.writes,2,'v811 repaired strategy must remain stable');
-  assert.equal(customer.writes,2,'v811 repaired customer copy must remain stable');
+function testObserverConflict(){
+  const strategy=trackedNode('');
+  const customer=trackedNode('');
+  const result={
+    querySelector(selector){
+      if(selector==='.strategy-note') return strategy;
+      if(selector==='.v89-fair-note') return customer;
+      return null;
+    }
+  };
+  const callbacks=[];
+  class FakeMutationObserver{
+    constructor(cb){callbacks.push(cb);}
+    observe(){}
+    disconnect(){}
+  }
+  const windowObj={capacityProfile:null,__fridgeFairnessMeta:null};
+  const context=vm.createContext({
+    document:{
+      title:'',
+      getElementById(id){return id==='result'?result:null;},
+      querySelector(){return null;}
+    },
+    MutationObserver:FakeMutationObserver,
+    productScore:()=>100,
+    getCandidates:()=>({regular:[],featurePick:null}),
+    hardFilter:()=>true,
+    products:[],
+    answers:{family:1,budget:999999},
+    strategicMakers:[],
+    window:windowObj,
+    console
+  });
+
+  // Match production load order: v89 guidance first, then v8.11 AQUA policy.
+  vm.runInContext(fs.readFileSync('v89-ui-guidance.js','utf8'),context,{filename:'v89-ui-guidance.js'});
+  assert.equal(strategy.writes,1,'v89 should establish the initial copy');
+  vm.runInContext(fs.readFileSync('v811-aqua-priority.js','utf8'),context,{filename:'v811-aqua-priority.js'});
+  assert.equal(callbacks.length,2,'both result observers should be registered');
+  assert.equal(strategy.writes,2,'v811 should take ownership of strategy copy exactly once');
+  assert.equal(customer.writes,1,'v811 should establish customer copy exactly once');
+
+  // Repeated mutation delivery must settle. Previously these two callbacks alternated A/B forever.
+  for(let round=0;round<50;round++){
+    for(const cb of callbacks) cb();
+  }
+  assert.equal(strategy.writes,2,'v89/v811 observers must not ping-pong strategy copy');
+  assert.equal(customer.writes,1,'customer copy must remain stable');
+  assert.match(strategy.innerHTML,/AQUAも条件適合時は候補から除外しません/);
 }
 
 testUiGuidanceObserver();
 testAquaObserver();
-console.log('Result MutationObserver regression: PASS (all result observers idempotent)');
+testObserverConflict();
+console.log('Result MutationObserver regression: PASS (individual + cross-script stability)');
