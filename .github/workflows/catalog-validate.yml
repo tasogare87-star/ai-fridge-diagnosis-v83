@@ -26,3 +26,5 @@ jobs:
         run: node validate-catalog.mjs
       - name: Regression-test diagnosis
         run: node test-diagnosis.mjs
+      - name: Regression-test installation depth
+        run: node test-depth.mjs
