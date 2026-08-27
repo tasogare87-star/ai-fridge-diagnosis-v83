@@ -9,29 +9,25 @@
 
 ## 現在のデプロイ状態
 - Vercel本番は **batch 14まで** 配信確認済み。
-- `batch 15` ～ `batch 19` は **GitHub mainへ反映済み**だが、Vercelの **build rate limit** により未配信。
-- GitHub登録済みとVercel本番配信済みを分離し、本番URLでHTTP 200と読込を確認するまでは `production-live` と扱わない。
-
-### GitHub mainに準備済みの未配信batch
-- `batch 15`: SHARP 現行R世代10機種追加
-- `batch 16`: AQUA 現行14機種追加
-- `batch 17`: Panasonic `NR-C33JS2L` 追加
-- `batch 18`: 東芝 `GR-Y600FK` 売り切り在庫追加 / SHARP `SJ-X373P` 除外
-- `batch 19`: 初期登録10機種の販売鮮度更新、日立HWS47スマホ連携確定、`NR-F55HY3-N` 価格更新
+- `batch 15` ～ `batch 19` はGitHub main反映済みだが、Vercelの **build rate limit** により未配信。
+- `batch 20`（日立 `R-H54Y`）は検証ブランチでCI通過済み。main反映後も本番URLで読込確認するまでは `production-live` と扱わない。
+- 固定QR用 `ai-fridge-diagnosis-public` はv8.2のまま維持し、今回の更新対象外。
 
 ## 自動カタログ検証
-GitHub Actions `Catalog validation` を導入済み。
+GitHub Actions `Catalog validation` と診断回帰テストを運用中。
 
-2026-08-28現在のmain相当データで:
-- 総商品数: **151機種**
+batch20適用時の検証結果:
+- 総商品数: **152機種**
 - AQUA: 27
-- HITACHI: 20
+- HITACHI: **21**
 - MITSUBISHI ELECTRIC: 27
 - Panasonic: 27
 - SHARP: 18
 - TOSHIBA: 32
-- 構文・必須項目・完全同一型番重複・batch18監査条件: **PASS**
-- `verifiedAt` 欠損 / スマホ連携未確定などのカタログ警告: **0件**
+- 潜在的な色違い・ベース型番重複: **0件**
+- カタログ警告: **0件**
+- `Catalog validation: PASS`
+- `Diagnosis regression: PASS`
 
 ## 診断対象化の定義
 1. ヨドバシ.comで現在販売中または現在注文可能であることを確認
@@ -49,59 +45,47 @@ GitHub Actions `Catalog validation` を導入済み。
 ### Panasonic
 - `catalog-inventory-panasonic.json`
 - 現行候補 28件
-- 現在本番配信済み: **26件**
-- `NR-C33JS2L`: batch17でGitHub main追加済み / Vercel未配信
+- GitHub診断カタログ: **27件**
 - ヨドバシ確認待ち: `NR-FVF45S3` **1件**
-- batch19で `NR-E47BR3/BR3L`, `NR-F55HY3` の販売鮮度を更新し、`NR-F55HY3-N` は **287,100円**へ更新
+- `NR-F55HY3-N` は287,100円へ更新済み
 
 ### 三菱電機
 - `catalog-inventory-mitsubishi.json`
 - 発売済み現行候補 27件
-- **27 / 27 本番化完了**
-- batch19で `MR-MZ49N-H` のヨドバシ販売状態を再確認
+- **27 / 27 完了**
 
 ### 日立
 - `catalog-inventory-hitachi.json`
 - 標準冷凍冷蔵庫 21候補
-- **20件本番 / `R-H54Y` 1件ヨドバシ確認待ち**
-- batch19で `R-HWS47X / R-HWS47XL` のスマホ連携を公式仕様に基づき **false** へ確定し、販売鮮度を更新
+- **21 / 21 完了**
+- `R-H54Y-S`: batch20で追加。ヨドバシ実売219,250円を確認し、公式仕様を再照合
 - `R-K11R`（冷凍庫）と `R-MR7S`（ミニバー）は対象外
 
 ### 東芝
 - `catalog-inventory-toshiba.json`
-- メーカー現行商品一覧基準: **30候補 / 30件本番化済み**
-- 売り切り在庫でヨドバシ販売継続確認済み:
-  - `GR-Y510FK`: 既存本番維持、batch19で確認日を更新
-  - `GR-Y600FK`: batch18でGitHub main追加済み / Vercel未配信
+- メーカー現行商品一覧基準: **30 / 30完了**
+- 売り切り在庫でヨドバシ販売継続確認済み: `GR-Y510FK`, `GR-Y600FK`
 - 販売鮮度監査継続: `GR-Y550FK`, `GR-Y460FK`, `GR-Y550FZ`, `GR-Y510FZ`, `GR-Y460FZ`
 
 ### SHARP
 - `catalog-inventory-sharp.json`
-- 現行R世代 18候補
-- 仕様・ヨドバシ確認: **18 / 18完了**
-- 現在本番配信済み: **8件**
-- batch15で追加10件をGitHub mainへ反映済み / Vercel未配信
-- `SJ-X373P`: ヨドバシ現行販売なしと判定しbatch18で除外済み（GitHub側）
-- `SJ-MF43R-H`: batch19で販売鮮度を更新
-- `SJ-MF55R`: 公式値545Lで登録
+- 現行R世代 **18 / 18完了**
+- `SJ-X373P` はヨドバシ現行販売なしと判定し除外済み
+- `SJ-MF55R` は公式値545Lで登録
 
 ### AQUA
 - `catalog-inventory-aqua.json`
-- 2026年A/B世代の標準冷凍冷蔵庫を左右開き差分込み **28候補**として整理
-- 現在本番配信済み: **13件**
-- batch16追加14件をGitHub mainへ反映済み / Vercel未配信
-- `AQR-V43A / V43AL`: batch19で販売鮮度を更新
-- ヨドバシ確認待ち: **`AQR-FD7B` 1件**
-- `AQR-9A`（90L・1ドア）は標準冷凍冷蔵庫診断の対象外
-- 600L以上の現行標準冷凍冷蔵庫は確認できていないため、無理に登録しない
+- 2026年A/B世代の標準冷凍冷蔵庫を左右開き差分込み28候補として整理
+- GitHub診断カタログ: **27件**
+- ヨドバシ確認待ち: `AQR-FD7B` **1件**
+- `AQR-9A`（90L・1ドア）は対象外
 
 ## 残る販売確認
-ヨドバシ現行取扱の直接・最新根拠がまだ取れていないため、推測せず保留する。
+ヨドバシ現行取扱の直接・最新根拠が取れていないため推測せず保留する。
 
 ### 現行候補
 1. Panasonic `NR-FVF45S3`
-2. 日立 `R-H54Y`
-3. AQUA `AQR-FD7B`
+2. AQUA `AQR-FD7B`
 
 ### 売り切り在庫監査
 1. 東芝 `GR-Y550FK`
@@ -111,17 +95,19 @@ GitHub Actions `Catalog validation` を導入済み。
 5. 東芝 `GR-Y460FZ`
 
 ## 次の優先順位
-1. **Vercel build rate limit解消後、batch15～19を本番配信確認**
-2. 上記現行3機種＋東芝売り切り5機種の販売確認
-3. 型番表記揺れ・左右差分・シリーズ間重複の意味的監査
-4. 本番反映後、全メーカー横断の診断回帰テスト
+1. **Vercel build rate limit解消後、batch15～20を本番配信確認**
+2. 上記現行2機種＋東芝売り切り5機種の販売確認
+3. AQUA `AQR-FD7B` が標準冷凍冷蔵庫診断の対象として妥当かスコープ再監査
+4. 本番反映後、ブラウザ実機相当の全メーカー横断回帰確認
 
 ## カタログファイル
 - `data.js`
 - `catalog-production-extension.js`
 - `catalog-production-batch2.js` ～ `catalog-production-batch14.js`: 本番配信確認済み
 - `catalog-production-batch15.js` ～ `catalog-production-batch19.js`: GitHub main反映済み / Vercel未配信
+- `catalog-production-batch20.js`: 日立R-H54Y追加、検証済み
 - `validate-catalog.mjs`: カタログ自動検証
+- `test-diagnosis.mjs`: 診断回帰テスト
 - `.github/workflows/catalog-validate.yml`: mainおよびcatalog系ブランチで検証実行
 
 毎日の「冷蔵庫価格チェック」は `data.js` とすべての `catalog-production-*.js` を対象とする。
