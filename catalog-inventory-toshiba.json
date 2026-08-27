@@ -41,15 +41,15 @@
     {"model":"GR-Y16BP","capacity":160,"series":"BP","doorVariant":"right","inventoryStatus":"production"}
   ],
   "retailSellThrough": [
+    {"model":"GR-Y600FK","capacity":601,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-live","yodobashiPrice":168000,"yodobashiEvidence":"Price.com Toshiba refrigerator ranking page crawled within 30 days shows Yodobashi.com at 168,000 yen; Toshiba official page marks production ended but specifications remain verified","verifiedAt":"2026-08-28"},
     {"model":"GR-Y510FK","capacity":509,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-live","yodobashiPrice":172710,"yodobashiEvidence":"Price.com Yodobashi shop entry registered 2026-08-07; official Toshiba 2026 catalog/spec page verified","verifiedAt":"2026-08-28"}
   ],
   "retailSellThroughAudit": [
-    {"model":"GR-Y600FK","capacity":601,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi search cache is old and needs fresh orderability evidence"},
-    {"model":"GR-Y550FK","capacity":551,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official/current retail presence verified; fresh Yodobashi orderability evidence not yet secured"},
-    {"model":"GR-Y460FK","capacity":462,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; older aggregate showed Yodobashi but a fresher individual price page did not list Yodobashi among active sellers"},
-    {"model":"GR-Y550FZ","capacity":551,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi evidence available only from older cache"},
+    {"model":"GR-Y550FK","capacity":551,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; fresh Yodobashi orderability evidence not yet secured"},
+    {"model":"GR-Y460FK","capacity":462,"series":"FK","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; fresher individual price page does not list Yodobashi among active sellers"},
+    {"model":"GR-Y550FZ","capacity":551,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi evidence available only from older cache/customer report"},
     {"model":"GR-Y510FZ","capacity":508,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi evidence available only from older cache"},
-    {"model":"GR-Y460FZ","capacity":461,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi evidence available only from older cache"}
+    {"model":"GR-Y460FZ","capacity":461,"series":"FZ","doorVariant":"french","inventoryStatus":"retail-sell-through-audit","reason":"official specs verified; Yodobashi evidence available only from older cache/customer report"}
   ],
   "excludedCurrentProducts": [
     {"model":"GF-Y14HS","capacity":135,"reason":"freezer-only; outside refrigerator diagnosis scope"},
@@ -58,8 +58,8 @@
   "summary": {
     "manufacturerCurrentModels": 30,
     "manufacturerCurrentProduction": 30,
-    "retailSellThroughLive": 1,
-    "retailSellThroughAudit": 6,
+    "retailSellThroughLive": 2,
+    "retailSellThroughAudit": 5,
     "excludedCurrentProducts": 2
   }
 }
