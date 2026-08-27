@@ -38,13 +38,28 @@
 5. 右開き / 左開き、フレンチドア / どっちもドアなど診断上意味のある差は別型番として保持
 6. 価格はヨドバシ.comの現行表示を優先し、取得不能時は推測しない
 7. 各商品に `verifiedAt` を持たせ、価格・販売状態の鮮度を個別管理
-8. ヨドバシ掲載型番をメーカー別インベントリに記録し、`production / color-variant / preorder / ended / pending-verification` を明示する
+8. ヨドバシ掲載型番をメーカー別インベントリに記録し、`production / verified-not-promoted / pending-yodobashi-check` を明示する
+
+## メーカー別インベントリ進捗
+
+### Panasonic
+- `catalog-inventory-panasonic.json`
+- 現行候補 28件を整理済み
+- 本番 26件 / ヨドバシ確認待ち 2件
+
+### 三菱電機
+- `catalog-inventory-mitsubishi.json`
+- 2026年8月28日時点の発売済み現行候補 24件を整理済み
+- 本番 15件 / 販売確認済み・本番仕様照合待ち 4件 / ヨドバシ確認待ち 5件
+- **次の本番昇格候補:** `MR-WXD47LN`, `MR-BD46N`, `MR-MD45N`, `MR-C33M`
+- **販売確認継続:** `MR-WZ55N`, `MR-JW55N`, `MR-JM54N`, `MR-JW50N`, `MR-JM49N`
+- 2026年9月以降発売予定の N世代 / PXシリーズは現時点では本番対象外として別管理
 
 ## 次の優先順位
 
 ### 優先A: メーカー別の全型番インベントリ化
-- Panasonic
-- 三菱電機
+- Panasonic: 初回台帳化済み
+- 三菱電機: 初回台帳化済み。未昇格4機種の仕様照合を優先
 - 日立
 - 東芝
 - SHARP
@@ -53,6 +68,7 @@
 各メーカーについて、ヨドバシ.comの現行掲載型番を列挙し、色違いだけは代表型番へ集約する。左開き・右開き、ドア方式、容量、シリーズ、主要機能が異なるものは別候補として保持する。
 
 ### 優先B: 未登録シリーズの本番昇格
+- 三菱電機: `MR-WXD47LN`, `MR-BD46N`, `MR-MD45N`, `MR-C33M` の公式仕様を全項目照合後に昇格
 - 300～399L: スリム / 冷凍重視 / 野菜重視シリーズ
 - 400～499L: 60cm幅片開き / 65cmフレンチ / どっちもドア
 - 500～599L: 上位 / 標準 / 薄型シリーズ
@@ -69,5 +85,6 @@
 - `catalog-production-batch6.js`
 - `catalog-production-batch7.js`
 - `catalog-production-batch8.js`
+- `catalog-production-batch9.js`
 
 毎日の「冷蔵庫価格チェック」は `data.js` とすべての `catalog-production-*.js` を対象とする。
