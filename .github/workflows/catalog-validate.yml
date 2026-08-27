@@ -40,3 +40,5 @@ jobs:
         run: node test-aqua-priority.mjs
       - name: Regression-test UI flow
         run: node test-ui-flow.mjs
+      - name: Audit ranking scenarios
+        run: node audit-ranking-scenarios.mjs
