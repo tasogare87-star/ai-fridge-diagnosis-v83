@@ -147,7 +147,7 @@
       freezerTotal:97,
       vegetable:70,
       vegetablePos:"真ん中",
-      energy:354,
+      energy:333,
       autoIce:true,
       smartphone:false,
       features:["オートクローズどっちもドア","プラズマクラスター","真ん中野菜室","大容量冷凍室"],
