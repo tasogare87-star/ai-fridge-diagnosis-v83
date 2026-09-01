@@ -19,7 +19,7 @@
       maker:"TOSHIBA", model:"GR-A590WF-UC", status:"発売中", price:299800, capacity:586, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:159, vegetable:106, vegetablePos:"下段", energy:294, autoIce:true, smartphone:true,
       features:["586L・幅68.5cm", "まんなか大容量3段冷凍室", "おいしさ持続上質冷凍＋", "IoLIFE対応"],
-      source:"https://www.yodobashi.com/?word=GR-A590WF", verifiedAt:"2026-09-01"
+      source:"https://www.yodobashi.com/?word=GR-A590WF", verifiedAt:"2026-09-02"
     },
     {
       maker:"TOSHIBA", model:"GR-A500GT-TH", status:"発売中", price:232100, capacity:501, width:600, doorType:"右開き", doors:5,
