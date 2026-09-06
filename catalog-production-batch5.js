@@ -6,7 +6,7 @@
       maker:"Panasonic", model:"NR-F49EY3-S", status:"発売中", price:237600, capacity:490, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:127, vegetable:104, vegetablePos:"下段", energy:279, autoIce:true, smartphone:false,
       features:["幅65cm・490L","新鮮凍結ルーム26L＋冷凍室101L","104L野菜室","奥行65cm"],
-      source:"https://www.yodobashi.com/?word=NR-F49EY3-S", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=NR-F49EY3-S", verifiedAt:"2026-09-07"
     },
     {
       maker:"MITSUBISHI ELECTRIC", model:"MR-WZ50N-W", status:"発売中", price:308000, capacity:495, width:650, doorType:"フレンチドア", doors:6,
@@ -18,7 +18,7 @@
       maker:"HITACHI", model:"R-HWC49Y-N", status:"発売中", price:278000, capacity:485, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:121, vegetable:91, vegetablePos:"下段", energy:262, autoIce:true, smartphone:true,
       features:["まるごとチルド","特鮮氷温ルーム","まんなか3段大容量冷凍","スマートフォン連携"],
-      source:"https://www.yodobashi.com/?word=R-HWC49Y-N", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=R-HWC49Y-N", verifiedAt:"2026-09-07"
     },
     {
       maker:"TOSHIBA", model:"GR-A450GT-TH", status:"発売中", price:224270, capacity:452, width:600, doorType:"右開き", doors:5,
@@ -33,16 +33,16 @@
       source:"https://www.yodobashi.com/?word=GR-A460FH%28EW%29", verifiedAt:"2026-08-28"
     },
     {
-      maker:"SHARP", model:"SJ-XW46R-H", status:"発売中", price:198000, capacity:455, width:600, doorType:"左右開き", doors:5,
+      maker:"SHARP", model:"SJ-XW46R-H", status:"発売中", price:188040, capacity:455, width:600, doorType:"左右開き", doors:5,
       freezerTotal:113, vegetable:80, vegetablePos:"真ん中", energy:267, autoIce:true, smartphone:false,
       features:["オートクローズどっちもドア","113L大容量冷凍室","真ん中野菜室","プラズマクラスター"],
-      source:"https://www.yodobashi.com/?word=SJ-XW46R-H", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=SJ-XW46R-H", verifiedAt:"2026-09-07"
     },
     {
       maker:"AQUA", model:"AQR-VZA45A-W", status:"発売中", price:169530, capacity:452, width:595, doorType:"右開き", doors:4,
       freezerTotal:141, vegetable:79, vegetablePos:null, energy:259, autoIce:true, smartphone:false,
       features:["幅59.5cm・452L","上段61L＋下段80Lの大容量冷凍室","旬鮮野菜室","洗える製氷ユニット"],
-      source:"https://www.yodobashi.com/?word=AQR-VZA45A-W", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=AQR-VZA45A-W", verifiedAt:"2026-09-07"
     }
   ];
   additions.forEach(item=>{
