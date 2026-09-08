@@ -25,7 +25,7 @@
       maker:"Panasonic",
       model:"NR-B18C3-W",
       status:"発売中",
-      price:51800,
+      price:53830,
       capacity:180,
       width:497,
       doorType:"右開き",
@@ -38,7 +38,7 @@
       smartphone:false,
       features:["60L冷凍室","幅49.7cm","インバーター制御","約19dB静音設計"],
       source:"https://www.yodobashi.com/?word=NR-B18C3-W",
-      verifiedAt:"2026-09-07"
+      verifiedAt:"2026-09-09"
     },
     {
       maker:"AQUA",
