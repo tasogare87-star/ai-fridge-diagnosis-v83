@@ -34,10 +34,10 @@
       source:"https://www.yodobashi.com/?word=MR-MD45NL-W", verifiedAt:"2026-09-07"
     },
     {
-      maker:"MITSUBISHI ELECTRIC", model:"MR-C33M-W", status:"発売中", price:87800, capacity:330, width:600, doorType:"右開き", doors:3,
+      maker:"MITSUBISHI ELECTRIC", model:"MR-C33M-W", status:"発売中", price:89790, capacity:330, width:600, doorType:"右開き", doors:3,
       freezerTotal:80, vegetable:70, vegetablePos:"真ん中", energy:342, autoIce:false, smartphone:false,
       features:["330L・幅60cm","2段チルド","80Lビッグフリーザー","真ん中野菜室"],
-      source:"https://www.yodobashi.com/?word=MR-C33M-W", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=MR-C33M-W", verifiedAt:"2026-09-09"
     }
   ];
   additions.forEach(item=>{
