@@ -42,13 +42,13 @@
       maker:"AQUA", model:"AQR-S40A-W", status:"発売中", price:126610, capacity:401, width:600, doorType:"右開き", doors:5,
       freezerTotal:84, vegetable:91, vegetablePos:"真ん中", energy:242, autoIce:true, smartphone:false,
       features:["奥行60cm薄型","真ん中野菜室","自動製氷","年間242kWh省エネ"],
-      source:"https://www.yodobashi.com/?word=AQR-S40A%28W%29", verifiedAt:"2026-09-09"
+      source:"https://www.yodobashi.com/?word=AQR-S40A%28W%29", verifiedAt:"2026-09-11"
     },
     {
-      maker:"AQUA", model:"AQR-S40AL-W", status:"発売中", price:127880, capacity:401, width:600, doorType:"左開き", doors:5,
+      maker:"AQUA", model:"AQR-S40AL-W", status:"発売中", price:126610, capacity:401, width:600, doorType:"左開き", doors:5,
       freezerTotal:84, vegetable:91, vegetablePos:"真ん中", energy:242, autoIce:true, smartphone:false,
       features:["左開き仕様","奥行60cm薄型","真ん中野菜室","自動製氷"],
-      source:"https://www.yodobashi.com/?word=AQR-S40AL%28W%29", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=AQR-S40AL%28W%29", verifiedAt:"2026-09-11"
     }
   ];
   additions.forEach(item=>{
