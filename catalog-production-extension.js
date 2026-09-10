@@ -3,9 +3,9 @@
 (function(){
   const additions=[
     {
-      maker:"Panasonic", model:"NR-B16C3-W", status:"発売中", price:68080, capacity:156, width:497, doorType:"右開き", doors:2,
+      maker:"Panasonic", model:"NR-B16C3-W", status:"発売中", price:46840, capacity:156, width:497, doorType:"右開き", doors:2,
       freezerTotal:60, vegetable:null, vegetablePos:null, energy:271, autoIce:false, smartphone:false,
-      features:["60L大容量冷凍室","幅49.7cmのコンパクト設計","約19dBの静音設計"], source:"https://www.yodobashi.com/product/100000001009448941/", verifiedAt:"2026-08-28"
+      features:["60L大容量冷凍室","幅49.7cmのコンパクト設計","約19dBの静音設計"], source:"https://www.yodobashi.com/product/100000001009448941/", verifiedAt:"2026-09-11"
     },
     {
       maker:"MITSUBISHI ELECTRIC", model:"MR-P17M-W", status:"発売中", price:53370, capacity:168, width:480, doorType:"右開き", doors:2,
@@ -23,9 +23,9 @@
       features:["真ん中野菜室","82L・3段冷凍室","かってに氷","選べる節電モード"], source:"https://www.yodobashi.com/?word=GR-Y29SC-WU", verifiedAt:"2026-08-28"
     },
     {
-      maker:"MITSUBISHI ELECTRIC", model:"MR-CX30M-W", status:"発売中", price:99800, capacity:300, width:540, doorType:"右開き", doors:3,
+      maker:"MITSUBISHI ELECTRIC", model:"MR-CX30M-W", status:"発売中", price:112150, capacity:300, width:540, doorType:"右開き", doors:3,
       freezerTotal:70, vegetable:60, vegetablePos:"真ん中", energy:319, autoIce:true, smartphone:false,
-      features:["氷点下ストッカー","70L冷凍室","真ん中野菜室","幅54cmスリム設計"], source:"https://www.yodobashi.com/?word=MR-CX30M-W", verifiedAt:"2026-09-07"
+      features:["氷点下ストッカー","70L冷凍室","真ん中野菜室","幅54cmスリム設計"], source:"https://www.yodobashi.com/?word=MR-CX30M-W", verifiedAt:"2026-09-11"
     },
     {
       maker:"Panasonic", model:"NR-C33ES2-W", status:"発売中", price:128700, capacity:326, width:600, doorType:"右開き", doors:3,
@@ -48,9 +48,9 @@
       features:["左開き仕様","氷点下ストッカーD A.I.","80L冷凍室","真ん中野菜室"], source:"https://www.yodobashi.com/?word=MR-CX33ML-W", verifiedAt:"2026-09-07"
     },
     {
-      maker:"AQUA", model:"AQR-36A(DS)", status:"発売中", price:129700, capacity:362, width:600, doorType:"右開き", doors:4,
+      maker:"AQUA", model:"AQR-36A(DS)", status:"発売中", price:88280, capacity:362, width:600, doorType:"右開き", doors:4,
       freezerTotal:100, vegetable:78, vegetablePos:"下段", energy:303, autoIce:false, smartphone:false,
-      features:["100Lまんなか2段冷凍室","クイック冷凍","段違い野菜バスケット","幅60cm"], source:"https://www.yodobashi.com/product/100000001009657265/", verifiedAt:"2026-08-28"
+      features:["100Lまんなか2段冷凍室","クイック冷凍","段違い野菜バスケット","幅60cm"], source:"https://www.yodobashi.com/product/100000001009657265/", verifiedAt:"2026-09-11"
     },
     {
       maker:"Panasonic", model:"NR-C37ES2-W", status:"発売中", price:138600, capacity:365, width:600, doorType:"右開き", doors:3,
@@ -86,6 +86,6 @@
   const sharp=products.find(p=>p.model==='SJ-TD18R-W');
   if(sharp){
     sharp.price=58760;
-    sharp.verifiedAt="2026-09-07";
+    sharp.verifiedAt="2026-09-11";
   }
 })();
