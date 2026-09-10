@@ -113,6 +113,9 @@
   };
   Object.entries(verifiedPrices).forEach(([model,price])=>{
     const p=products.find(x=>x.model===model);
-    if(p){p.price=price;p.verifiedAt="2026-09-11";}
+    if(p){
+      p.price=price;
+      p.verifiedAt=(model==="MR-CX37M-H")?"2026-09-07":"2026-09-11";
+    }
   });
 })();
