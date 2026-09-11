@@ -13,17 +13,17 @@
       features:["60L冷凍室","幅49.7cm","インバーター制御","約19dB静音設計"], source:"https://www.yodobashi.com/?word=NR-B18C3-W", verifiedAt:"2026-09-09"
     },
     {
-      maker:"AQUA", model:"AQR-14A-W", status:"発売中", price:39800, capacity:139, width:500, doorType:"右開き", doors:2,
+      maker:"AQUA", model:"AQR-14A-W", status:"発売中", price:39240, capacity:139, width:500, doorType:"右開き", doors:2,
       freezerTotal:53, vegetable:null, vegetablePos:null, energy:288, autoIce:false, smartphone:false,
       features:["53L引き出し式冷凍室","壁ピタ設置","耐熱100℃テーブル","フリーケース"], source:"https://www.yodobashi.com/?word=AQR-14A-W", verifiedAt:"2026-09-12"
     },
     {
-      maker:"AQUA", model:"AQR-16A-C", status:"発売中", price:57610, capacity:160, width:480, doorType:"右開き", doors:2,
+      maker:"AQUA", model:"AQR-16A-C", status:"発売中", price:54800, capacity:160, width:480, doorType:"右開き", doors:2,
       freezerTotal:78, vegetable:null, vegetablePos:null, energy:269, autoIce:false, smartphone:false,
       features:["78L・3段大容量冷凍室","幅48cm","インバーター省エネ","壁ピタ設置"], source:"https://www.yodobashi.com/?word=AQR-16A-C", verifiedAt:"2026-09-12"
     },
     {
-      maker:"AQUA", model:"AQR-17A-C", status:"発売中", price:54800, capacity:170, width:530, doorType:"右開き", doors:2,
+      maker:"AQUA", model:"AQR-17A-C", status:"発売中", price:49540, capacity:170, width:530, doorType:"右開き", doors:2,
       freezerTotal:68, vegetable:null, vegetablePos:null, energy:247, autoIce:false, smartphone:false,
       features:["68L・3段冷凍室","ローボディ","耐熱100℃テーブル","壁ピタ設置"], source:"https://www.yodobashi.com/?word=AQR-17A-C", verifiedAt:"2026-09-12"
     }
@@ -36,7 +36,7 @@
   const verifiedPrices={
     "NR-B16C3-W":46840,
     "MR-P17M-W":53370,
-    "AQR-36A(DS)":93890,
+    "AQR-36A(DS)":88280,
     "SJ-TD18R-W":58760,
     "MR-CX33M-W":110910,
     "MR-CX37M-H":124080
