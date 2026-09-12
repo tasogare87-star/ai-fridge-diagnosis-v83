@@ -15,10 +15,10 @@
       source:"https://www.yodobashi.com/?word=MR-MZ54N-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"HITACHI", model:"R-HWC54Y-N", status:"発売中", price:285440, capacity:540, width:650, doorType:"フレンチドア", doors:6,
+      maker:"HITACHI", model:"R-HWC54Y-N", status:"発売中", price:298000, capacity:540, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:137, vegetable:103, vegetablePos:"下段", energy:263, autoIce:true, smartphone:true,
       features:["まるごとチルド","特鮮氷温ルーム","まんなか3段大容量冷凍","スマートフォン連携"],
-      source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-09-13"
     },
     {
       maker:"TOSHIBA", model:"GR-A510FH-EW", status:"発売中", price:157780, capacity:509, width:650, doorType:"フレンチドア", doors:6,
