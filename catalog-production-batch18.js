@@ -1,13 +1,8 @@
 // v8.9 production catalog batch 18
-// Retail sell-through audit corrections verified on 2026-08-28.
-// - Add Toshiba GR-Y600FK while fresh Yodobashi retail evidence remains.
-// - Remove SHARP SJ-X373P because fresh retail evidence no longer shows Yodobashi as an active seller.
+// Retail sell-through audit corrections.
+// Do not remove a catalog candidate solely because current Yodobashi evidence is unavailable;
+// only an explicit current sale/handling-end signal may change its production eligibility.
 (function(){
-  const removals=new Set(["SJ-X373P-N"]);
-  for(let i=products.length-1;i>=0;i--){
-    if(removals.has(products[i].model)) products.splice(i,1);
-  }
-
   const additions=[
     {
       maker:"TOSHIBA", model:"GR-Y600FK-EW", status:"発売中", lifecycle:"売り切り在庫", price:168000, capacity:601, width:685, doorType:"フレンチドア", doors:6,
