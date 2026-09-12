@@ -4,10 +4,10 @@
 (function(){
   const additions=[
     {
-      maker:"HITACHI", model:"R-H54Y-S", status:"発売中", price:219250, capacity:540, width:650, doorType:"フレンチドア", doors:6,
+      maker:"HITACHI", model:"R-H54Y-S", status:"発売中", price:236910, capacity:540, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:159, vegetable:103, vegetablePos:"下段", energy:295, autoIce:true, smartphone:false,
       features:["540L・幅65cm","まんなか3段大容量冷凍","特鮮氷温ルーム","まるごとチルド","うるおい野菜室"],
-      source:"https://www.yodobashi.com/?word=R-H54Y", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=R-H54Y", verifiedAt:"2026-09-13"
     }
   ];
   additions.forEach(item=>{
