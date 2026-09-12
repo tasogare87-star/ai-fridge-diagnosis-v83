@@ -3,9 +3,9 @@
 (function(){
   const additions=[
     {
-      maker:"MITSUBISHI ELECTRIC", model:"MR-P15M-W", status:"発売中", price:45730, capacity:146, width:480, doorType:"右開き", doors:2,
+      maker:"MITSUBISHI ELECTRIC", model:"MR-P15M-W", status:"発売中", price:43790, capacity:146, width:480, doorType:"右開き", doors:2,
       freezerTotal:46, vegetable:null, vegetablePos:null, energy:300, autoIce:false, smartphone:false,
-      features:["幅48cmコンパクト","耐熱フルフラットトップテーブル","3段ガラスシェルフ","低温ケース"], source:"https://www.yodobashi.com/?word=MR-P15M-W", verifiedAt:"2026-09-11"
+      features:["幅48cmコンパクト","耐熱フルフラットトップテーブル","3段ガラスシェルフ","低温ケース"], source:"https://www.yodobashi.com/?word=MR-P15M-W", verifiedAt:"2026-09-13"
     },
     {
       maker:"Panasonic", model:"NR-B18C3-W", status:"発売中", price:53830, capacity:180, width:497, doorType:"右開き", doors:2,
@@ -38,14 +38,14 @@
     "MR-P17M-W":53370,
     "AQR-36A(DS)":88280,
     "SJ-TD18R-W":58760,
-    "MR-CX33M-W":110910,
+    "MR-CX33M-W":109100,
     "MR-CX37M-H":124080
   };
   Object.entries(verifiedPrices).forEach(([model,price])=>{
     const p=products.find(x=>x.model===model);
     if(p){
       p.price=price;
-      p.verifiedAt=(model==="AQR-36A(DS)")?"2026-09-12":((model==="MR-CX37M-H")?"2026-09-07":"2026-09-11");
+      p.verifiedAt=(model==="AQR-36A(DS)")?"2026-09-12":((model==="MR-CX37M-H")?"2026-09-07":((model==="MR-CX33M-W")?"2026-09-13":"2026-09-11"));
     }
   });
 })();
