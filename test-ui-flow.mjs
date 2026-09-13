@@ -171,7 +171,7 @@ for(const model of excluded){
 }
 
 const coverage=vm.runInContext('window.__fridgeDepthCoverage',context);
-assert.equal(coverage.verified,152,'UI flow must load official depth metadata for all 152 production models');
+assert.equal(coverage.verified,153,'UI flow must load official depth metadata for all 153 production models');
 const aquaPolicy=vm.runInContext('window.__aquaPriorityPolicy',context);
 assert.equal(aquaPolicy.regularPenalty,10,'AQUA regular priority adjustment must remain 10 points');
 assert.equal(aquaPolicy.featurePenalty,8,'AQUA feature priority adjustment must remain 8 points');

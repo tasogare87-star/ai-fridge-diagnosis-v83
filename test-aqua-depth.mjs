@@ -36,8 +36,8 @@ const aqua=JSON.parse(vm.runInContext('JSON.stringify(window.__aquaDepthCoverage
 const total=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCoverage)',context));
 assert.equal(aqua.installVerified,27,'all 27 AQUA standard diagnosis models must have official installation depth');
 assert.equal(aqua.total,27,'AQUA production pool count must stay 27');
-assert.equal(total.verified,143,'overall depth coverage must reach 143/152 after AQUA expansion');
-assert.equal(total.installVerified,114,'installation-depth coverage must reach 114/152 after AQUA expansion');
+assert.equal(total.verified,144,'overall depth coverage must reach 144/153 after AQUA expansion');
+assert.equal(total.installVerified,115,'installation-depth coverage must reach 115/153 after AQUA expansion');
 assert.equal(total.bodyOnlyVerified,29,'body-only count must remain 29 after AQUA exact installation-depth coverage');
 
 function state(prefix){

@@ -45,7 +45,7 @@ assert.equal(depthQuestion.options.at(-1)[1],999,'depth question must support un
 
 const coverage=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCoverage)',context));
 const toshibaCoverage=JSON.parse(vm.runInContext('JSON.stringify(window.__toshibaDepthCoverage)',context));
-assert.ok(coverage.verified>=100,`verified depth coverage should reach at least 100/152; got ${coverage.verified}`);
+assert.ok(coverage.verified>=100,`verified depth coverage should reach at least 100/153; got ${coverage.verified}`);
 assert.ok(coverage.installVerified>=89,'installation-depth verified coverage should include all loaded Toshiba models');
 assert.ok(coverage.bodyOnlyVerified>=10,'body-depth-only verified models should remain tracked separately');
 assert.equal(toshibaCoverage.verified,32,'all 32 loaded Toshiba models must have official installation depth');

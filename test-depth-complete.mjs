@@ -33,9 +33,9 @@ const totals=JSON.parse(vm.runInContext(`JSON.stringify({
   missingVerifiedAt:products.filter(p=>(Number.isFinite(p.depth)||Number.isFinite(p.installDepth))&&!p.depthVerifiedAt).map(p=>p.model)
 })`,context));
 
-assert.equal(totals.total,152,'production catalog count must remain 152');
-assert.equal(totals.verified,152,`all 152 products must have official depth evidence; missing: ${totals.missing.join(', ')}`);
-assert.equal(totals.install,123,'123 products should have manufacturer-confirmed installation depth');
+assert.equal(totals.total,153,'production catalog count must remain 153');
+assert.equal(totals.verified,153,`all 153 products must have official depth evidence; missing: ${totals.missing.join(', ')}`);
+assert.equal(totals.install,124,'124 products should have manufacturer-confirmed installation depth');
 assert.equal(totals.bodyOnly,29,'29 products should remain body-depth-only caution cases');
 assert.deepEqual(totals.missing,[],'no production model may remain depth-unknown');
 assert.deepEqual(totals.missingSource,[],'every depth-verified product must retain its manufacturer source');

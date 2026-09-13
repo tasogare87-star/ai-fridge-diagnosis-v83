@@ -14,6 +14,7 @@
     'GR-Y510FK(EW)':{depth:699,source:'https://www.toshiba-lifestyle.com/jp/refrigerators/gr-y510fk/'},
     'SJ-MF43R-H':{depth:630,installDepth:637,source:'https://jp.sharp/reizo/products/sjmf43r/spec/'},
     'SJ-TD18R-W':{depth:600,installDepth:646,source:'https://jp.sharp/reizo/products/sjtd18r/spec/'},
+    'SJ-X373P-N':{depth:650,installDepth:650,source:'https://jp.sharp/reizo/products/sjx373p/spec/',verifiedAt:'2026-09-13'},
     'AQR-V43A(S)':{depth:715,installDepth:720,source:'https://aqua-has.com/product/v43a/'},
     'AQR-V43AL(S)':{depth:715,installDepth:720,source:'https://aqua-has.com/product/v43a/'}
   };
@@ -91,7 +92,7 @@
     if(!meta) return;
     if(Number.isFinite(meta.depth)) p.depth=meta.depth;
     if(Number.isFinite(meta.installDepth)) p.installDepth=meta.installDepth;
-    p.depthVerifiedAt=verifiedAt;
+    p.depthVerifiedAt=meta.verifiedAt||verifiedAt;
     p.depthSource=meta.source;
     verified++;
     if(Number.isFinite(meta.installDepth)) installVerified++;

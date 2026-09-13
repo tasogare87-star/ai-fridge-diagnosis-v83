@@ -36,8 +36,8 @@ const total=JSON.parse(vm.runInContext('JSON.stringify(window.__fridgeDepthCover
 assert.equal(maker.bodyVerified,21,'all loaded Hitachi models must have official body depth');
 assert.equal(maker.total,21,'Hitachi production model count must stay 21');
 assert.equal(maker.installVerified,3,'only three Hitachi models currently have separately verified installation depth');
-assert.equal(total.verified,118,'overall verified body/install depth coverage should be 118/152 after Hitachi expansion');
-assert.equal(total.installVerified,89,'Hitachi body-only expansion must not falsely increase installation-depth coverage');
+assert.equal(total.verified,119,'overall verified body/install depth coverage should be 119/153 after Hitachi expansion');
+assert.equal(total.installVerified,90,'Hitachi body-only expansion must not falsely increase installation-depth coverage');
 assert.equal(total.bodyOnlyVerified,29,'body-only count should rise to 29 after Hitachi expansion');
 
 function state(prefix){
