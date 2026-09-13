@@ -118,8 +118,8 @@ for (const product of products) {
 if (!products.some((p) => p.model === 'GR-Y600FK-EW')) {
   errors.push('GR-Y600FK-EW must be present after batch 18');
 }
-if (products.some((p) => p.model === 'SJ-X373P-N')) {
-  errors.push('SJ-X373P-N must be removed after batch 18');
+if (!products.some((p) => p.model === 'SJ-X373P-N')) {
+  errors.push('SJ-X373P-N must be preserved unless explicit current sale/handling-end evidence exists');
 }
 for (const model of ['R-HWS47X N','R-HWS47XL N']) {
   const product=products.find((p)=>p.model===model);
