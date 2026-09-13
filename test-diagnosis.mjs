@@ -138,10 +138,10 @@ function assertCommon(result,{maxWidth,budget=999999,autoIce='no',smartphone='no
   assert.equal(eligible,true,'GR-Y600FK-EW must pass hardFilter while Yodobashi sell-through is active');
 }
 
-// Removed SHARP legacy model must never remain in the loaded product pool.
+// Preserve the SHARP candidate unless explicit current sale/handling-end evidence exists.
 {
   const exists=vm.runInContext("products.some(p=>p.model==='SJ-X373P-N')",context);
-  assert.equal(exists,false,'SJ-X373P-N must remain removed');
+  assert.equal(exists,true,'SJ-X373P-N must remain available under the candidate preservation policy');
 }
 
 // Hitachi completion model must be loaded and eligible for a matching large-family scenario.
