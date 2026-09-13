@@ -18,9 +18,9 @@
       features:["53L引き出し式冷凍室","壁ピタ設置","耐熱100℃テーブル","フリーケース"], source:"https://www.yodobashi.com/?word=AQR-14A-W", verifiedAt:"2026-09-12"
     },
     {
-      maker:"AQUA", model:"AQR-16A-C", status:"発売中", price:54800, capacity:160, width:480, doorType:"右開き", doors:2,
+      maker:"AQUA", model:"AQR-16A-C", status:"発売中", price:48680, capacity:160, width:480, doorType:"右開き", doors:2,
       freezerTotal:78, vegetable:null, vegetablePos:null, energy:269, autoIce:false, smartphone:false,
-      features:["78L・3段大容量冷凍室","幅48cm","インバーター省エネ","壁ピタ設置"], source:"https://www.yodobashi.com/?word=AQR-16A-C", verifiedAt:"2026-09-12"
+      features:["78L・3段大容量冷凍室","幅48cm","インバーター省エネ","壁ピタ設置"], source:"https://www.yodobashi.com/?word=AQR-16A-C", verifiedAt:"2026-09-14"
     },
     {
       maker:"AQUA", model:"AQR-17A-C", status:"発売中", price:49540, capacity:170, width:530, doorType:"右開き", doors:2,
