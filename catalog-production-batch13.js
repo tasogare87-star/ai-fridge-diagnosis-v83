@@ -34,10 +34,10 @@
       source:"https://www.yodobashi.com/?word=GR-A500GTL", verifiedAt:"2026-08-28"
     },
     {
-      maker:"TOSHIBA", model:"GR-A470GSHL-EW", status:"発売中", price:191570, capacity:465, width:600, doorType:"左開き", doors:5,
+      maker:"TOSHIBA", model:"GR-A470GSHL-EW", status:"発売中", price:182110, capacity:465, width:600, doorType:"左開き", doors:5,
       freezerTotal:107, vegetable:103, vegetablePos:"真ん中", energy:265, autoIce:true, smartphone:false,
       features:["465L・幅60cm・左開き", "野菜室がまんなか", "速鮮チルド/解凍モード", "切り替え冷凍室"],
-      source:"https://www.yodobashi.com/?word=GR-A470GSHL", verifiedAt:"2026-09-20"
+      source:"https://www.yodobashi.com/?word=GR-A470GSHL", verifiedAt:"2026-09-22"
     },
     {
       maker:"TOSHIBA", model:"GR-Y36SV-UC", status:"発売中", price:128000, capacity:356, width:600, doorType:"右開き", doors:3,
