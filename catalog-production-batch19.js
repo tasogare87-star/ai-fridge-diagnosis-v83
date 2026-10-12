@@ -10,9 +10,9 @@
     "R-HWS47X N":{price:210900,smartphone:false,verifiedAt:"2026-09-10"},
     "R-HWS47XL N":{price:210900,smartphone:false,verifiedAt:"2026-09-10"},
     "GR-Y510FK(EW)":{price:172710,verifiedAt:"2026-08-28"},
-    "SJ-MF43R-H":{price:258000,verifiedAt:"2026-08-28"},
-    "AQR-V43A(S)":{price:145850,verifiedAt:"2026-08-28"},
-    "AQR-V43AL(S)":{price:145850,verifiedAt:"2026-08-28"}
+    "SJ-MF43R-H":{price:238000,verifiedAt:"2026-10-12"},
+    "AQR-V43A(S)":{price:120110,verifiedAt:"2026-10-12"},
+    "AQR-V43AL(S)":{price:120110,verifiedAt:"2026-10-12"}
   };
 
   for(const product of products){
