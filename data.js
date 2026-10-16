@@ -1,4 +1,4 @@
-const checkedAt="2026-10-10 JST（部分確認・未確認商品あり）";
+const checkedAt="2026-10-17 JST（部分確認・未確認商品あり）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
@@ -7,12 +7,12 @@ const products=[
 {maker:"Panasonic",model:"NR-F55HY3-N",status:"発売中",price:287100,capacity:551,width:650,doorType:"フレンチドア",doors:6,freezerTotal:143,vegetable:114,vegetablePos:"下段",energy:266,autoIce:true,smartphone:true,features:["大容量冷凍室『コンパクトBIG』","100％フルオープン","スマホアプリ対応"],source:"https://www.yodobashi.com/product/100000001009765440/"},
 {maker:"MITSUBISHI ELECTRIC",model:"MR-MZ49N-H",status:"発売中",price:330000,capacity:485,width:650,doorType:"フレンチドア",doors:6,freezerTotal:108,vegetable:92,vegetablePos:"真ん中",energy:269,autoIce:true,smartphone:true,features:["切れちゃう瞬冷凍A.I.","霜ガード","スマホアプリ対応"],source:"https://www.yodobashi.com/product/100000001009614046/"},
 {maker:"HITACHI",model:"R-HWS47X N",status:"販売終了",price:210900,capacity:470,width:600,doorType:"右開き",doors:5,freezerTotal:118,vegetable:87,vegetablePos:"下段",energy:269,autoIce:true,smartphone:null,features:["幅60cm・470L","冷凍室上段23L＋下段95L","自動製氷"],source:"https://www.yodobashi.com/product/100000001009296247/"},
-{maker:"HITACHI",model:"R-HWS47XL N",status:"発売中",price:210900,capacity:470,width:600,doorType:"左開き",doors:5,freezerTotal:118,vegetable:87,vegetablePos:"下段",energy:269,autoIce:true,smartphone:null,features:["左開き仕様","幅60cm・470L","冷凍室合計118L"],source:"https://www.yodobashi.com/product/100000001009296249/"},
+{maker:"HITACHI",model:"R-HWS47XL N",status:"販売終了",price:210900,capacity:470,width:600,doorType:"左開き",doors:5,freezerTotal:118,vegetable:87,vegetablePos:"下段",energy:269,autoIce:true,smartphone:null,features:["左開き仕様","幅60cm・470L","冷凍室合計118L"],source:"https://www.yodobashi.com/product/100000001009296249/"},
 {maker:"TOSHIBA",model:"GR-Y510FK(EW)",status:"販売終了",price:172710,capacity:509,width:650,doorType:"フレンチドア",doors:6,freezerTotal:117,vegetable:112,vegetablePos:"真ん中",energy:280,autoIce:true,smartphone:false,features:["野菜室がまんなか","摘みたて野菜室","自動製氷"],source:"https://www.yodobashi.com/product/100000001009458349/"},
 {maker:"SHARP",model:"SJ-MF43R-H",status:"発売中",price:238000,capacity:429,width:650,doorType:"フレンチドア",doors:6,freezerTotal:88,vegetable:null,vegetablePos:null,energy:247,autoIce:true,smartphone:true,features:["プラズマクラスター","スマホアプリ対応","オートクローザー"],source:"https://www.yodobashi.com/product/100000001009625881/"},
 {maker:"SHARP",model:"SJ-TD18R-W",status:"発売中",price:57770,capacity:179,width:495,doorType:"左右付け替え",doors:2,freezerTotal:58,vegetable:null,vegetablePos:null,energy:270,autoIce:false,smartphone:false,features:["つけかえどっちもドア","幅49.5cm","179Lパーソナルサイズ"],source:"https://www.yodobashi.com/product/100000001009510091/"},
-{maker:"AQUA",model:"AQR-V43A(S)",status:"発売中",price:120110,capacity:433,width:595,doorType:"右開き",doors:4,freezerTotal:141,vegetable:79,vegetablePos:"真ん中",energy:267,autoIce:true,smartphone:false,features:["大容量冷凍室","見える野菜室","幅59.5cm"],source:"https://www.yodobashi.com/product/100000001009587288/"},
-{maker:"AQUA",model:"AQR-V43AL(S)",status:"発売中",price:120110,capacity:433,width:595,doorType:"左開き",doors:4,freezerTotal:141,vegetable:79,vegetablePos:"真ん中",energy:267,autoIce:true,smartphone:false,features:["左開き仕様","大容量冷凍室","見える野菜室"],source:"https://www.yodobashi.com/product/100000001009587290/"}
+{maker:"AQUA",model:"AQR-V43A(S)",status:"発売中",price:138000,capacity:433,width:595,doorType:"右開き",doors:4,freezerTotal:141,vegetable:79,vegetablePos:"真ん中",energy:267,autoIce:true,smartphone:false,features:["大容量冷凍室","見える野菜室","幅59.5cm"],source:"https://www.yodobashi.com/product/100000001009587288/"},
+{maker:"AQUA",model:"AQR-V43AL(S)",status:"発売中",price:138000,capacity:433,width:595,doorType:"左開き",doors:4,freezerTotal:141,vegetable:79,vegetablePos:"真ん中",energy:267,autoIce:true,smartphone:false,features:["左開き仕様","大容量冷凍室","見える野菜室"],source:"https://www.yodobashi.com/product/100000001009587290/"}
 ];
 
 const productKnowledge={

@@ -33,10 +33,10 @@
       source:"https://www.yodobashi.com/?word=SJ-MF51R-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:230020, capacity:518, width:830, doorType:"フレンチドア", doors:4,
+      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:247500, capacity:518, width:830, doorType:"フレンチドア", doors:4,
       freezerTotal:182, vegetable:26, vegetablePos:null, energy:295, autoIce:true, smartphone:true,
       features:["奥行63.5cm薄型設計","182L大容量6ボックス冷凍室","ツインLED野菜ルーム","Haismartアプリ対応"],
-      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-09-11"
+      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-10-17"
     }
   ];
   additions.forEach(item=>{
