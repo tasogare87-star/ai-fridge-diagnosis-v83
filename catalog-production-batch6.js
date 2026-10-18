@@ -21,10 +21,10 @@
       source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-09-13"
     },
     {
-      maker:"TOSHIBA", model:"GR-A510FH-EW", status:"発売中", price:157780, capacity:509, width:650, doorType:"フレンチドア", doors:6,
+      maker:"TOSHIBA", model:"GR-A510FH-EW", status:"発売中", price:163900, capacity:509, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:117, vegetable:112, vegetablePos:"真ん中", energy:280, autoIce:true, smartphone:false,
       features:["野菜室がまんなか","新鮮 摘みたて野菜室","速鮮チルド＆解凍モード","幅65cm・509L"],
-      source:"https://www.yodobashi.com/?word=GR-A510FH%28EW%29", verifiedAt:"2026-09-11"
+      source:"https://www.yodobashi.com/?word=GR-A510FH%28EW%29", verifiedAt:"2026-10-19"
     },
     {
       maker:"SHARP", model:"SJ-MF51R-W", status:"発売中", price:308000, capacity:505, width:685, doorType:"フレンチドア", doors:6,

@@ -15,10 +15,10 @@
       source:"https://www.yodobashi.com/?word=MR-WZ50N-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"HITACHI", model:"R-HWC49Y-N", status:"発売中", price:278000, capacity:485, width:650, doorType:"フレンチドア", doors:6,
+      maker:"HITACHI", model:"R-HWC49Y-N", status:"発売中", price:258000, capacity:485, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:121, vegetable:91, vegetablePos:"下段", energy:262, autoIce:true, smartphone:true,
       features:["まるごとチルド","特鮮氷温ルーム","まんなか3段大容量冷凍","スマートフォン連携"],
-      source:"https://www.yodobashi.com/?word=R-HWC49Y-N", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=R-HWC49Y-N", verifiedAt:"2026-10-19"
     },
     {
       maker:"TOSHIBA", model:"GR-A450GT-TH", status:"発売中", price:224260, capacity:452, width:600, doorType:"右開き", doors:5,
@@ -30,7 +30,7 @@
       maker:"TOSHIBA", model:"GR-A460FH-EW", status:"発売中", price:160380, capacity:462, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:104, vegetable:103, vegetablePos:"真ん中", energy:264, autoIce:true, smartphone:false,
       features:["野菜室がまんなか","新鮮 摘みたて野菜室","速鮮チルド＆解凍モード","幅65cm・462L"],
-      source:"https://www.yodobashi.com/?word=GR-A460FH%28EW%29", verifiedAt:"2026-10-17"
+      source:"https://www.yodobashi.com/?word=GR-A460FH%28EW%29", verifiedAt:"2026-10-19"
     },
     {
       maker:"SHARP", model:"SJ-XW46R-H", status:"発売中", price:188040, capacity:455, width:600, doorType:"左右開き", doors:5,
