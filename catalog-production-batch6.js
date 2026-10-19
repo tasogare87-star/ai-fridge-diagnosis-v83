@@ -21,10 +21,10 @@
       source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-09-13"
     },
     {
-      maker:"TOSHIBA", model:"GR-A510FH-EW", status:"発売中", price:163900, capacity:509, width:650, doorType:"フレンチドア", doors:6,
+      maker:"TOSHIBA", model:"GR-A510FH-EW", status:"販売終了", price:163900, capacity:509, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:117, vegetable:112, vegetablePos:"真ん中", energy:280, autoIce:true, smartphone:false,
       features:["野菜室がまんなか","新鮮 摘みたて野菜室","速鮮チルド＆解凍モード","幅65cm・509L"],
-      source:"https://www.yodobashi.com/?word=GR-A510FH%28EW%29", verifiedAt:"2026-10-19"
+      source:"https://www.yodobashi.com/?word=GR-A510FH%28EW%29", verifiedAt:"2026-10-20"
     },
     {
       maker:"SHARP", model:"SJ-MF51R-W", status:"発売中", price:308000, capacity:505, width:685, doorType:"フレンチドア", doors:6,
@@ -33,10 +33,10 @@
       source:"https://www.yodobashi.com/?word=SJ-MF51R-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:247500, capacity:518, width:830, doorType:"フレンチドア", doors:4,
+      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:227300, capacity:518, width:830, doorType:"フレンチドア", doors:4,
       freezerTotal:182, vegetable:26, vegetablePos:null, energy:295, autoIce:true, smartphone:true,
       features:["奥行63.5cm薄型設計","182L大容量6ボックス冷凍室","ツインLED野菜ルーム","Haismartアプリ対応"],
-      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-10-17"
+      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-10-20"
     }
   ];
   additions.forEach(item=>{
