@@ -39,10 +39,10 @@
       source:"https://www.yodobashi.com/product/100000001009625884/", verifiedAt:"2026-10-24"
     },
     {
-      maker:"AQUA", model:"AQR-VZA45A-W", status:"発売中", price:169530, capacity:452, width:595, doorType:"右開き", doors:4,
+      maker:"AQUA", model:"AQR-VZA45A-W", status:"発売中", price:168000, capacity:452, width:595, doorType:"右開き", doors:4,
       freezerTotal:141, vegetable:79, vegetablePos:null, energy:259, autoIce:true, smartphone:false,
       features:["幅59.5cm・452L","上段61L＋下段80Lの大容量冷凍室","旬鮮野菜室","洗える製氷ユニット"],
-      source:"https://www.yodobashi.com/?word=AQR-VZA45A-W", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/product/100000001009587282/", verifiedAt:"2026-10-24"
     }
   ];
   additions.forEach(item=>{
