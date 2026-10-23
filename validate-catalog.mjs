@@ -57,8 +57,10 @@ for (const product of products) {
     }
   }
 
-  if (product.status !== '発売中') {
-    errors.push(`${product.model || '<unknown>'}: loaded diagnosis products must use status=発売中; use a separate lifecycle field for sell-through or other metadata`);
+  // Retain unavailable items in the catalog for audit/history; the diagnosis hardFilter
+  // (logic.js) must continue to admit only status === '発売中'.
+  if (!['発売中', '販売終了', '取扱終了', '注文不可', '予約受付中', '発売前'].includes(product.status)) {
+    errors.push(`${product.model || '<unknown>'}: unsupported status ${product.status}`);
   }
 
   for (const key of requiredNumbers) {
