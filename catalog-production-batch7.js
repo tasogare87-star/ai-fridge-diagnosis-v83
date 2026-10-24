@@ -33,10 +33,10 @@
       source:"https://www.yodobashi.com/?word=MR-WXD70N-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"HITACHI", model:"R-HWC62Y-N", status:"発売中", price:348000, capacity:617, width:685, doorType:"フレンチドア", doors:6,
+      maker:"HITACHI", model:"R-HWC62Y-N", status:"発売中", price:328000, capacity:617, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:158, vegetable:118, vegetablePos:"下段", energy:270, autoIce:true, smartphone:true,
       features:["617L・幅68.5cm","まんなか3段大容量冷凍","特鮮氷温ルーム","スマートフォン連携"],
-      source:"https://www.yodobashi.com/?word=R-HWC62Y-N", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=R-HWC62Y-N", verifiedAt:"2026-10-25"
     },
     {
       maker:"TOSHIBA", model:"GR-A600FH-EW", status:"発売中", price:204800, capacity:601, width:685, doorType:"フレンチドア", doors:6,
@@ -45,10 +45,10 @@
       source:"https://www.yodobashi.com/?word=GR-A600FH%28EW%29", verifiedAt:"2026-10-10"
     },
     {
-      maker:"SHARP", model:"SJ-MF61R-H", status:"発売中", price:336880, capacity:607, width:785, doorType:"フレンチドア", doors:6,
+      maker:"SHARP", model:"SJ-MF61R-H", status:"発売中", price:348000, capacity:607, width:785, doorType:"フレンチドア", doors:6,
       freezerTotal:154, vegetable:110, vegetablePos:"真ん中", energy:290, autoIce:true, smartphone:true,
       features:["607L・奥行63cm薄型","ピラーレスフレンチドア","雪下シャキット野菜室","COCORO HOME AI"],
-      source:"https://www.yodobashi.com/?word=SJ-MF61R-H", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=SJ-MF61R-H", verifiedAt:"2026-10-25"
     }
   ];
   additions.forEach(item=>{

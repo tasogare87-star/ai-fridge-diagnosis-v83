@@ -10,16 +10,16 @@
       source:"https://www.yodobashi.com/?word=NR-F52BR3", verifiedAt:"2026-09-07"
     },
     {
-      maker:"Panasonic", model:"NR-F50HY3", status:"発売中", price:267300, capacity:501, width:650, doorType:"フレンチドア", doors:6,
+      maker:"Panasonic", model:"NR-F50HY3", status:"発売中", price:257400, capacity:501, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:129, vegetable:104, vegetablePos:"下段", energy:258, autoIce:true, smartphone:true,
       features:["501L・幅65cm・奥行65cm","霜つき抑制冷凍","クーリングアシストルーム","KitchenPocketアプリ対応"],
-      source:"https://www.yodobashi.com/?word=NR-F50HY3", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=NR-F50HY3", verifiedAt:"2026-10-25"
     },
     {
-      maker:"Panasonic", model:"NR-F45HY3", status:"発売中", price:247500, capacity:450, width:650, doorType:"フレンチドア", doors:6,
+      maker:"Panasonic", model:"NR-F45HY3", status:"発売中", price:237600, capacity:450, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:129, vegetable:104, vegetablePos:"下段", energy:261, autoIce:true, smartphone:false,
       features:["450L・幅65cm・奥行65cm","霜つき抑制冷凍","クーリングアシストルーム","高さ172cm"],
-      source:"https://www.yodobashi.com/?word=NR-F45HY3", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=NR-F45HY3", verifiedAt:"2026-10-25"
     },
     {
       maker:"Panasonic", model:"NR-F54EY3", status:"発売中", price:257400, capacity:542, width:650, doorType:"フレンチドア", doors:6,
