@@ -15,10 +15,10 @@
       source:"https://www.yodobashi.com/?word=MR-MZ54N-W", verifiedAt:"2026-08-28"
     },
     {
-      maker:"HITACHI", model:"R-HWC54Y-N", status:"発売中", price:298000, capacity:540, width:650, doorType:"フレンチドア", doors:6,
+      maker:"HITACHI", model:"R-HWC54Y-N", status:"発売中", price:278000, capacity:540, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:137, vegetable:103, vegetablePos:"下段", energy:263, autoIce:true, smartphone:true,
       features:["まるごとチルド","特鮮氷温ルーム","まんなか3段大容量冷凍","スマートフォン連携"],
-      source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-09-13"
+      source:"https://www.yodobashi.com/?word=R-HWC54Y-N", verifiedAt:"2026-10-25"
     },
     {
       maker:"TOSHIBA", model:"GR-A510FH-EW", status:"販売終了", price:163900, capacity:509, width:650, doorType:"フレンチドア", doors:6,
@@ -27,16 +27,16 @@
       source:"https://www.yodobashi.com/?word=GR-A510FH%28EW%29", verifiedAt:"2026-10-20"
     },
     {
-      maker:"SHARP", model:"SJ-MF51R-W", status:"発売中", price:308000, capacity:505, width:685, doorType:"フレンチドア", doors:6,
+      maker:"SHARP", model:"SJ-MF51R-W", status:"発売中", price:290000, capacity:505, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:129, vegetable:90, vegetablePos:"真ん中", energy:270, autoIce:true, smartphone:true,
       features:["奥行63cm薄型設計","ピラーレスフレンチドア","雪下シャキット野菜室 鶴","COCORO HOME AI"],
-      source:"https://www.yodobashi.com/?word=SJ-MF51R-W", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=SJ-MF51R-W", verifiedAt:"2026-10-25"
     },
     {
-      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:227300, capacity:518, width:830, doorType:"フレンチドア", doors:4,
+      maker:"AQUA", model:"AQR-TZ52A-T", status:"発売中", price:224800, capacity:518, width:830, doorType:"フレンチドア", doors:4,
       freezerTotal:182, vegetable:26, vegetablePos:null, energy:295, autoIce:true, smartphone:true,
       features:["奥行63.5cm薄型設計","182L大容量6ボックス冷凍室","ツインLED野菜ルーム","Haismartアプリ対応"],
-      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-10-20"
+      source:"https://www.yodobashi.com/?word=AQR-TZ52A-T", verifiedAt:"2026-10-25"
     }
   ];
   additions.forEach(item=>{

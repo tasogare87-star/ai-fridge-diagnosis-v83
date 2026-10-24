@@ -21,10 +21,10 @@
       source:"https://www.yodobashi.com/?word=R-HWC49Y-N", verifiedAt:"2026-10-19"
     },
     {
-      maker:"TOSHIBA", model:"GR-A450GT-TH", status:"発売中", price:224260, capacity:452, width:600, doorType:"右開き", doors:5,
+      maker:"TOSHIBA", model:"GR-A450GT-TH", status:"発売中", price:234800, capacity:452, width:600, doorType:"右開き", doors:5,
       freezerTotal:114, vegetable:90, vegetablePos:"真ん中", energy:261, autoIce:true, smartphone:true,
       features:["幅60cm・452L","もっと潤う摘みたて野菜室","おいしさ持続上質冷凍","IoLIFEアプリ対応"],
-      source:"https://www.yodobashi.com/?word=GR-A450GT%28TH%29", verifiedAt:"2026-09-13"
+      source:"https://www.yodobashi.com/?word=GR-A450GT%28TH%29", verifiedAt:"2026-10-25"
     },
     {
       maker:"TOSHIBA", model:"GR-A460FH-EW", status:"販売終了", price:160380, capacity:462, width:650, doorType:"フレンチドア", doors:6,
