@@ -10,10 +10,10 @@
       source:"https://www.yodobashi.com/?word=GR-A640XFS", verifiedAt:"2026-10-25"
     },
     {
-      maker:"TOSHIBA", model:"GR-A540XFS-TW", status:"発売中", price:328000, capacity:543, width:685, doorType:"フレンチドア", doors:6,
+      maker:"TOSHIBA", model:"GR-A540XFS-TW", status:"発売中", price:308000, capacity:543, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:132, vegetable:110, vegetablePos:"真ん中", energy:280, autoIce:true, smartphone:true,
       features:["543L・幅68.5cm", "もっと潤う摘みたて野菜室", "Deliチルド/氷結晶チルド", "IoLIFE対応"],
-      source:"https://www.yodobashi.com/?word=GR-A540XFS", verifiedAt:"2026-09-01"
+      source:"https://www.yodobashi.com/?word=GR-A540XFS", verifiedAt:"2026-10-25"
     },
     {
       maker:"TOSHIBA", model:"GR-A590WF-UC", status:"発売中", price:285610, capacity:586, width:685, doorType:"フレンチドア", doors:6,
