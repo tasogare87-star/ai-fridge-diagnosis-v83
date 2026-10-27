@@ -12,7 +12,7 @@
       maker:"MITSUBISHI ELECTRIC", model:"MR-MZ54N-W", status:"発売中", price:352000, capacity:540, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:120, vegetable:103, vegetablePos:"真ん中", energy:274, autoIce:true, smartphone:true,
       features:["切れちゃう瞬冷凍A.I.","ひろびろ氷点下ストッカーD A.I.","真ん中朝どれ野菜室","スマホアプリ対応"],
-      source:"https://www.yodobashi.com/?word=MR-MZ54N-W", verifiedAt:"2026-08-28"
+      source:"https://www.yodobashi.com/?word=MR-MZ54N-W", verifiedAt:"2026-10-28"
     },
     {
       maker:"HITACHI", model:"R-HWC54Y-N", status:"発売中", price:278000, capacity:540, width:650, doorType:"フレンチドア", doors:6,

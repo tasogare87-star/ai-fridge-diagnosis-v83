@@ -18,7 +18,7 @@
       maker:"HITACHI", model:"R-K40T-S", status:"発売中", price:164800, capacity:401, width:600, doorType:"右開き", doors:5,
       freezerTotal:94, vegetable:75, vegetablePos:"下段", energy:273, autoIce:true, smartphone:false,
       features:["401L・幅60cm","まんなか冷凍","新鮮スリープ野菜室","氷温ルーム"],
-      source:"https://www.yodobashi.com/product/100000001008017607/", verifiedAt:"2026-10-24"
+      source:"https://www.yodobashi.com/product/100000001008017607/", verifiedAt:"2026-10-28"
     },
     {
       maker:"HITACHI", model:"R-K40TL-S", status:"発売中", price:164800, capacity:401, width:600, doorType:"左開き", doors:5,

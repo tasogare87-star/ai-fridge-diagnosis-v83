@@ -1,4 +1,4 @@
-const checkedAt="2026-10-27 JST（部分確認・未確認商品あり）";
+const checkedAt="2026-10-28 JST（部分確認・価格123/153照合・販売状態は個別未完了）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[

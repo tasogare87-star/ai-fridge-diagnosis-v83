@@ -31,13 +31,13 @@
       maker:"Panasonic", model:"NR-E45RY3", status:"発売中", price:209800, capacity:450, width:600, doorType:"右開き", doors:5,
       freezerTotal:111, vegetable:90, vegetablePos:"下段", energy:266, autoIce:true, smartphone:false,
       features:["450L・幅60cm","93L冷凍室＋18L新鮮凍結ルーム","霜つき抑制冷凍","奥行64.8cm"],
-      source:"https://www.yodobashi.com/?word=NR-E45RY3", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=NR-E45RY3", verifiedAt:"2026-10-28"
     },
     {
       maker:"Panasonic", model:"NR-E45RY3L", status:"発売中", price:209800, capacity:450, width:600, doorType:"左開き", doors:5,
       freezerTotal:111, vegetable:90, vegetablePos:"下段", energy:266, autoIce:true, smartphone:false,
       features:["左開き仕様","450L・幅60cm","93L冷凍室＋18L新鮮凍結ルーム","奥行64.8cm"],
-      source:"https://www.yodobashi.com/?word=NR-E45RY3L", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=NR-E45RY3L", verifiedAt:"2026-10-28"
     },
     {
       maker:"Panasonic", model:"NR-C37WS2", status:"発売中", price:188100, capacity:365, width:600, doorType:"右開き", doors:3,
@@ -61,7 +61,7 @@
       maker:"Panasonic", model:"NR-C28BC3-W", status:"発売中", price:99990, capacity:284, width:541, doorType:"右開き", doors:3,
       freezerTotal:67, vegetable:71, vegetablePos:"真ん中", energy:314, autoIce:false, smartphone:false,
       features:["284L・幅54.1cm","真ん中野菜室","67L冷凍室","奥行62.5cm"],
-      source:"https://www.yodobashi.com/?word=NR-C28BC3-W", verifiedAt:"2026-09-07"
+      source:"https://www.yodobashi.com/?word=NR-C28BC3-W", verifiedAt:"2026-10-28"
     }
   ];
   additions.forEach(item=>{
