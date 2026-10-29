@@ -3,10 +3,10 @@
 (function(){
   const additions=[
     {
-      maker:"MITSUBISHI ELECTRIC", model:"MR-CX27M-W", status:"発売中", price:84800, capacity:272, width:540, doorType:"右開き", doors:3,
+      maker:"MITSUBISHI ELECTRIC", model:"MR-CX27M-W", status:"発売中", price:89800, capacity:272, width:540, doorType:"右開き", doors:3,
       freezerTotal:70, vegetable:60, vegetablePos:"真ん中", energy:313, autoIce:false, smartphone:false,
       features:["272L・幅54cm","氷点下ストッカー","真ん中野菜室","インバーター省エネ"],
-      source:"https://www.yodobashi.com/product/100000001009082792/", verifiedAt:"2026-10-24"
+      source:"https://www.yodobashi.com/product/100000001009082792/", verifiedAt:"2026-10-30"
     },
     {
       maker:"HITACHI", model:"R-27X-N", status:"発売中", price:84800, capacity:265, width:540, doorType:"右開き", doors:3,
