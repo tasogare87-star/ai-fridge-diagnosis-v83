@@ -22,10 +22,10 @@
       source:"https://www.yodobashi.com/?word=MR-JM54N-W", verifiedAt:"2026-09-07"
     },
     {
-      maker:"MITSUBISHI ELECTRIC", model:"MR-GW52N-W", status:"発売中", price:222720, capacity:517, width:650, doorType:"フレンチドア", doors:6,
+      maker:"MITSUBISHI ELECTRIC", model:"MR-GW52N-W", status:"発売中", price:196000, capacity:517, width:650, doorType:"フレンチドア", doors:6,
       freezerTotal:119, vegetable:98, vegetablePos:"下段", energy:282, autoIce:true, smartphone:false,
       features:["幅65cm・517L","真ん中冷凍室","89L冷凍室＋30L瞬冷凍室","自動製氷"],
-      source:"https://www.yodobashi.com/product/100000001009897801/", verifiedAt:"2026-10-24"
+      source:"https://www.yodobashi.com/product/100000001009897801/", verifiedAt:"2026-10-31"
     },
     {
       maker:"MITSUBISHI ELECTRIC", model:"MR-JW50N-W", status:"発売中", price:275000, capacity:495, width:650, doorType:"フレンチドア", doors:6,

@@ -33,10 +33,10 @@
       source:"https://www.yodobashi.com/product/100000001009802118/", verifiedAt:"2026-10-24"
     },
     {
-      maker:"SHARP", model:"SJ-XW46R-H", status:"発売中", price:179230, capacity:455, width:600, doorType:"左右開き", doors:5,
+      maker:"SHARP", model:"SJ-XW46R-H", status:"発売中", price:169800, capacity:455, width:600, doorType:"左右開き", doors:5,
       freezerTotal:113, vegetable:80, vegetablePos:"真ん中", energy:267, autoIce:true, smartphone:false,
       features:["オートクローズどっちもドア","113L大容量冷凍室","真ん中野菜室","プラズマクラスター"],
-      source:"https://www.yodobashi.com/product/100000001009625884/", verifiedAt:"2026-10-24"
+      source:"https://www.yodobashi.com/product/100000001009625884/", verifiedAt:"2026-10-31"
     },
     {
       maker:"AQUA", model:"AQR-VZA45A-W", status:"発売中", price:168000, capacity:452, width:595, doorType:"右開き", doors:4,
