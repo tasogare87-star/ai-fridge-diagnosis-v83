@@ -1,4 +1,4 @@
-const checkedAt="2026-11-01 JST（部分確認・本番153レコード／ヨドバシ現行一覧119件を照合・現行一覧未照合34件／全153件の個別商品ページ注文可否は未完了）";
+const checkedAt="2026-11-02 JST（部分確認・本番153レコード／ヨドバシ登録価格一覧および個別商品ページを照合／販売終了5型番確認・全商品個別注文可否未完了）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[

@@ -39,10 +39,10 @@
       source:"https://www.yodobashi.com/?word=R-HWC62Y-N", verifiedAt:"2026-11-01"
     },
     {
-      maker:"TOSHIBA", model:"GR-A600FH-EW", status:"発売中", price:204800, capacity:601, width:685, doorType:"フレンチドア", doors:6,
+      maker:"TOSHIBA", model:"GR-A600FH-EW", status:"販売終了", price:204800, capacity:601, width:685, doorType:"フレンチドア", doors:6,
       freezerTotal:142, vegetable:132, vegetablePos:"真ん中", energy:311, autoIce:true, smartphone:false,
       features:["601L・幅68.5cm","132L真ん中野菜室","速鮮チルド＆解凍モード","大容量スタンダードモデル"],
-      source:"https://www.yodobashi.com/?word=GR-A600FH%28EW%29", verifiedAt:"2026-10-10"
+      source:"https://www.yodobashi.com/product/100000001009802112/", verifiedAt:"2026-11-02"
     },
     {
       maker:"SHARP", model:"SJ-MF61R-H", status:"発売中", price:348000, capacity:607, width:785, doorType:"フレンチドア", doors:6,
