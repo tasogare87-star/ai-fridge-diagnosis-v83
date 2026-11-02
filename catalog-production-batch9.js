@@ -61,7 +61,7 @@
       maker:"Panasonic", model:"NR-C28BC3-W", status:"発売中", price:99990, capacity:284, width:541, doorType:"右開き", doors:3,
       freezerTotal:67, vegetable:71, vegetablePos:"真ん中", energy:314, autoIce:false, smartphone:false,
       features:["284L・幅54.1cm","真ん中野菜室","67L冷凍室","奥行62.5cm"],
-      source:"https://www.yodobashi.com/?word=NR-C28BC3-W", verifiedAt:"2026-11-01"
+      source:"https://www.yodobashi.com/?word=NR-C28BC3-W", verifiedAt:"2026-11-03"
     }
   ];
   additions.forEach(item=>{
