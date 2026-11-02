@@ -1,4 +1,4 @@
-const checkedAt="2026-11-03 JST（部分確認・本番153レコード／ヨドバシ冷蔵庫現行取扱一覧9ページを照合／同一型番の価格照合113件・現行一覧未照合40件・全商品個別注文可否未完了）";
+const checkedAt="2026-11-03 JST（部分確認・本番153レコード／ヨドバシ現行取扱一覧9ページを照合／同一型番価格照合113件・現行一覧未照合40件／個別商品ページで販売終了4型番追加確認・全商品個別注文可否未完了）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
