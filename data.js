@@ -1,4 +1,4 @@
-const checkedAt="2026-11-04 JST（部分確認・本番21ファイルの存在確認／ヨドバシ価格比較一覧およびMR-CX30M-W個別商品ページを参照／比較一覧は10月更新情報が中心で11月4日現在の全153件の価格・注文可否は未確定／価格・status変更なし）";
+const checkedAt="2026-11-05 JST（部分確認・本番カタログ20ファイルとdata.jsを取得／MR-P17M-Wのヨドバシ商品ページに販売終了明示を確認しstatus更新／NR-B253T-Kは11月1日時点の価格62,060円で登録値一致／全153件の当日価格・注文可否は未確認）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
