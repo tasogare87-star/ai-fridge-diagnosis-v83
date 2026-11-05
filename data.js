@@ -1,4 +1,4 @@
-const checkedAt="2026-11-05 JST（部分確認・本番カタログ20ファイルとdata.jsを取得／MR-P17M-Wのヨドバシ商品ページに販売終了明示を確認しstatus更新／NR-B253T-Kは11月1日時点の価格62,060円で登録値一致／全153件の当日価格・注文可否は未確認）";
+const checkedAt="2026-11-06 JST（部分確認・対象21ファイルの存在を確認／ヨドバシ現行一覧の取得情報は11月2日配送表示で当日性を確認できず、価格・販売状態の変更は未確定／全153件の当日個別照合は未完了）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
