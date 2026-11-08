@@ -1,4 +1,4 @@
-const checkedAt="2026-11-06 JST（部分確認・対象21ファイルの存在を確認／ヨドバシ現行一覧の取得情報は11月2日配送表示で当日性を確認できず、価格・販売状態の変更は未確定／全153件の当日個別照合は未完了）";
+const checkedAt="2026-11-09 JST（部分確認・対象21ファイルの存在確認／MR-GW52N-Wの現行価格207400円・在庫ありを確認／全153件の最新価格・注文可否の個別照合は未完了）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
