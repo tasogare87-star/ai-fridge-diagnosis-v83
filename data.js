@@ -1,4 +1,4 @@
-const checkedAt="2026-11-09 JST（部分確認・対象21ファイルの存在確認／MR-GW52N-Wの現行価格207400円・在庫ありを確認／全153件の最新価格・注文可否の個別照合は未完了）";
+const checkedAt="2026-11-10 JST（部分確認・data.jsおよびcatalog-production-*.js 20ファイル取得／登録商品の最新価格・注文可否の全件照合は未完了／確認保留型番のヨドバシ商品ページ照合では当日価格・販売状態を確定できず）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
