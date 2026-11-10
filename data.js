@@ -1,4 +1,4 @@
-const checkedAt="2026-11-10 JST（部分確認・data.jsおよびcatalog-production-*.js 20ファイル取得／登録商品の最新価格・注文可否の全件照合は未完了／確認保留型番のヨドバシ商品ページ照合では当日価格・販売状態を確定できず）";
+const checkedAt="2026-11-11 JST（部分確認・全登録商品の当日価格および注文可否の照合は未完了／MR-CX30M-W・MR-GW52N-W・AQR-TX51A-Wの商品ページを確認したが現在価格と販売状態の確証不足／商品データ変更なし）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
