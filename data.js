@@ -1,4 +1,4 @@
-const checkedAt="2026-11-11 JST（部分確認・全登録商品の当日価格および注文可否の照合は未完了／MR-CX30M-W・MR-GW52N-W・AQR-TX51A-Wの商品ページを確認したが現在価格と販売状態の確証不足／商品データ変更なし）";
+const checkedAt="2026-11-12 JST（部分確認・data.jsとcatalog-production-*.js全20ファイル取得／全登録商品の当日価格・注文可否の個別照合は未完了／MR-GW52N-Wはヨドバシ現行一覧で207400円・在庫ありを確認し登録値と一致／MR-CX30M-Wは古い配送日表示のため保留／価格・status変更なし）";
 const shareUrl=(location.protocol === "http:" || location.protocol === "https:") ? location.href.split("#")[0] : "";
 const strategicMakers=["MITSUBISHI ELECTRIC","Panasonic","HITACHI","TOSHIBA"];
 const products=[
